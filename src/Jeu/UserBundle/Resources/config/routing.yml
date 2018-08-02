@@ -1,0 +1,25 @@
+# localhost/Symfony/web/app_dev.php/user/panier #
+jeu_user_panier: 
+    path: /panier 
+    defaults:
+        _controller: JeuUserBundle:User:panier    
+
+jeu_user_validation_commande:
+    path: /API/Banque/{id}
+    defaults: { _controller: JeuUserBundle:Commande:validationCommande }  
+
+jeu_user_factures:
+    path: /profile/factures
+    defaults: { _controller: JeuUserBundle:User:factures } 
+
+facturePDF:
+    path:    /profile/factures/PDF/{id}
+    defaults: { _controller: JeuUserBundle:User:facturePDF } 
+
+routingUtilisateursAdmin:
+    resource: "@JeuUserBundle/Resources/config/routing/routingUtilisateursAdmin.yml"
+    prefix: /admin/utilisateurs    
+    
+routingCommandesAdmin:
+    resource: "@JeuUserBundle/Resources/config/routing/routingCommandesAdmin.yml"
+    prefix: /admin/commandes

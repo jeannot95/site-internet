@@ -1,0 +1,18 @@
+adminUtilisateurs_index:
+    path:     /{page}
+    defaults:  
+        _controller: "JeuUserBundle:UserAdmin:index" 
+        page:   1
+    requirements: 
+        page: \d*     
+    methods:  GET
+
+adminAdressesUtilisateurs:
+    path:     /{id}/adresses
+    defaults: { _controller: "JeuUserBundle:UserAdmin:utilisateur" }
+    methods:  GET
+
+adminFacturesUtilisateurs:
+    path:     /{id}/factures
+    defaults: { _controller: "JeuUserBundle:UserAdmin:utilisateur" }
+    methods:  GET

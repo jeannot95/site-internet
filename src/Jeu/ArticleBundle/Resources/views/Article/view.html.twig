@@ -1,0 +1,81 @@
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  Details - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+  <h2>{{ article.titre }}</h2>
+	  {% for flashMessage in app.session.flashbag.get('notice') %}
+		<div class="alert alert-success">
+			{{ flashMessage }}
+		</div>	
+	  {% endfor %}  
+  {#{ dump(article) }#}
+  <div style="float: left; margin-right: 1em;">
+    {# On vérifie qu'une image soit bien associée à l'article #}
+    {% if article.image is not null %}
+	 <img
+	  src="{{ asset(article.image.webPath) }}"
+	  alt="{{ article.image.alt }}"
+	 width="200" height="200"/>
+    {% endif %}
+  </div>
+  <i>Par intel, sortie le {{ article.dateDeSortie|date('d/m/Y') }}</i>
+
+  <div class="well">
+    {{ article.description }}
+  </div>
+  {% if not article.categories.empty %}
+    <p>
+      Ce jeu est parue dans les catégories suivantes :
+      {% for category in article.categories %}
+        {{ category.name }}{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+  {% endif %}
+  {% if  article.publicJeu.name is defined %}
+    <p>
+      Le public concerné par ce jeu est : {{ article.publicJeu.name }}
+    </p>
+	{% endif %}
+  <a href="{{ path('jeu_article_homepage') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+{% if app.user %}
+	{% if panier[article.id] is not defined %}
+		<a href="{{ path('jeu_article_ajouter_panier', {'id': article.id}) }}" class="btn btn-success">      
+		  Ajouter au panier
+		</a>
+	{% else %}
+		<a href="{{ path('jeu_article_panier') }}" class="btn btn-primary">Le produit est déjà dans votre panier</a>
+	{% endif %}
+{% else %}
+<a href="{{ path('fos_user_security_login') }}">Connectez-vous</a> pour ajoutez cet article à votre panier	
+{% endif %}
+{% if is_granted("ROLE_USER") %}
+	<a href="{{ path('jeu_article_avis_depos', { 'id' : article.id }) }}" class="btn btn-primary">Déposer un avis</a>
+{% else %}
+	<a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">Connectez-vous </a> pour déposer un avis	
+{% endif %}
+<a href="{{ path('jeu_article_avis_vue', { 'id': article.id }) }}" class="btn btn-primary">Voir les avis</a>	  	
+	<hr>
+	Jeux apparu dans la même catégorie :<hr>
+	<div class="col-lg-12 col-md-12 col-sm-7">
+			{% for jeu in suggestion %}
+			<div class="col-lg-4 col-md-4 col-sm-12">
+				<a href="{{ path('jeu_article_view', {'id': jeu.id}) }}">{{ jeu.titre }} </a>
+			{% if jeu.image is defined %}
+			 <img
+			  src="{{ asset(jeu.image.webPath) }}"
+			  alt="{{ jeu.image.alt }}"
+			 width="100" height="100"/>
+			{% endif %}
+			</div>
+			{% endfor %}
+			
+		</div>
+		{#{ dump(suggestion) }#}
+{% endblock %}

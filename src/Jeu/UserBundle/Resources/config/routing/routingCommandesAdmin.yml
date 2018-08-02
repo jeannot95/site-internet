@@ -1,0 +1,11 @@
+adminCommande:
+    path:  /{page}
+    defaults: 
+        _controller: JeuUserBundle:CommandesAdmin:commandes 
+        page:   1
+    requirements: 
+        page: \d*     
+
+adminShowFacture:
+    path:  /facture/{id}
+    defaults: { _controller: JeuUserBundle:CommandesAdmin:showFacture }

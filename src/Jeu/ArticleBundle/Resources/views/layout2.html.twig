@@ -1,0 +1,13 @@
+{% extends "JeuCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Panier - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ app.user }}</h1>
+  <hr>
+  {% block jeu_article_body %}
+  {% endblock %}
+
+{% endblock %}

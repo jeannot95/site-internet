@@ -1,0 +1,4 @@
+admin:
+    path:  /
+    defaults: 
+        _controller: JeuArticleBundle:CategoriesAdmin:index 

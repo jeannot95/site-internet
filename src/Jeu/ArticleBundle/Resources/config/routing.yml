@@ -1,0 +1,31 @@
+
+routingAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingAdmin.yml"
+    prefix: /admin
+
+routingPanier:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingPanier.yml"
+    prefix: /
+
+routingProduits:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingProduits.yml"
+    prefix: /
+
+routingProduitsAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingProduitsAdmin.yml"
+    prefix: /admin/produits
+
+routingCategoriesAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingCategoriesAdmin.yml"
+    prefix:   /admin/categories
+    
+routingPublicAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingPublicAdmin.yml"
+    prefix: /admin/public    
+
+routingAvisAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingAvisAdmin.yml"
+    prefix: /admin/avis    
+
+    
+    

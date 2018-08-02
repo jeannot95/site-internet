@@ -1,0 +1,20 @@
+
+salut ça marche	<br>
+{#{ dump(listArticles) }#}
+
+<div id="contenu">
+{% if listArticles is defined %}
+	{#{ dump(listArticles) }#}
+	{#{ dump(val) }#}
+	{#{ dump(vals) }#}
+	{#{{ dump(valss) }}#}
+	{#{ dump(valsss) }#}
+	{#{ dump(valssss) }#}
+	{% for article in listArticles %}
+	<hr>
+		 <a href="{{ path('jeu_article_view', {'id': article.id}) }}">{{ article.titre }}</a><br>
+		Description : {{ article.description }}
+	<hr>
+	{% endfor %}
+{% endif %}
+</div>

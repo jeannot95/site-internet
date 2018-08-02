@@ -1,0 +1,56 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Liste des Commandes</h2>
+				Nombres total de commandes : {{ commandes|length }}
+            </article>
+        </div>
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Référence</th>
+                        <th>Utilisateur</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for commande in commandes %}
+                        <tr>
+                            <td>{{ commande.date|date('d-m-Y h:i:s') }}</td>
+                            <td>{{ commande.reference }}</td>
+                            <td>{{ commande.user.username }}</td>
+                            <td>
+                                <a href="{{ path('adminShowFacture', { 'id' : commande.id }) }}" target="_blank">Voir Facture</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </div>
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-12">
+                <article class="tile is-child box is-12">
+					  {% if commandes is not empty %}
+					  <ul class="pagination">
+						{% for p in range(1, nbPages) %}
+						  <li{% if p == page %} class="active"{% endif %}>
+							<a href="{{ path('adminCommande', {'page': p}) }}">{{ p }}</a>
+						  </li>
+						{% endfor %}
+					  </ul>
+					  {% endif %}
+                </article>
+            </div>
+        </div>	
+{% endblock %}

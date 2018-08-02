@@ -1,0 +1,14 @@
+<form action="{{ path('rechercheProduits') }}" method="GET" name="test" class="control has-addons">
+    <div class="codecon_half">
+        <div class="expSearchBox">
+            <div class="expSearchFrom">
+                {{ form_widget(form.recherche) }}
+                <div class="close">
+                    <span class="front"></span>
+                    <span class="back"></span>
+                </div>
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    </div>
+</form>

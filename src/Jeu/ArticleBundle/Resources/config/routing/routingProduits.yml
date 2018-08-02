@@ -1,0 +1,73 @@
+jeu_article_homepage:
+    path:     /accueil/{page}
+    defaults:  
+        _controller: JeuArticleBundle:Article:index
+        page:   1
+    requirements: 
+        page: \d*
+
+jeu_article_ajout:
+    path:     /ajout
+    defaults: { _controller: JeuArticleBundle:Article:ajouter }
+
+jeu_article_modifier:
+    path:     /modif/{id}
+    defaults: { _controller: JeuArticleBundle:Article:modifier }
+    requirements: 
+        id: \d+    
+
+jeu_article_supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: JeuArticleBundle:Article:supprimer }
+    requirements: 
+        id: \d+      
+    
+jeu_article_view:
+    path: /vue/{id}
+    defaults: { _controller: JeuArticleBundle:Article:view }
+
+jeu_article_avis_depos:
+    path: /avis/depos/{id}
+    defaults: { _controller: JeuArticleBundle:Avis:depos }
+
+jeu_article_avis_vue:
+    path: /avis/vue/{id}/{page}
+    defaults:
+        _controller: JeuArticleBundle:Avis:vue
+        page:   1
+    requirements: 
+        page: \d*    
+
+jeu_article_recherche:
+    path: /recherche
+    defaults: { _controller: JeuArticleBundle:Article:recherche }
+    
+jeu_article_selection:
+    path: /selection
+    defaults: { _controller: JeuArticleBundle:Article:selection }
+    
+produits:
+    path:  /accueil/{page}
+    defaults:  
+        _controller: JeuArticleBundle:Article:index
+        page:   1
+    requirements: 
+        page: \d*
+
+presentation:
+    path:  /produit/{id}
+    defaults: { _controller: JeuArticleBundle:Article:presentation }
+
+categorieProduits:
+    path:  /categorie/{categorie}
+    defaults: { _controller: JeuArticleBundle:Article:produits }
+
+rechercheProduits:
+    path:  /recherches/{page}
+    defaults: 
+        _controller: JeuArticleBundle:Article:rechercheTraitement
+        page:   1
+    requirements: 
+        page: \d*
+    
+    methods:  [GET, POST]    

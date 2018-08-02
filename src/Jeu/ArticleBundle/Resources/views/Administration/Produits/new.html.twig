@@ -1,0 +1,20 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div class="title is-ancestor">
+        <div class="title is-parent is-12">
+            <article class="title is-child box is-12">
+                <h2 class="title is-3 indieflower">Ajouter un nouveau produit</h2>
+            </article>
+        </div>
+    </div>
+		{% for flashMessage in app.session.flashbag.get('notice') %}
+		<div class="alert alert-danger">
+			{{ flashMessage }}
+		</div>	
+	  {% endfor %}
+	{{ include("JeuArticleBundle:Article:form2.html.twig") }}
+                        <p class="control">
+                            <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour a la liste des produits</a>
+                        </p>
+{% endblock %}

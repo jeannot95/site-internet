@@ -1,0 +1,34 @@
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+  <h2>Liste des jeux</h2>
+
+  <ul>
+    {% for article in articles %}
+      <li>
+        <a href="{{ path('jeu_article_view', {'id': article.id}) }}">
+          {{ article.titre }}
+        </a>, 
+        date de sortie {{ article.dateDeSortie|date('d/m/Y') }}
+		<br>catégories : {% for cat in article.categories %}{{ cat.name }},{% endfor %}<br>
+		Public concerné : {{ article.publicJeu.name }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'articles</li>
+    {% endfor %}
+  </ul>
+  {% if articles is not empty %}
+  <ul class="pagination">
+    {% for p in range(1, nbPages) %}
+      <li{% if p == page %} class="active"{% endif %}>
+        <a href="{{ path('jeu_article_homepage', {'page': p}) }}">{{ p }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %} 
+{% endblock %}

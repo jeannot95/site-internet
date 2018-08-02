@@ -1,0 +1,15 @@
+{% extends "JeuCoreBundle::layout.html.twig" %}
+
+{% block titre %}Jeannot - {{ page.titre }}{% endblock %}
+{% block description %}{{ page.titre }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h1>{{ page.titre }}</h1>
+        <div class="col-md-12">
+            {{ page.contenu|raw }}
+        </div>
+    </div>
+</div>
+{% endblock %}

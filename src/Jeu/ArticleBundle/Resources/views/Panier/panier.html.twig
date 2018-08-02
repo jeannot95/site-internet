@@ -1,0 +1,60 @@
+{% extends "JeuArticleBundle::layout2.html.twig" %}
+
+{% set totalHT = 0 %}
+
+{% block title %}
+  Panier - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+<h2>Votre panier</h2>
+
+  {% block fos_user_content %} 
+	  {#% if articles is defined %}
+	  {{ dump(articles) }}
+	  {% endif %#}
+	  {% for flashMessage in app.session.flashbag.get('success') %}
+		<div class="alert alert-success">
+			{{ flashMessage }}
+		</div>	
+	  {% endfor %}
+	<table class="table table-striped table-hover text-center">
+		<thead>
+			<tr>
+				<th class="text-center">Nom du jeu</th>
+				<th class="text-center">Prix HT</th>
+				<th class="text-center">Supprimer</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% if articles|length == 0 %}
+		<tr><td colspan="3" class="text-center">Aucun article dans votre panier</td></tr>
+		{% endif %}
+		{% for article in articles %}
+			<tr>
+				<td>{{ article.titre }}</td>
+				<td>{{ article.prix }} €</td>
+				<td> <a href="{{ path('jeu_article_supprimer_panier', {'id': article.id}) }}" ><i class="glyphicon glyphicon-trash"></i></a></td>
+			</tr>
+			{% set totalHT = totalHT + article.prix %}
+		{% endfor %}
+		</tbody>
+	</table><hr>
+	{% if articles|length != 0 %}
+		<dl class="dl-horizontal pull-right">
+					<dt>Total HT </dt><dd>{{ totalHT }} €</dd>
+					<dt>TVA 20% </dt><dd>{{ totalHT*0.2 }} €</dd>
+					<dt>Total TTC</dt><dd>{{ totalHT*1.2 }} €</dd>
+		</dl>
+		<div class="clearfix"></div>
+		<a href="{{ path('jeu_article_livraison') }}" class="btn btn-success pull-right">Valider mon panier</a>
+	{% endif %}
+	<a href="{{ path('jeu_article_homepage') }}" class="btn btn-primary">Continuer mes achats</a>
+  {% endblock fos_user_content %}
+  
+{% endblock %}
+
+
+
+

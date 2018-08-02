@@ -1,0 +1,99 @@
+
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+    {% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('bundles/css/site.css') }}" type="text/css" />
+    {% endblock %}
+{% block jeu_article_body %}
+
+  <h2>Liste des jeux</h2>
+	
+	{#{ include('JeuArticleBundle:Article:selection.html.twig') }#}
+
+	<div id="selection"></div>
+
+{#<span class="test">Un test pour voir la couleur</span>#}
+  
+{% endblock %}
+
+  {% block javascripts %}
+	{{ parent() }}
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous">
+	</script>
+	<script>
+		$(function()
+		{	
+				
+			$("#form").change(function(event){
+				console.log('ok c\'est bon');
+				event.preventDefault();
+				info = [];
+				value1=[];
+				var pub = $('#form_publicJeu').val();
+				
+				$("input[name='form[categories][]']:checked").each(function(ind,val){
+					//console.log($(this).val());
+					//console.log(val);
+						info.push($(this).val());										
+				});;
+				//console.log(value1);
+				console.log(info);
+				console.log(pub);
+				//console.log($("input[name='form[categories][]']").val());
+							
+				var $this = $(this);
+				//var data = {};
+				$.ajax({
+					url: '{{ path('jeu_article_selection') }}',
+					type: 'post',
+					dataType: 'json',					
+					data: { idpub: pub, idcat: info },										
+					//processData: false,
+					//contentType: false,
+					success: function(response){
+						console.log('ça marche');
+						console.log(response);
+						
+						if(response != ''){
+						id1 =[];
+						for (i = 0; i< response.length;i++){
+							id1[i] = response[i].id.toString();							
+						}
+						//var id1 = response[0].id.toString();
+						//console.log(id1);
+						url =[];
+						url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
+						url = url.replace("article_id", id1[i]);
+						//var tab = JSON.parse(response);
+						//console.log(tab);
+						//alert('ça marche');
+						result = [];
+						//console.log(result);
+						for (i = 0; i< response.length;i++){
+							id1[i] = response[i].id.toString();	
+							url =[];
+							url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
+							url = url.replace("article_id", id1[i]);
+							result[i] = url + response[i].titre + '</a><br>Description :' + response[i].description + '<br> Catégorie : ' + response[i].categories[0].name + '<br> Public concerné : ' + response[i].publicJeu.name + '<hr>' ;
+							//return result;
+						}
+						
+						$('#selection').html(result);
+						} else { $('#selection').html(' Aucun résultat ne correspond à votre recherche') }
+					},
+					error: function(response){
+						$('#selection').html(' Aucun résultat ne correspond à votre recherche');
+					}
+				});				
+			});
+
+		});	
+	</script>		
+  {% endblock %}

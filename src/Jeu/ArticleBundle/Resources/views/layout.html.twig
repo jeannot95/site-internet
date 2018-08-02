@@ -1,0 +1,13 @@
+{% extends "JeuCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Jeux - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Jeux</h1>
+  <hr>
+  {% block jeu_article_body %}
+  {% endblock %}
+
+{% endblock %}

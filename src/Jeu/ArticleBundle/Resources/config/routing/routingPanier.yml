@@ -1,0 +1,27 @@
+
+jeu_article_panier:
+    path: /panier
+    defaults: { _controller: JeuArticleBundle:Panier:panier }
+
+jeu_article_ajouter_panier:
+    path: /ajouter/{id}
+    defaults: { _controller: JeuArticleBundle:Panier:ajouter }
+    requirements: 
+        id: \d+ 
+        
+jeu_article_supprimer_panier:
+    path: /supprimerpanier/{id}
+    defaults: { _controller: JeuArticleBundle:Panier:supprimer }
+    requirements: 
+        id: \d+ 
+jeu_article_livraison:
+    path: /livraison
+    defaults: { _controller: JeuArticleBundle:Panier:livraison }
+
+jeu_article_validation:
+    path: /validation
+    defaults: { _controller: JeuArticleBundle:Panier:validation }
+
+livraison_adresse_suppression:
+    path: /suppression/adresse/{id}
+    defaults: { _controller: JeuArticleBundle:Panier:suppressionAdresse } 

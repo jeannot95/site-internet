@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Jeu de Société{% endblock %}</title>
+
+    {% block stylesheets %}
+      {# On charge le CSS de bootstrap depuis le site directement #}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% endblock %}
+  </head>
+
+  <body>
+  <div class="container">
+    <div id="header" class="jumbotron">
+      <h1>Mon site de jeux de société</h1>
+      <p>
+        Ce projet est propulsé par Symfony, et construit dans le cadre de mes études à IFOCOP.
+      </p>
+      <p>
+      </p>
+    </div>
+	{% if is_granted("ROLE_ADMIN") %}
+	<div class="row"><a href="{{ path("jeu_article_ajout") }}">Ajouter Article</a>
+	</div>
+	{% endif %}
+    <div class="row">
+      <div id="menu" class="col-md-3">
+        <h3>Les jeux</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="{{ path('jeu_article_homepage') }}">Accueil</a></li>
+		  {% if app.request.get('_route') == 'jeu_article_recherche' %}
+			{{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'form', 'method': 'post'}}) }}
+			<div class="span3">
+              {{ form_label (form.categories, "Categories") }}
+              {{ form_widget(form.categories, {'attr' : {'class' : 'categoriesclass span3'}}) }}
+              {{ form_errors(form.categories) }}
+            </div>
+			<div class="span3">
+              {{ form_label (form.publicJeu, "Public concerné") }}
+              {{ form_widget(form.publicJeu, {'attr' : {'class' : 'publicJeuclass span3','name':'publicJeu'}}) }}
+              {{ form_errors(form.publicJeu) }}
+            </div>
+			{{ form_end(form) }}
+		  {% else %}
+		  <li><a href="{{ path('jeu_article_recherche') }}">Rechercher un jeu</a></li>
+		  {% endif %}
+        </ul>
+		<h3>Connexion</h3>
+
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			Connecté en tant que {{ app.user.username }}<br>
+			{% if is_granted("ROLE_SUPER_ADMIN") %}
+			Vous êtes Super Admin<br>
+			{% endif %}
+			<a href="{{ path('fos_user_profile_show') }}"> Profil</a><br>
+			{{ render(controller('JeuArticleBundle:Panier:menu')) }}
+			<a href="{{ path('jeu_user_factures') }}"> Mes factures</a><br>
+			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+		{% else %}
+			<a href="{{ path('fos_user_security_login') }}">Connexion</a><br>
+			<a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
+		{% endif %}
+        <h4>Dernières sorties</h4>
+       {# {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}#}
+      </div>
+      <div id="content" class="col-md-9">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <hr>
+
+    <footer>
+      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+    </footer>
+  </div>
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+  </body>
+</html>

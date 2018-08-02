@@ -1,0 +1,14 @@
+{% extends "JeuUserBundle::layout.html.twig" %}
+
+{% block title %}
+  Panier - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+<h2>Votre panier</h2>
+
+  {% block fos_user_content %}
+  {% endblock fos_user_content %}
+  
+{% endblock %}

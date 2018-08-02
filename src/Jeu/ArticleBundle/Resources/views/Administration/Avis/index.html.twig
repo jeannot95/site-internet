@@ -1,0 +1,57 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Liste des avis</h2>
+				Nombre total d'avis : {{ entities|length }}
+            </article>
+        </div>
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12 media">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+						<th>Jeux</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('adminAvis_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                            </td>
+                            <td>{{ entity.titre }}</td>
+                            <td>{{ entity.article.titre }}</td>
+                            <td>
+                                <a href="{{ path('adminAvis_show', { 'id': entity.id }) }}">voir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </div>
+	        <div class="tile is-ancestor">
+            <div class="tile is-parent is-12">
+                <article class="tile is-child box is-12">
+					  {% if entities is not empty %}
+					  <ul class="pagination">
+						{% for p in range(1, nbPages) %}
+						  <li{% if p == page %} class="active"{% endif %}>
+							<a href="{{ path('adminAvis_index', {'page': p}) }}">{{ p }}</a>
+						  </li>
+						{% endfor %}
+					  </ul>
+					  {% endif %}
+                </article>
+            </div>
+        </div>
+{% endblock %}

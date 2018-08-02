@@ -1,0 +1,37 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div class="title is-ancestor">
+        <div class="title is-parent is-12">
+            <article class="title is-child box is-12">
+                <h2 class="title is-3 indieflower">Edition d'une page</h2>
+            </article>
+        </div>
+    </div>
+
+    <div class="title is-ancestor">
+        <div class="title is-parent is-12">
+            <article class="title is-child box is-12">
+				{{ form_start(edit_form) }}
+                <p class="control">
+					{{ form_row(edit_form.titre) }}
+					{{ form_row(edit_form.contenu) }}
+				</p>
+				<div class="control is-grouped">
+				<p class="control">
+					{{ form_row(edit_form.submit)}}
+				</p>
+				<p class="control">
+				{{ form_end(edit_form) }}
+				</p>
+				<p class="control">
+                        <a href="{{ path('adminPages') }}" class="button is-info is-outlined">Retour</a>
+                    </p>
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}

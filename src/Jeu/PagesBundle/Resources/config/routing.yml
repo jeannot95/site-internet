@@ -1,0 +1,12 @@
+jeu_pages_homepage:
+    path:     /page/{id}
+    defaults: { _controller: JeuPagesBundle:Pages:page }
+    
+contact:
+    path:  /contact
+    defaults: { _controller: JeuPagesBundle:Pages:contact }
+    methods:  [GET, POST]
+
+pagesBundle_adminPages:
+    resource: "@JeuPagesBundle/Resources/config/routingAdmin.yml"
+    prefix:   /admin/pages    

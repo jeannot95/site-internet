@@ -1,0 +1,222 @@
+<?php
+
+namespace Jeu\ArticleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Avis
+ *
+ * @ORM\Table(name="avis")
+ * @ORM\Entity(repositoryClass="Jeu\ArticleBundle\Repository\AvisRepository")
+ */
+class Avis
+{
+	
+	public function __construct()
+	{
+		$this->date = new \Datetime();	
+	}
+	
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="note", type="integer")
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="text")
+     */		
+	private $titre;
+
+	/**
+	* @var \Date
+	* @ORM\Column(name="date", type="date")
+	*/
+	private $date;		
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+	/**
+	* @ORM\ManyToOne(targetEntity="Jeu\UserBundle\Entity\User", cascade={"persist"})
+	*  @ORM\JoinColumn(nullable=false)
+	*/	
+	private $user;
+
+	/**
+	* @ORM\ManyToOne(targetEntity="Jeu\ArticleBundle\Entity\Article", cascade={"persist"})
+	*  @ORM\JoinColumn(nullable=false)
+	*/	
+	private $article;		
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     *
+     * @return Avis
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return int
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Avis
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Jeu\UserBundle\Entity\User $user
+     *
+     * @return Avis
+     */
+    public function setUser(\Jeu\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Jeu\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \Jeu\ArticleBundle\Entity\Article $article
+     *
+     * @return Avis
+     */
+    public function setArticle(\Jeu\ArticleBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Jeu\ArticleBundle\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Avis
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Avis
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

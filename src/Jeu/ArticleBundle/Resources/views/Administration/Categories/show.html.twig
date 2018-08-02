@@ -1,0 +1,42 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Details de la catégorie {{ entity.name }}</h2>
+            </article>
+        </div>
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.name }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br />
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a href="{{ path('adminCategories_index') }}" class="button is-info is-outlined">Retour a la liste</a>
+                    </p>
+                    <p class="control">
+                        <a href="{{ path('adminCategories_edit', { 'id': entity.id }) }}" class="button is-success is-outlined">Editer</a>
+                    </p>
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "JeuUserBundle::layout.html.twig" %}
+
+{% block title %}
+  Facture - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+<h2>Votre Facture</h2>
+
+  {% block fos_user_content %}
+   <div class="container">
+        <div class="columns">
+            <div class="column is-9">
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="notification is-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                    <div class="notification is-danger">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3 indieflower">Vos factures</h2>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <table class="table is-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="title is-5 indieflower">Références</th>
+                                        <th class="title is-5 indieflower">Date</th>
+                                        <th class="title is-5 indieflower">Prix TTC</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if factures|length == 0 %}
+                                        <tr>
+                                            <td colspan="4">Aucune facture actuellement</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% for facture in factures %}
+                                        <tr>
+                                            <td>ref : {{ facture.reference }}</td>
+                                            <td>{{ facture.date|date('d/m/Y') }}</td>
+                                            <td>{{ facture.commande.prixTTC }} €</td>
+                                            <td><a href="{{ path('facturePDF', { 'id' : facture.id }) }}" target="_blank" title="Consulter le PDF">PDF</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+		</div>
+	</div>
+  {% endblock fos_user_content %}
+  
+{% endblock %}

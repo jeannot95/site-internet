@@ -1,0 +1,26 @@
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  Avis - {{ parent() }}
+{% endblock %}
+{% block jeu_article_body %}
+	<h2>Liste des Avis</h2>
+	{% for avis in avis %}
+		<fieldset><legend>{{ avis.titre }}</legend>
+		Note : {{ avis.note }}/5 <br>
+		 <em>avis déposé le {{ avis.date|date('d/m/Y') }} par {{ avis.user }}</em><br>
+		 {{ avis.content }}
+		</fieldset><br>
+	{% endfor %}
+	{% if avis is not empty %}
+	  <ul class="pagination">
+		{% for p in range(1, nbPages) %}
+		  <li{% if p == page %} class="active"{% endif %}>
+			<a href="{{ path('jeu_article_avis_vue', {'page': p,'id': idart }) }}">{{ p }}</a>
+		  </li>
+		{% endfor %}
+	  </ul><br>
+	{% endif %} 
+	<a href="{{ path('jeu_article_view',{ 'id': idart }) }}" class="btn btn-primary">Retour à l'article</a>
+	
+{% endblock %}

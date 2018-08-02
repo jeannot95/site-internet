@@ -1,0 +1,23 @@
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+
+<h2>Modifier un Jeu</h2>
+
+  {{ include("JeuArticleBundle:Article:form.html.twig") }}
+  <p>
+    Vous modifiez un article déjà existant.
+  </p>
+
+  <p>
+    <a href="{{ path('jeu_article_view', {'id': article.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au jeu
+    </a>
+  </p>
+  
+{% endblock %}
