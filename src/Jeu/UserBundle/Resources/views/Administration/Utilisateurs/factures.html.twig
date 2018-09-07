@@ -1,43 +1,37 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Liste des factures de l'utilisateur</h2>
-            </article>
-        </div>
+    <div>
+		<h2 class="orange ind centre">Liste des factures de l'utilisateur</h2>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>Références</th>
-                        <th>Date</th>
-                        <th>Prix TTC</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% if utilisateur.commandes|length == 0 %}
-                        <tr>
-                            <td colspan="4" class="has-text-centered">Aucune facture actuellement.</td>
-                        </tr>
-                    {% endif %}
-                    {% for facture in utilisateur.commandes %}
-                        <tr>
-                            <td>ref : {{ facture.reference }}</td>
-                            <td>{{ facture.date|date('d/m/Y') }}</td>
-                            <td>{{ facture.commande.prixTTC }} €</td>
-                            <td><a href="{{ path('adminShowFacture', { 'id' : facture.id }) }}" target="_blank">Voir</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </article>
-        </div>
+    <div>
+		<table>
+			<thead>
+			<tr>
+				<th>Références</th>
+				<th>Date</th>
+				<th>Prix TTC</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% if utilisateur.commandes|length == 0 %}
+				<tr>
+					<td>Aucune facture actuellement.</td>
+				</tr>
+			{% endif %}
+			{% for facture in utilisateur.commandes %}
+				<tr>
+					<td>ref : {{ facture.reference }}</td>
+					<td>{{ facture.date|date('d/m/Y') }}</td>
+					<td>{{ facture.commande.prixTTC }} €</td>
+					<td><a href="{{ path('adminShowFacture', { 'id' : facture.id }) }}" target="_blank">Voir</a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		<p>
+			<a href="{{ path('adminUtilisateurs_index') }}" class="bouton1">Retour à la liste</a>
+		</p>		
     </div>
 {% endblock %}

@@ -1,0 +1,19 @@
+adminStatistiques_index:
+    path:     /
+    defaults: { _controller: "JeuArticleBundle:StatistiquesAdmin:index" }
+
+adminStatistiques_note:
+    path:     /note
+    defaults: { _controller: "JeuArticleBundle:StatistiquesAdmin:note" }
+
+adminStatistiques_commande:
+    path:     /commande
+    defaults: { _controller: "JeuArticleBundle:StatistiquesAdmin:commande" }
+
+adminStatistiques_user:
+    path:     /user
+    defaults: { _controller: "JeuArticleBundle:StatistiquesAdmin:user" }
+
+adminStatistiques_riche:
+    path:     /riche
+    defaults: { _controller: "JeuArticleBundle:StatistiquesAdmin:riche" }    

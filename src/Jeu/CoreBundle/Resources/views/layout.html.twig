@@ -8,115 +8,138 @@
     <title>{% block title %}Jeu de Société{% endblock %}</title>
 
     {% block stylesheets %}
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+	  <link rel="stylesheet" href="{{ asset('css/jeux.css') }}">
+	  <link rel="stylesheet" href="{{ asset('css/stars.css') }}">
     {% endblock %}
-	<link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}"/>
+	<link rel="icon" type="image/x-icon" href="{{ asset('img/logo2.jpg') }}"/>
   </head>
 
   <body>
   <div class="container">
-    <div id="header" class="jumbotron">
-      <h1>Mon site de jeux de société</h1>
-      <p>
-        Ce projet est propulsé par Symfony, et construit dans le cadre de mes études à IFOCOP.
-      </p>
-      <p>
-      </p>
-    </div>
-    <div class="row">
-	           <div>
-                {{ render(controller('JeuArticleBundle:Article:recherchebis')) }}
-            </div>
-      <div id="menu" class="col-md-3">
-        <h3>Les jeux</h3>
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="{{ path('jeu_article_homepage') }}">Accueil</a></li>
-          <li><a href="{{ path('meilleurVente') }}">Top Ventes</a></li>
+    <header class="ind">
+		<div class="hautCote">
+			<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo"></a>
+		</div>
+		<div class="hautCentre">
+				
+			<div class="centre hautMilieu wid">
+				<div class="wid flex">
+							<div class="hautCache">
+						<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo" width="60px"></a>
+					</div>
+					<h1 class="vertfonce titre">JeuxDeSociété</h1>
+					<div class="hautCache">
+						<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo" width="60px"></a>
+					</div>
+				</div>
+				<div>
+						
+					<p class="it">
+						Ce projet est propulsé par Symfony, et construit dans le cadre de mes études à IFOCOP.
+					</p>
+				</div>			
+			</div>
+			<div class="menu wid">
+				<a href="{{ path('jeu_article_homepage') }}">Boutique</a>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			{% if is_granted("ROLE_SUPER_ADMIN") %}
+				<a href="{{ path('admin') }}">Administration</a>
+			{% endif %}
+			<a href="{{ path('fos_user_profile_show') }}">Profil</a>
+			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+		{% else %}
+			<a href="{{ path('fos_user_security_login') }}">Connexion</a>
+			<a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
+		{% endif %}
+			</div>	
+		</div>	
+		<div class="hautCote">
+			<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo"></a>
+		</div>
+    </header>
+    <div class="section padb">
+      <div class="sidebar">
+		<fieldset>
+			<legend><h3>Les jeux</h3></legend>
+        
+          <a href="{{ path('jeu_article_homepage') }}">Accueil</a><br><br>
+          <a href="{{ path('meilleurVente') }}">Top Ventes</a><br>
 		  {% if app.request.get('_route') == 'jeu_article_recherche' %}
+		  <h3>Recherche</h3>
 			{{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'form', 'method': 'post'}}) }}
-			<div class="span3">
-              {{ form_label (form.categories, "Categories") }}
+			<div>
+              {{ form_label (form.categories, "Categories", {'label_attr': {'class': 'ind orange'}}) }} 
               {{ form_widget(form.categories, {'attr' : {'class' : 'categoriesclass span3'}}) }}
               {{ form_errors(form.categories) }}
-            </div>
-			<div class="span3">
-              {{ form_label (form.publicJeu, "Public concerné") }}
+            </div><br>
+			<div>
+              {{ form_label (form.publicJeu, "Public concerné", {'label_attr': {'class': 'ind orange'}}) }}
               {{ form_widget(form.publicJeu, {'attr' : {'class' : 'publicJeuclass span3','name':'publicJeu'}}) }}
               {{ form_errors(form.publicJeu) }}
             </div>
 			{{ form_end(form) }}
 		  {% else %}
-		  <li><a href="{{ path('jeu_article_recherche') }}">Rechercher un jeu</a></li>
+		  <br><a href="{{ path('jeu_article_recherche') }}">Rechercher un jeu</a>
 		  {% endif %}
-        </ul>
-		<h3>Connexion</h3>
+        </fieldset>
+		
 
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			Connecté en tant que {{ app.user.username }}<br>
+			<br>
 			{% if is_granted("ROLE_SUPER_ADMIN") %}
 			Vous êtes Super Admin<br>
 			{% endif %}
-			<a href="{{ path('fos_user_profile_show') }}"> Profil</a><br>
-			{{ render(controller('JeuArticleBundle:Panier:menu')) }}
-			<a href="{{ path('jeu_user_factures') }}"> Mes factures</a><br>
+		<fieldset><legend><h3>{{ app.user.username }}</h3></legend>	
+			<a href="{{ path('fos_user_profile_show') }}"> Profil</a><br><br>
+			{{ render(controller('JeuArticleBundle:Panier:menu')) }}<br>
+			<a href="{{ path('jeu_user_factures') }}"> Mes factures</a><br><br>
 			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-		{% else %}
-			<a href="{{ path('fos_user_security_login') }}">Connexion</a><br>
-			<a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
 		{% endif %}
-        <h4>Dernières sorties</h4>
-       {# {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}#}
+		</fieldset>
       </div>
-      <div id="content" class="col-md-9">
+	  <!-- <hr> -->
+      <div id="content" class="pad">
         {% block body %}
         {% endblock %}
       </div>
     </div>
 
-    <hr>
+    
 
-    <footer>
-    <div class="container">
-		<div class="row">
-			<div class="col-md-4">	
-				<div class="content has-text-centered">		
-					<h4>Informations</h4>
-						{{ render(controller('JeuPagesBundle:Pages:menu')) }}
-				</div>
-			</div>				
-			<div class="col-md-4">	
-				<div class="content has-text-centered">	
-					<a href="http://twitter.com/share" class="twitter-share-button" 
-					  data-count="vertical" data-via="InfoWebMaster">Tweet</a>
-					<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-<script type="in/share" data-counter="top"></script>
-<g:plusone size="tall"></g:plusone>
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-{lang: 'fr'}
-</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>					
-					<p class=" title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Street</b> (<a
-								href="http://audoinjean95300.com" target="_blank">jeannot95</a>)</p>
-				</div>
-			</div>
-			<div class="col-md-4">	
-				<div class="content has-text-centered">		
-					<h4>Nous contacter</h4>
-					<p>Tel : 06.20.00.00.00</p>
-					<p>Fax : 01.20.00.00.00</p>
-				</div>
-			</div>			
-		</div>		
-    </div>
+    <footer>	
+		<div class="footer centre">		
+			<h4>Informations</h4>
+				{{ render(controller('JeuPagesBundle:Pages:menu')) }}
+		</div>	
+		<div class="footer centre">	
+			<h4>Réseaux sociaux</h4>
+			<a href="http://twitter.com/share" class="twitter-share-button" 
+			  data-count="vertical" data-via="InfoWebMaster">Tweet</a>
+			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+				<script type="in/share" data-counter="top"></script>
+				<g:plusone size="tall"></g:plusone>
+				<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+				{lang: 'fr'}
+				</script>
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+				<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>					
+				<p class=" title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Street</b> (<a
+						href="http://audoinjean95300.com" target="_blank">jeannot95</a>)</p>
+		</div>				
+		<div class="footer centre">		
+			<h4>Nous contacter</h4>
+			<p>Tel : 06.00.00.00.00</p>
+			<p>Fax : 01.00.00.00.00</p>
+		</div>						
     </footer>
   </div>
 

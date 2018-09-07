@@ -47,7 +47,7 @@ jeu_article_selection:
     defaults: { _controller: JeuArticleBundle:Article:selection }
     
 meilleurVente:
-    path: /topvente
+    path: /
     defaults: { _controller: JeuArticleBundle:Article:meilleur }    
     
 produits:
@@ -67,7 +67,7 @@ categorieProduits:
     defaults: { _controller: JeuArticleBundle:Article:produits }
 
 rechercheProduits:
-    path:  /recherches{token}/{page}
+    path:  /recherches/{page}
     defaults: 
         _controller: JeuArticleBundle:Article:rechercheTraitement
         page:   1

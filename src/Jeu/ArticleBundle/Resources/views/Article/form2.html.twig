@@ -1,82 +1,96 @@
 {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}
 
-<h3>Formulaire d'article</h3>
+<h3>Formulaire de création d'article</h3>
 
-<div class="well">
-  {{ form_start(form, {'attr': {'class': 'form-horizontal','action': path('adminProduits_create'), 'method': 'POST'}}) }}
-
-  {{ form_errors(form) }}
-
-  {% if form.date_de_sortie is defined %}
-	{{ form_row(form.date_de_sortie) }}
-  {% endif %}	
-
-
-  <div class="form-group">
-
-    {{ form_label(form.titre, "Titre de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-
-    {{ form_errors(form.titre) }}
-
-    <div class="col-sm-8">
-      {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
-    </div>
-  </div>
-
-  <div class="form-group">
-    {{ form_label(form.description, "Description de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-    {{ form_errors(form.description) }}
-    <div class="col-sm-8">
-      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-    </div>
-  </div>
-  <div class="form-group">
-	{{ form_label(form.prix, "Prix de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+<div class="flex3">
+	<div class="wid33 pad"
+		{{ form_start(form, {'attr': {'action': path('adminProduits_create'), 'method': 'POST'}}) }}
+		{{ form_errors(form) }}
+		{% if form.date_de_sortie is defined %}
+			{{ form_row(form.date_de_sortie) }}
+		{% endif %}
+		
+		<div>
+			{{ form_label(form.titre, "Titre de l'article") }}
+			{{ form_errors(form.titre) }}
+			<div>
+				{{ form_widget(form.titre) }}
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.description, "Description de l'article") }}
+			{{ form_errors(form.description) }}
+			<div>
+				{{ form_widget(form.description) }}
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.prix, "Prix de l'article") }}
+			<div>  
+				{{ form_widget(form.prix) }}
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.dateDeSortie, "Sortie de l'article") }}
+			<div>  
+				{{ form_widget(form.dateDeSortie) }}
+			</div>
+		</div><br>  
+		<div>
+			{{ form_label(form.ageMin, "Age minimum") }}
+			<div>  
+			{{ form_widget(form.ageMin) }}
+			</div>
+		</div>  
+		<div>
+		{{ form_label(form.ageMax, "Age maximum") }}
+			<div>  
+				{{ form_widget(form.ageMax) }}
+			</div>
+		</div>  
+		<div>
+			{{ form_label(form.duree, "Temps de jeu") }}
+			<div>  
+				{{ form_widget(form.duree) }}
+			</div>
+		</div>
 	</div>
-  </div>
-  <div class="form-group">
-	{{ form_label(form.dateDeSortie, "Sortie de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.dateDeSortie, {'attr': {'class': 'form-control'}}) }}
+	<div class="wid33 pad">
+		<div>
+			{{ form_label(form.nbJoueurMin, "Nombre de joueur minimum") }}
+			<div>  
+				{{ form_widget(form.nbJoueurMin) }}
+			</div>
+		</div>  
+		<div>
+			{{ form_label(form.nbJoueurMax, "Nombre de joueur maximum") }}
+			<div>  
+				{{ form_widget(form.nbJoueurMax) }}
+			</div>
+		</div> 
+		{{ form_label(form.image.file,"Image") }}
+		{{ form_widget(form.image.file) }} <br>
+		<div>
+			{{ form_label(form.categories,"Catégories") }}
+			<div class="select2">
+				{{ form_widget(form.categories) }}
+			</div>	
+		</div>		
+		<br><br>
+		<div>
+			{{ form_label(form.publicJeu,"Public concerné") }}
+			<div class="select">
+				{{ form_widget(form.publicJeu) }}
+			</div>	
+		</div>	
 	</div>
-  </div>  <div class="form-group">
-	{{ form_label(form.ageMin, "Age minimum", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.ageMin, {'attr': {'class': 'form-control'}}) }}
-	</div>
-  </div>  <div class="form-group">
-	{{ form_label(form.ageMax, "Age maximum", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.ageMax, {'attr': {'class': 'form-control'}}) }}
-	</div>
-  </div>  <div class="form-group">
-	{{ form_label(form.duree, "Temps de jeu", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.duree, {'attr': {'class': 'form-control'}}) }}
-	</div>
-  </div>  <div class="form-group">
-	{{ form_label(form.nbJoueurMin, "Nombre de joueur minimum", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.nbJoueurMin, {'attr': {'class': 'form-control'}}) }}
-	</div>
-  </div>  <div class="form-group">
-	{{ form_label(form.nbJoueurMax, "Nombre de joueur maximum", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-	<div class="col-sm-8">  
-	{{ form_widget(form.nbJoueurMax, {'attr': {'class': 'form-control'}}) }}
-	</div>
-  </div> 
-  Ajoutez une Image
-  {{ form_row(form.image.file) }} <br>
- {{ form_row(form.categories) }}  
-	<br><br>
-	{{ form_row(form.publicJeu) }}
-  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-
-	 
-  {{ form_rest(form) }}
-
-  {{ form_end(form) }}
+	<div class="wid33 pad">	
+		{{ form_widget(form.save, {'attr': {'class': 'bouton2'}}) }}
+		 
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
+		<p>
+			<a href="{{ path('adminProduits_index') }}" class="bouton1">Retour a la liste des produits</a>
+		</p>
+	</div>	
 </div>

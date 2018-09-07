@@ -29,7 +29,7 @@ class ArticleType extends AbstractType
 			->add('duree', IntegerType::class)
 			->add('nbJoueurMin', IntegerType::class)
 			->add('nbJoueurMax', IntegerType::class)
-			->add('image',     ImageType::class)
+			->add('image', ImageType::class)
 			->add('categories', EntityType::class, array(
 			'class'         => 'JeuArticleBundle:Categorie',
 			'choice_label'  => 'name',
@@ -37,8 +37,9 @@ class ArticleType extends AbstractType
 			->add('publicJeu', EntityType::class, array(
 			'class'         => 'JeuArticleBundle:PublicJeu',
 			'choice_label'  => 'name',
-			'multiple'      => false))
-			->add('save',      SubmitType::class)
+			'multiple'      => false,
+			))
+			->add('save', SubmitType::class, array('label' => 'Enregistrer'))
 			;
     }
 	

@@ -1,92 +1,75 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Details du Produit</h2>
-            </article>
-        </div>
+    <div>
+                <h2 class="bordeau ind centre">Details du Produit</h2>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12 media">
-                <div class="columns">
-                <div class="column media-left is-2">
-                    <figure class="image is-128x128">
-                        <img  src="{{ asset(entity.image.webPath) }}"
-									alt="{{ entity.image.alt }}">
-                    </figure>
-                </div>
-
-                <div class="column media-content is-10">
-                    <div class="content">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th>Id</th>
-                                <td>{{ entity.id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Titre</th>
-                                <td>{{ entity.titre }}</td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td>{{ entity.description }}</td>
-                            </tr>
-                            <tr>
-                                <th>Prix</th>
-                                <td>{{ entity.prix }} €</td>
-                            </tr>
-                            <tr>
-                                <th>Catégories</th>
-                                <td>{% for cat in entity.categories %}{% if not loop.last %}{{ cat.name }} ,{% else %} {{ cat.name }} {% endif %}{% endfor %}</td>
-                            </tr>
-                            <tr>
-                                <th>Public visé</th>
-                                <td>{{ entity.publicJeu.name }}</td>
-                            </tr>
-                            <tr>
-                             <th>Age</th>
-                                <td>Min : {{ entity.ageMin }} / Max : {{ entity.ageMax }}</td>
-                            </tr>
-                            <tr>
-                             <th>Durée</th>
-                                <td>{{ entity.duree }} minutes</td>
-                            </tr>
-                            <tr>
-                             <th>Nombre de joueurs</th>
-                                <td>Min:{{ entity.nbjoueurMin }} / Max:  {{ entity.nbjoueurMax }}</td>
-                            </tr>							
-                            <tr>
-                             <th>Date de sortie</th>
-                                <td>{{ entity.dateDeSortie|date('d/m/Y') }}</td>
-                            </tr>
-                            <tr>
-                             <th>Date d'enregistrement</th>
-                                <td>{{ entity.dateEnregistrement|date('d/m/Y') }}</td>
-                            </tr>							
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </div>
-
-                <nav class="level">
-                    <div class="control is-grouped">
-                        <p class="control">
-                            <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour à la liste</a>
-                        </p>
-                        <p class="control">
-                            <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="button button-vert is-outlined">Editer</a>
-                        </p>
-                        <p class="control">{{ form(delete_form) }}</p>
-                    </div>
-                </nav>
-
-            </article>
-        </div>
+    <div>          
+		<div>
+			<figure>
+				<img  src="{{ asset(entity.image.webPath) }}" alt="{{ entity.image.alt }}" width="400">
+			</figure>
+		</div>                
+		<div>
+			<table>
+				<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ entity.id }}</td>
+				</tr>
+				<tr>
+					<th>Titre</th>
+					<td>{{ entity.titre }}</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>{{ entity.description }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ entity.prix }} €</td>
+				</tr>
+				<tr>
+					<th>Catégories</th>
+					<td>{% for cat in entity.categories %}{% if not loop.last %}{{ cat.name }} ,{% else %} {{ cat.name }} {% endif %}{% endfor %}</td>
+				</tr>
+				<tr>
+					<th>Public visé</th>
+					<td>{{ entity.publicJeu.name }}</td>
+				</tr>
+				<tr>
+				 <th>Age</th>
+					<td>Min : {{ entity.ageMin }} / Max : {{ entity.ageMax }}</td>
+				</tr>
+				<tr>
+				 <th>Durée</th>
+					<td>{{ entity.duree }} minutes</td>
+				</tr>
+				<tr>
+				 <th>Nombre de joueurs</th>
+					<td>Min:{{ entity.nbjoueurMin }} / Max:  {{ entity.nbjoueurMax }}</td>
+				</tr>							
+				<tr>
+				 <th>Date de sortie</th>
+					<td>{{ entity.dateDeSortie|date('d/m/Y') }}</td>
+				</tr>
+				<tr>
+				 <th>Date d'enregistrement</th>
+					<td>{{ entity.dateEnregistrement|date('d/m/Y') }}</td>
+				</tr>							
+				</tbody>
+			</table>
+		</div>                                
+		<nav>
+			<div>
+				<p>
+					<a href="{{ path('adminProduits_index') }}" class="bouton1">Retour à la liste</a>
+				</p>
+				<p>
+					<a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="bouton2">Editer</a>
+				</p>
+				<p>{{ form(delete_form) }}</p>
+			</div>
+		</nav>        
     </div>
 {% endblock %}

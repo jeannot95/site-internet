@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
-  <h1>Jeux</h1>
+	<div class="flex2 ind">
+  <h1>Jeux</h1>	           
+	<div>
+		{{ render(controller('JeuArticleBundle:Article:recherchebis')) }}
+	</div>
+	</div>
   <hr>
   {% block jeu_article_body %}
   {% endblock %}

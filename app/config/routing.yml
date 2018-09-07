@@ -2,14 +2,6 @@ jeu_pages:
     resource: "@JeuPagesBundle/Resources/config/routing.yml"
     prefix:   /
 
-jeu_panier:
-    resource: "@JeuPanierBundle/Resources/config/routing.yml"
-    prefix:   /
-
-jeu_core:
-    resource: "@JeuCoreBundle/Resources/config/routing.yml"
-    prefix:   /core
-
 jeu_user:
     resource: "@JeuUserBundle/Resources/config/routing.yml"
     prefix:   /user

@@ -1,36 +1,27 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Creation d'une page</h2>
-            </article>
-        </div>
+    <div>
+        <h2 class="centre ind">Creation d'une page</h2>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                {{ form_start(form) }}
-                <p class="control">
-                    {{ form_label(form.titre) }}
-                    {{ form_widget(form.titre) }}
-                </p>
-                <p class="control">
-                    {{ form_label(form.contenu) }}
-                    {{ form_widget(form.contenu) }}
-                </p>
-                <div class="control is-grouped">
-                    <p class="control">
-                        {{ form_widget(form.submit) }}
-                    </p>
-                    {{ form_end(form) }}
-                    <p class="control">
-                        <a href="{{ path('adminPages') }}" class="button button-vert is-outlined">Retour</a>
-                    </p>
-                </div>
-            </article>
-        </div>
+    <div>
+		{{ form_start(form) }}
+		<p>
+			{{ form_label(form.titre) }}
+			{{ form_widget(form.titre) }}
+		</p>
+		<p>
+			{{ form_label(form.contenu) }}
+			{{ form_widget(form.contenu) }}
+		</p>
+		<div>
+			<p>
+				{{ form_widget(form.submit) }}
+			</p>
+			{{ form_end(form) }}
+			<p>
+				<a href="{{ path('adminPages') }}" class="bouton1">Retour</a>
+			</p>
+		</div>
     </div>
 {% endblock %}

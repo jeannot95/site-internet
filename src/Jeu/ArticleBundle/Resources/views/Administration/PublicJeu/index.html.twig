@@ -1,47 +1,37 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Liste des publics</h2>
-            </article>
-        </div>
+    <div>
+        <h2 class="centre ind">Liste des publics</h2>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12 media">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for entity in entities %}
-                        <tr>
-                            <td><a href="{{ path('adminPublic_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
-                            </td>
-                            <td>{{ entity.name }}</td>
-                            <td>
-                                <a href="{{ path('adminPublic_show', { 'id': entity.id }) }}">voir</a> / 
-                                <a href="{{ path('adminPublic_edit', { 'id': entity.id }) }}">editer</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
-                <ul>
-                    <li>
-                        <a href="{{ path('adminPublic_new') }}" class="button button-vert is-outlined">Ajouter un
-                            public</a>
-                    </li>
-                </ul>
-            </article>
-        </div>
+    <div class="centre">
+		<table>
+			<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for entity in entities %}
+				<tr>
+					<td><a href="{{ path('adminPublic_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+					</td>
+					<td>{{ entity.name }}</td>
+					<td>
+						<a href="{{ path('adminPublic_show', { 'id': entity.id }) }}">voir</a> / 
+						<a href="{{ path('adminPublic_edit', { 'id': entity.id }) }}">editer</a>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		<ul>
+			<li>
+				<a href="{{ path('adminPublic_new') }}" class="bouton2">Ajouter un
+					public</a>
+			</li>
+		</ul>
     </div>
 {% endblock %}

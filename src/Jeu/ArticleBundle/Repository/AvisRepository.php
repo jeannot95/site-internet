@@ -54,4 +54,36 @@ class AvisRepository extends \Doctrine\ORM\EntityRepository
 		return new Paginator($query, true);
 	}  
   
+	public function getNote()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->select('avg(a.note) as moyenne')
+			//->setParameter(($qb->expr()->avg('a.note')),':moyenne')
+			//->where($qb->expr()->avg('a.note') = ':note')
+			->leftJoin('a.article','u')
+			->groupBy('u.titre')
+			->addSelect('u.titre')
+			->orderBy('moyenne','DESC')
+			->setMaxResults(5)
+			;
+		return $qb->getQuery()->getResult();	
+	}
+  
+	public function getNotes()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->select('avg(a.note) as moyenne')
+			//->setParameter(($qb->expr()->avg('a.note')),':moyenne')
+			//->where($qb->expr()->avg('a.note') = ':note')
+			->leftJoin('a.article','u')
+			->groupBy('u.titre')
+			->addSelect('u.titre')
+			// ->orderBy('moyenne','DESC')
+			// ->setMaxResults(5)
+			;
+		return $qb->getQuery()->getResult();	
+	}  
+  
 }

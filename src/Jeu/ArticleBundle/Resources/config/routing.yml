@@ -25,7 +25,16 @@ routingPublicAdmin:
 
 routingAvisAdmin:
     resource: "@JeuArticleBundle/Resources/config/routing/routingAvisAdmin.yml"
-    prefix: /admin/avis    
+    prefix: /admin/avis
+
+routingStatistiquesAdmin:
+    resource: "@JeuArticleBundle/Resources/config/routing/routingStatistiquesAdmin.yml"
+    prefix: /admin/statistiques
+
+jeu_article_testprod:
+    path: /testprod
+    defaults:
+        _controller: JeuArticleBundle:Article:test
 
     
     

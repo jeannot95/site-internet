@@ -6,76 +6,87 @@
 
 {% block jeu_article_body %}
 
-  <h2>{{ article.titre }}</h2>
-	  {% for flashMessage in app.session.flashbag.get('notice') %}
-		<div class="alert alert-success">
-			{{ flashMessage }}
-		</div>	
-	  {% endfor %}  
-  {#{ dump(article) }#}
-  <div style="float: left; margin-right: 1em;">
-    {# On vérifie qu'une image soit bien associée à l'article #}
-    {% if article.image is not null %}
-	 <img
-	  src="{{ asset(article.image.webPath) }}"
-	  alt="{{ article.image.alt }}"
-	 width="200" height="200"/>
-    {% endif %}
-  </div>
-  <i>Par intel, sortie le {{ article.dateDeSortie|date('d/m/Y') }}</i>
-
-  <div class="well">
-    {{ article.description }}
-  </div>
-  {% if not article.categories.empty %}
-    <p>
-      Ce jeu est parue dans les catégories suivantes :
-      {% for category in article.categories %}
-        {{ category.name }}{% if not loop.last %}, {% endif %}
-      {% endfor %}
-    </p>
-  {% endif %}
-  {% if  article.publicJeu.name is defined %}
-    <p>
-      Le public concerné par ce jeu est : {{ article.publicJeu.name }}
-    </p>
-	{% endif %}
-  <a href="{{ path('jeu_article_homepage') }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-chevron-left"></i>
-      Retour à la liste
+	<h2>{{ article.titre }}</h2>
+		{% for flashMessage in app.session.flashbag.get('notice') %}
+			<div>
+				{{ flashMessage }}
+			</div>	
+		{% endfor %}
+	<div class="flex3">		
+		<div class="item1">
+			{% if article.image is not null %}
+				<img src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}" width="200" height="200"/>
+			{% endif %}
+		</div>
+		<div class="item2 pad">
+			<p><i>Sorti le {{ article.dateDeSortie|date('d/m/Y') }}</i><p>
+				{% set notes = 'Pas encore de note !' %}
+				{% for n in note %} 
+					{% if n.titre == article.titre %}						
+							{#{ n.moyenne }#} {% set notes = '' %}
+					<div class="star-ratings-css" title="{{ n.moyenne }}/5">
+					  <div class="star-ratings-css-top" style="width: {{ n.moyenne * 20 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+					  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+					</div>
+					{% endif %} 				
+				{% endfor %}
+				{{ notes }}
+			<br>				
+			<span class="ind orange">Description</span> : {{ article.description }}		
+			{% if not article.categories.empty %}
+				<p>
+					<span class="ind orange">Catégories</span> :
+					{% for category in article.categories %}
+						{{ category.name }}{% if not loop.last %}, {% endif %}
+					{% endfor %}
+				</p>
+			{% endif %}
+			{% if  article.publicJeu.name is defined %}
+				<p>
+					<span class="ind orange">Public concerné</span> : {{ article.publicJeu.name }}
+				</p>
+			{% endif %}
+			<p>
+				<img src="{{ asset('img/people.png')}}" width="20" class="pad"> <span class="ind orange">Nombre de joueur</span> : de {{article.nbJoueurMin}} à {{article.nbJoueurMax}} joueurs
+			</p>
+			<p>
+				<img src="{{ asset('img/age3.png')}}" width="20" class="pad">  <span class="ind orange">Age</span> : de {{article.ageMin}} à {{article.ageMax}} ans
+			</p>
+			<p>
+				<img src="{{ asset('img/minutes.png')}}" width="20" class="pad"> <span class="ind orange">Durée</span> : Une partie dure en moyenne {{ article.duree }} minutes
+			</p>
+			<p>
+				<span class="ind orange">Prix</span> :  {{ article.prix *1.2 }} €
+			</p>
+		</div>		
+	</div>	
+	<a href="{{ path('jeu_article_homepage') }}" class="bouton1">
+		Retour à la liste
     </a>
-{% if app.user %}
-	{% if panier[article.id] is not defined %}
-		<a href="{{ path('jeu_article_ajouter_panier', {'id': article.id}) }}" class="btn btn-success">      
-		  Ajouter au panier
-		</a>
+	{% if app.user %}
+		{% if panier[article.id] is not defined %}
+			<a href="{{ path('jeu_article_ajouter_panier', {'id': article.id}) }}" class="bouton2">      
+				Ajouter au panier
+			</a>
+		{% else %}
+			<a href="{{ path('jeu_article_panier') }}" class="bouton2">Le produit est déjà dans votre panier</a>
+			<a href="{{ path('jeu_article_avis_depos', { 'id' : article.id }) }}" class="bouton3">Déposer un avis</a>
+		{% endif %}
 	{% else %}
-		<a href="{{ path('jeu_article_panier') }}" class="btn btn-primary">Le produit est déjà dans votre panier</a>
+		<a href="{{ path('fos_user_security_login') }}" class="bouton2">Connectez-vous</a> pour ajoutez cet article à votre panier ou pour déposer un avis<br><br>		
 	{% endif %}
-{% else %}
-<a href="{{ path('fos_user_security_login') }}">Connectez-vous</a> pour ajoutez cet article à votre panier	
-{% endif %}
-{% if is_granted("ROLE_USER") %}
-	<a href="{{ path('jeu_article_avis_depos', { 'id' : article.id }) }}" class="btn btn-primary">Déposer un avis</a>
-{% else %}
-	<a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">Connectez-vous </a> pour déposer un avis	
-{% endif %}
-<a href="{{ path('jeu_article_avis_vue', { 'id': article.id }) }}" class="btn btn-primary">Voir les avis</a>	  	
+	<a href="{{ path('jeu_article_avis_vue', { 'id': article.id }) }}" class="bouton4">Voir les avis</a>	  	
 	<hr>
 	Jeux apparu dans la même catégorie :<hr>
-	<div class="col-lg-12 col-md-12 col-sm-7">
-			{% for jeu in suggestion %}
-			<div class="col-lg-4 col-md-4 col-sm-12">
-				<a href="{{ path('jeu_article_view', {'id': jeu.id}) }}">{{ jeu.titre }} </a>
-			{% if jeu.image is defined %}
-			 <img
-			  src="{{ asset(jeu.image.webPath) }}"
-			  alt="{{ jeu.image.alt }}"
-			 width="100" height="100"/>
-			{% endif %}
+	<div class="flex3">
+		{% for jeu in suggestion %}
+			<div class="flex3 pad">
+				<a href="{{ path('jeu_article_view', {'id': jeu.id}) }}" title="{{ jeu.titre }}">
+				{% if jeu.image is defined %}
+					<img src="{{ asset(jeu.image.webPath) }}" alt="{{ jeu.image.alt }}" width="100" height="100"/>
+				{% endif %}				
+				</a>
 			</div>
-			{% endfor %}
-			
-		</div>
-		{#{ dump(suggestion) }#}
+		{% endfor %}			
+	</div>
 {% endblock %}

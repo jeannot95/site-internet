@@ -1,0 +1,32 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+{% set tour = 0 %}
+    <div>
+        <h2 class="centre indr">TOP 5 des Jeux les plus commandés</h2>
+    </div>
+	<div class="centre">
+		<table>
+			<tr>
+				<th>Rang</th>
+				<th>Titre</th>
+				<th>Nombre de commandes</th>
+			</tr>
+			{% for id,ref in total %}
+				{% if tour < 5 %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td> {{ ref[0] }} </td>
+						<td> {{ ref[1] }} </td>
+					</tr>
+				{% endif %}	
+				{% set tour = tour + 1 %}	
+			{% endfor %}
+		</table>			
+		<ul>
+			<li>
+				<a href="{{ path('adminStatistiques_index') }}" class="bouton1">Retour à la liste des Statistiques</a>
+			</li><br>				
+		</ul>
+    </div>
+{% endblock %}

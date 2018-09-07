@@ -7,34 +7,46 @@
 {% block jeu_article_body %}
 {% set tour = 0 %}
   <h2>TOP VENTES</h2>
-		{#{ dump(articles) }#}
-		{#{ dump(total) }#}
 		{% for id,ref in total %}
 			{% if tour < 5 %}
-				titre : <a href="{{ path('jeu_article_view', {'id':  id  }) }}">{{ ref[0] }}</a>, id : {{ id }} , total : {{ ref[1] }}<br>
+				<div>
+				{% for article in arts %}
+					{% if ref[2] == article.id  %}
+					<div class="flex3 mar">
+						<div>
+							<img src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}" width="160" height="160">
+						</div>
+						<div class="pad">	
+							<a href="{{ path('jeu_article_view', {'id': article.id}) }}" class="ind size">
+								{{ article.titre }} 
+							</a><em>sorti le {{ article.dateDeSortie|date('d/m/Y') }}</em> 
+							<br> 
+				
+							{% set notes = 'Pas encore de note !' %}
+							{% for n in note %} 
+								{% if n.titre == article.titre %}						
+									 {% set notes = '' %}
+									<div class="star-ratings-css" title="{{ n.moyenne }}/5">
+									<div class="star-ratings-css-top" style="width: {{ n.moyenne * 20 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									</div>
+								{% endif %} 				
+							{% endfor %}
+							{{ notes }}
+							<br>
+							<img src="{{ asset('img/people.png')}}" width="20" class="pad">  {{ article.nbJoueurMin }}-{{ article.nbJoueurMax }}
+							<img src="{{ asset('img/age3.png')}}" width="20" class="pad">  {{ article.ageMin }}-{{ article.ageMax }}
+							<img src="{{ asset('img/minutes.png')}}" width="20" class="pad">  {{ article.duree }} '<br><br>
+							<span class="ind orange">Catégories </span>: {% for cat in article.categories %}{% if not loop.last %}{{ cat.name }},{% else %}{{ cat.name }}{% endif %}{% endfor %}<br>
+							<span class="ind orange">Public concerné</span> : {{ article.publicJeu.name }}<br>
+							<span class="ind orange size2">{{article.prix * 1.2}} €</span><br>
+						</div>
+				</div>
+			<hr>						
+					{% endif %}
+				{% endfor %}	
+				</div>
 			{% endif %}	
 			{% set tour = tour + 1 %}	
-		{% endfor %}
-		{#% for article in articles %}
-			{{ dump(article.commande.article) }}
-			{% set articles = article.commande.article %}
-			{% for art in articles %}
-				<a href="{{ path('jeu_article_view', {'id': 2}) }}">{{ art.reference }}</a>
-			{% endfor %}
-		{% endfor %#}		
-  
-  <ul>
-    {#% for article in articles %}
-      <li>
-        <a href="{{ path('jeu_article_view', {'id': article.id}) }}">
-          {{ article.titre }}
-        </a>, 
-        date de sortie {{ article.dateDeSortie|date('d/m/Y') }}
-		<br>catégories : {% for cat in article.categories %}{{ cat.name }},{% endfor %}<br>
-		Public concerné : {{ article.publicJeu.name }}
-      </li>
-    {% else %}
-      <li>Pas (encore !) d'articles</li>
-    {% endfor %#}
-  </ul>
+		{% endfor %}		
 {% endblock %}

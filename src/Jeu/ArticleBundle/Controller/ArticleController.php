@@ -28,6 +28,7 @@ class ArticleController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$nbPerPage = 3;
 		$articles = $em->getRepository('JeuArticleBundle:Article')->getJeux($page, $nbPerPage);
+		$note = $em->getRepository('JeuArticleBundle:Avis')->getNotes();
 		$nbPages = ceil(count($articles) / $nbPerPage);
 
 		if ($page > $nbPages && $page != 1) {
@@ -38,6 +39,7 @@ class ArticleController extends Controller
 		'articles'=>$articles,
 		'nbPages'=>$nbPages,
 		'page'=>$page,
+		'note'=>$note
 		));
     }
 	
@@ -46,7 +48,7 @@ class ArticleController extends Controller
 		$session = $this->get('session');
 		$em = $this->getDoctrine()->getManager();
 		$article = $em->getRepository('JeuArticleBundle:Article')->find($id);
-		
+		$note = $em->getRepository('JeuArticleBundle:Avis')->getNotes();
 		$cat = $article->getCategories();
 		$articles = $em->getRepository('JeuArticleBundle:Article')->suggestion($id,$cat);
 		
@@ -61,9 +63,10 @@ class ArticleController extends Controller
 		}
 		
 		return $this->render('JeuArticleBundle:Article:view.html.twig', array(
-		  'article'           => $article,
-		  'suggestion'        => $articles,
-		  'panier'			=> $panier	
+			'article'           => $article,
+			'suggestion'        => $articles,
+			'panier'			=> $panier,
+			'note'				=>$note		  
 		));
 	}	
 	
@@ -115,7 +118,8 @@ class ArticleController extends Controller
 				 $pub = $request->request->get('idpub');
 				 if(($cat != '') || ($pub != '')){
 				 $listArticles = $em->getRepository('JeuArticleBundle:Article')->findByCriteria($cat,$pub); 
-						$response = new JsonResponse($listArticles);
+				 $note = $em->getRepository('JeuArticleBundle:Avis')->getNotes();
+						$response = new JsonResponse(array($listArticles,$note));
 				return $response;
 				}
 					return new Response('BRALLLLLL...');
@@ -176,6 +180,8 @@ class ArticleController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$articles = $em->getRepository('JeuUserBundle:Commande')->getMeilleur();
+		$arts = $em->getRepository('JeuArticleBundle:Article')->getImage();
+		$note = $em->getRepository('JeuArticleBundle:Avis')->getNotes();
 		$id = [];
 		$id2 = [];
 		$titre = [];
@@ -192,7 +198,7 @@ class ArticleController extends Controller
 							$id2[] = $key;
 							if(!isset($total[$key]))
 							{
-								$total[$key] = array($art2['reference'],0);
+								$total[$key] = array($art2['reference'],0,$key);
 							}
 							$total[$key][1]++;
 /* 							foreach($id2 as $value)
@@ -203,19 +209,21 @@ class ArticleController extends Controller
 		}
 		usort($total, function($a, $b) {
 			return $b[1] <=> $a[1];
-		});		
-		//var_dump($titre);
-		//var_dump($id);
-		//var_dump($id2);
-		//var_dump($total);
-		//die();
+		});
 		return $this->render('JeuArticleBundle:Article:meilleur.html.twig', array(
 			'articles' => $articles,
 			'id' => $id,
 			'titre' => $titre,
 			'id2' => $id2,
 			'total' => $total,
+			'arts' => $arts,
+			'note' => $note,
 		));
+	}
+	
+	public function testAction()
+	{
+		return $this->render('JeuArticleBundle:Article:test.html.twig');
 	}
   
 }

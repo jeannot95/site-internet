@@ -23,7 +23,11 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->innerJoin('a.categories', 'c')
             ->addSelect('c')
             ->innerJoin('a.publicJeu', 'd')
-            ->addSelect('d')			
+            ->addSelect('d')
+            ->innerJoin('a.image', 'e')
+            ->addSelect('e')
+            // ->innerJoin('a.avis', 'b')
+            // ->addSelect('b')			
 			;
 			
         $qb->where($qb->expr()->in('c.id', ':cat'))
@@ -84,14 +88,16 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 	public function getJeux($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('a')
-		  ->leftJoin('a.image', 'i')
-		  ->addSelect('i')
-		  ->leftJoin('a.categories', 'c')
-		  ->addSelect('c')
-		  ->leftJoin('a.publicJeu', 'd')
-		  ->addSelect('d')	  
-		  ->orderBy('a.dateDeSortie', 'DESC')
-		  ->getQuery()
+			->leftJoin('a.image', 'i')
+			->addSelect('i')
+			->leftJoin('a.categories', 'c')
+			->addSelect('c')
+			->leftJoin('a.publicJeu', 'd')
+			->addSelect('d')
+			// ->leftJoin('a.publicJeu', 'd')
+			// ->addSelect('d')
+			->orderBy('a.dateDeSortie', 'DESC')
+			->getQuery()
 		;
 
 		$query
@@ -189,19 +195,16 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         return $result;
     }
 	
-/* 	public function getMeilleur()
+ 	public function getImage()
 	{
 		$qb = $this->createQueryBuilder('a');
 		$qb
-			->leftJoin('')
-			->addSelect()
-			->orderBy()
-		
-		
+			->leftJoin('a.image','u')
+			->addSelect('u');		
 		return $qb
 			->getQuery()
             ->getResult();	
-	}	 */
+	}	 
 	
 }
 

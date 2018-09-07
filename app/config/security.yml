@@ -6,7 +6,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/avis/, role: ROLE_USER }
+        - { path: ^/avis/depos, role: ROLE_USER }
         
   encoders:
         Jeu\UserBundle\Entity\User: sha512
@@ -41,4 +41,4 @@ security:
         path:       fos_user_security_logout
         target:     fos_user_security_login
       remember_me:
-        secret:     %secret%          
+        secret:     '%secret%'          

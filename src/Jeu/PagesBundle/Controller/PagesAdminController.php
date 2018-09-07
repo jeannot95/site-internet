@@ -56,7 +56,7 @@ class PagesAdminController extends Controller
             'action' => $this->generateUrl('adminPages_create'),
             'method' => 'POST',
         ));
-        $form->add('submit', SubmitType::class, array('label' => 'Créer', 'attr'=> array('class'=>'button is-success is-outlined',)));
+        $form->add('submit', SubmitType::class, array('label' => 'Créer', 'attr'=> array('class'=>'bouton2',)));
         return $form;
     }
     /**
@@ -120,7 +120,7 @@ class PagesAdminController extends Controller
             'action' => $this->generateUrl('adminPages_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-        $form->add('submit', SubmitType::class, array('label' => 'Mettre à jour', 'attr'=> array('class'=>'button is-success is-outlined')));
+        $form->add('submit', SubmitType::class, array('label' => 'Mettre à jour', 'attr'=> array('class'=>'bouton2')));
         return $form;
     }
     /**
@@ -178,7 +178,7 @@ class PagesAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminPages_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'button is-danger is-outlined')))
+            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'bouton5')))
             ->getForm()
             ;
     }

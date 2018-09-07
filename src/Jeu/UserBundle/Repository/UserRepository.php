@@ -13,7 +13,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
-		public function getUtilisateurs($page, $nbPerPage)
+	public function getUtilisateurs($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('a')
 		  ->getQuery()
@@ -29,5 +29,18 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 		// Enfin, on retourne l'objet Paginator correspondant à la requête construite
 		// (n'oubliez pas le use correspondant en début de fichier)
 		return new Paginator($query, true);
+	}
+	
+	public function getCommandes()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->leftJoin('a.commandes','c')
+			->addselect('count(c.id) as nbcommandes')
+			->groupBy('a.username')
+			->orderBy('nbcommandes','DESC')
+			->setMaxResults(5)
+			;
+		return $qb->getQuery()->getResult();
 	}
 }

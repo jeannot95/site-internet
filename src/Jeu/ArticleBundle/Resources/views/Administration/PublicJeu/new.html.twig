@@ -1,34 +1,24 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Ajouter un public visé</h2>
-            </article>
-        </div>
+    <div>
+        <h2 class="ind">Ajouter un public visé</h2>
     </div>
 
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                {{ form_start(form, {'action': path('adminPublic_create'), 'method': 'POST' }) }}
-                <p class="control">
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                </p>
-                <br/>
-                <div class="control is-grouped">
-                    <p class="control">
-                        <a href="{{ path('adminPublic_index') }}" class="button is-info is-outlined">Retour à la
-                            liste</a>
-                    </p>
-                    <p class="control">
-                        {{ form_widget(form.submit) }}
-                    </p>
-                </div>
-                {{ form_end(form) }}
-            </article>
-        </div>
+    <div>
+		{{ form_start(form, {'action': path('adminPublic_create'), 'method': 'POST' }) }}
+		<p>
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name) }}
+		</p>
+		<div>
+			<p>
+				<a href="{{ path('adminPublic_index') }}" class="bouton1">Retour à la liste</a>
+			</p>
+			<p>
+				{{ form_widget(form.submit) }}
+			</p>
+		</div>
+		{{ form_end(form) }}
     </div>
 {% endblock %}

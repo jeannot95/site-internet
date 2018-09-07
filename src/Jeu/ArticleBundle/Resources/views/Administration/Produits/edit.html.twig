@@ -1,17 +1,15 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Edition du Produit</h2>
-            </article>
-        </div>
+    <div>
+        <h2 class="bordeau ind centre">Edition du Produit</h2>
     </div>
 	{% for flashMessage in app.session.flashbag.get('notice') %}
-		<div class="alert alert-danger">
+		<div>
 			{{ flashMessage }}
 		</div>	
-	  {% endfor %}
-			{{ include("JeuArticleBundle:Article:form3.html.twig") }}
+	{% endfor %}
+	<div>
+		{{ include("JeuArticleBundle:Article:form3.html.twig") }}
+	</div>	
 {% endblock %}

@@ -130,7 +130,8 @@ class ArticlesAdminController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         return $this->render('JeuArticleBundle:Administration:Produits/show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView()
+			));
     }
     /**
      * Displays a form to edit an existing Produits entity.
@@ -243,7 +244,7 @@ class ArticlesAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminProduits_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'button is-danger is-outlined')))
+            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'bouton4')))
             ->getForm()
             ;
     }

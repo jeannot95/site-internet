@@ -1,59 +1,50 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Details de l'avis {{ entity.titre }}</h2>
-            </article>
-        </div>
+    <div>
+        <h2 class="ind bordeau">Details de l'avis "{{ entity.titre }}"</h2>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ entity.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>titre</th>
-                        <td>{{ entity.titre }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jeux</th>
-                        <td>{{ entity.article.titre }}</td>
-                    </tr>					
-                    <tr>
-                        <th>auteur</th>
-                        <td>{{ entity.user }}</td>
-                    </tr>
-                    <tr>
-                        <th>date</th>
-                        <td>{{ entity.date|date('d/m/Y') }}</td>
-                    </tr>
-                    <tr>
-                        <th>note</th>
-                        <td>{{ entity.note }}/5</td>
-                    </tr>
-                    <tr>
-                        <th>contenu</th>
-                        <td>{{ entity.content }}</td>
-                    </tr>					
-                    </tbody>
-                </table>
-                <br />
-                <div class="control is-grouped">
-                    <p class="control">
-                        <a href="{{ path('adminAvis_index') }}" class="button is-info is-outlined">Retour a la liste</a>
-                    </p>
-                    <p class="control">
-                        {{ form(delete_form) }}
-                    </p>
-                </div>
-            </article>
-        </div>
-    </div>
+	<div style="overflow-x:auto;"">
+			<table class="centre">
+				<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ entity.id }}</td>
+				</tr>
+				<tr>
+					<th>titre</th>
+					<td>{{ entity.titre }}</td>
+				</tr>
+				<tr>
+					<th>Jeux</th>
+					<td>{{ entity.article.titre }}</td>
+				</tr>					
+				<tr>
+					<th>auteur</th>
+					<td>{{ entity.user }}</td>
+				</tr>
+				<tr>
+					<th>date</th>
+					<td>{{ entity.date|date('d/m/Y') }}</td>
+				</tr>
+				<tr>
+					<th>note</th>
+					<td>{{ entity.note }}/5</td>
+				</tr>
+				<tr>
+					<th>contenu</th>
+					<td>{{ entity.content }}</td>
+				</tr>					
+				</tbody>
+			</table>
+			<br>
+			<div>
+				<p>
+					<a href="{{ path('adminAvis_index') }}" class="bouton1">Retour a la liste</a>
+				</p>
+				<p>
+					{{ form(delete_form) }}
+				</p>
+			</div>
+	</div>
 {% endblock %}

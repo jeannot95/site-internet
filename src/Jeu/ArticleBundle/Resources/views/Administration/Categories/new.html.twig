@@ -1,34 +1,25 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Ajouter une categorie</h2>
-            </article>
-        </div>
+    <div>
+		<h2 class="bordeau ind centre">Ajouter une Catégorie</h2>
     </div>
 
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                {{ form_start(form, {'action': path('adminCategories_create'), 'method': 'POST' }) }}
-                <p class="control">
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                </p>
-                <br/>
-                <div class="control is-grouped">
-                    <p class="control">
-                        <a href="{{ path('adminCategories_index') }}" class="button is-info is-outlined">Retour à la
-                            liste</a>
-                    </p>
-                    <p class="control">
-                        {{ form_widget(form.submit) }}
-                    </p>
-                </div>
-                {{ form_end(form) }}
-            </article>
-        </div>
+    <div>
+		{{ form_start(form, {'action': path('adminCategories_create'), 'method': 'POST' }) }}
+		<p>
+			{{ form_label(form.name,'Nom',{'label_attr': {'class': 'ind'}}) }}
+			{{ form_widget(form.name) }}
+		</p>
+		<div>
+			<p>
+				<a href="{{ path('adminCategories_index') }}" class="bouton1">Retour à la
+					liste</a>
+			</p>
+			<p>
+				{{ form_widget(form.submit) }}
+			</p>
+		</div>
+		{{ form_end(form) }}
     </div>
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+        <h2 class="ind">Liste des Statistiques</h2>
+    </div>
+	<div>
+		<ul>
+			<li>
+				<a href="{{ path('adminStatistiques_note') }}" class="btn btn-primary">Top 5 des Jeux les mieux notés</a>
+			</li><br>
+			<li>
+				<a href="{{ path('adminStatistiques_commande') }}" class="btn btn-primary">Top 5 des Jeux les plus commandés</a>
+			</li><br>
+			<li>
+				<a href="{{ path('adminStatistiques_user') }}" class="btn btn-primary">Top 5 des utilisateurs qui ont le plus commandé(quantité)</a>
+			</li><br>
+			<li>
+				<a href="{{ path('adminStatistiques_riche') }}" class="btn btn-primary">Panier moyen</a>
+			</li>					
+		</ul>
+    </div>
+{% endblock %}

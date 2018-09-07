@@ -1,3 +1,0 @@
-jeu_panier_homepage:
-    path:     /
-    defaults: { _controller: JeuPanierBundle:Default:index }

@@ -1,59 +1,45 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Liste des Utilisateurs</h2>
-				Nombre total d'utilisateur : {{ utilisateurs|length }}
-            </article>
-        </div>
+    <div>
+		<h2 class="centre orange ind">Liste des Utilisateurs</h2>
+		<span class="ind">Nombre total d'utilisateur : </span><span class="ind tomate">{{ utilisateurs|length }}</span>
     </div>
-
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for utilisateur in utilisateurs %}
-                        <tr>
-                            <td>{{ utilisateur.username }}</td>
-                            <td>
-                                {% if utilisateur.adresses|length != 0 %}
-                                    <a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
-                                       title="Consulter les Adresses">Adresses</a>&nbsp;&nbsp;
-                                {% endif %}
-                                {% if utilisateur.commandes|length != 0 %}
-                                    <a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
-                                       title="Consulter les Factures">Factures</a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </article>
-        </div>
+    <div class="centre">
+		<table>
+			<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for utilisateur in utilisateurs %}
+				<tr>
+					<td>{{ utilisateur.username }}</td>
+					<td>
+						{% if utilisateur.adresses|length != 0 %}
+							<a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
+							   title="Consulter les Adresses">Adresses</a>&nbsp;&nbsp;
+						{% endif %}
+						{% if utilisateur.commandes|length != 0 %}
+							<a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
+							   title="Consulter les Factures">Factures</a>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
     </div>
-        <div class="tile is-ancestor">
-            <div class="tile is-parent is-12">
-                <article class="tile is-child box is-12">
-					  {% if utilisateurs is not empty %}
-					  <ul class="pagination">
-						{% for p in range(1, nbPages) %}
-						  <li{% if p == page %} class="active"{% endif %}>
-							<a href="{{ path('adminUtilisateurs_index', {'page': p}) }}">{{ p }}</a>
-						  </li>
-						{% endfor %}
-					  </ul>
-					  {% endif %}
-                </article>
-            </div>
-        </div>	
+	<br>
+	<div class="centre">		
+		<div class="pagination">
+			{% if utilisateurs is not empty %}
+				{% for p in range(1, nbPages) %}
+					<a href="{{ path('adminUtilisateurs_index', {'page': p}) }}" {% if p == page %} class="active"{% endif %}>{{ p }}</a>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>	
 {% endblock %}

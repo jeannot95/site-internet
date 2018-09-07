@@ -1,4 +1,0 @@
-services:
-#    jeu_panier.example:
-#        class: Jeu\PanierBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

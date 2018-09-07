@@ -84,7 +84,7 @@ class AvisAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminAvis_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'button is-danger is-outlined')))
+            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'bouton5')))
             ->getForm()
             ;
     }

@@ -1,0 +1,28 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+        <h2 class="ind">TOP 5 des utilisateurs qui ont le plus commandé ( quantité )</h2>
+    </div>
+	<div class="centre">
+		<table>
+			<tr>
+				<th>Rang</th>
+				<th>Utilisateur</th>
+				<th>Nombre de commandes</th>
+			</tr>
+		{% for user in utilisateurs %}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ user[0].username }}</td>
+				<td>{{ user.nbcommandes }}</td>
+			</tr>
+		{% endfor %}
+		</table>			
+		<ul>
+			<li>
+				<a href="{{ path('adminStatistiques_index') }}" class="bouton1">Retour à la liste des Statistiques</a>
+			</li><br>				
+		</ul>
+    </div>
+{% endblock %}

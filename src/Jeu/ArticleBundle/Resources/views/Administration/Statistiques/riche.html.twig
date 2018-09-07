@@ -1,0 +1,14 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+		<h2 class="ind">Panier Moyen : {{ somme }} €</h2>
+    </div>
+	<div>			
+		<ul>
+			<li>
+				<a href="{{ path('adminStatistiques_index') }}" class="bouton1">Retour à la liste des Statistiques</a>
+			</li><br>				
+		</ul>
+    </div>
+{% endblock %}

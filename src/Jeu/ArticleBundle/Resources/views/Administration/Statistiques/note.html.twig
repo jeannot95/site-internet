@@ -1,0 +1,28 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+		<h2 class="ind">TOP 5 des Jeux les mieux notés</h2>
+    </div>
+	<div class="centre">
+		<table>
+			<tr>
+				<th>Rang</th>
+				<th>Titre</th>
+				<th>Moyenne notes</th>
+			</tr>
+		{% for art in articles%}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ art.titre }}</td>
+				<td>{{ art.moyenne }}</td>
+			</tr>
+		{% endfor %}
+		</table>
+		<ul>
+			<li>
+				<a href="{{ path('adminStatistiques_index') }}" class="bouton1">Retour à la liste des Statistiques</a>
+			</li>				
+		</ul>
+    </div>
+{% endblock %}

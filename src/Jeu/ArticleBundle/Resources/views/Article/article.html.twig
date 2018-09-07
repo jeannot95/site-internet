@@ -14,17 +14,19 @@
 {#{ dump(chemin2) }#}
 {#{ dump(chemin3) }#}
 {#{ dump(currentPath) }#}
-  <h2>Liste des jeux</h2>
+  <h2 class="ind">Liste des jeux</h2>
 	Nombre de résultats pour <strong>{{ resultat }}</strong> : {{ articles|length }} 
   <ul>
     {% for article in articles %}
       <li>
         <a href="{{ path('jeu_article_view', {'id': article.id}) }}">
-          {{ article.titre }}
+          <span class="ind">{{ article.titre }}</span>
         </a>, 
-        date de sortie {{ article.dateDeSortie|date('d/m/Y') }}
-		<br>catégories : {% for cat in article.categories %}{{ cat.name }},{% endfor %}<br>
-		Public concerné : {{ article.publicJeu.name }}
+        <em>date de sortie {{ article.dateDeSortie|date('d/m/Y') }}</em>
+		<br>
+		<span class="ind2">Catégories </span>: {% for cat in article.categories %}{{ cat.name }},{% endfor %}
+		<br>
+		<span class="ind2">Public concerné </span>: {{ article.publicJeu.name }}
       </li>
     {% else %}
       <li>Pas (encore !) d'articles</li>

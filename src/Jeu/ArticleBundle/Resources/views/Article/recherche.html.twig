@@ -2,22 +2,16 @@
 {% extends "JeuArticleBundle::layout.html.twig" %}
 
 {% block title %}
-  Accueil - {{ parent() }}
+  Recherche - {{ parent() }}
 {% endblock %}
     {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('bundles/css/site.css') }}" type="text/css" />
     {% endblock %}
 {% block jeu_article_body %}
 
-  <h2>Liste des jeux</h2>
-	
-	{#{ include('JeuArticleBundle:Article:selection.html.twig') }#}
-
-	<div id="selection"></div>
-
-{#<span class="test">Un test pour voir la couleur</span>#}
-  
+  <h2 class="ind">Liste des jeux</h2>
+	<div id="selection">
+	</div>	
 {% endblock %}
 
   {% block javascripts %}
@@ -44,8 +38,8 @@
 						info.push($(this).val());										
 				});;
 				//console.log(value1);
-				console.log(info);
-				console.log(pub);
+				//console.log(info);
+				//console.log(pub);
 				//console.log($("input[name='form[categories][]']").val());
 							
 				var $this = $(this);
@@ -63,26 +57,31 @@
 						
 						if(response != ''){
 						id1 =[];
-						for (i = 0; i< response.length;i++){
-							id1[i] = response[i].id.toString();							
+						id2=[];
+						console.log(response[0].length);
+						for (i = 0; i< response[0].length;i++){
+							console.log(response[0][i].id);
+							id1[i] = response[0][i].id.toString();							
 						}
-						//var id1 = response[0].id.toString();
-						//console.log(id1);
 						url =[];
 						url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
 						url = url.replace("article_id", id1[i]);
-						//var tab = JSON.parse(response);
-						//console.log(tab);
-						//alert('ça marche');
-						result = [];
+							
+						result = [];						
 						//console.log(result);
-						for (i = 0; i< response.length;i++){
-							id1[i] = response[i].id.toString();	
+						for (i = 0; i< response[0].length;i++){
+							//console.log(response[i].image);
+							id1[i] = response[0][i].id.toString();	
 							url =[];
 							url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
 							url = url.replace("article_id", id1[i]);
-							result[i] = url + response[i].titre + '</a><br>Description :' + response[i].description + '<br> Catégorie : ' + response[i].categories[0].name + '<br> Public concerné : ' + response[i].publicJeu.name + '<hr>' ;
-							//return result;
+							result[i] = '<div class="flex3 mar"><div><img src="/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg" alt=" '+ response[0][i].image.alt +' " width="160" height="160"></div><div class="pad"><span class="ind bleu size2">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em><br><span title="de '+ response[0][i].nbJoueurMin +' à '+ response[0][i].nbJoueurMax +' joueurs"><img src="{{ asset('img/people.png')}}" width="20" class="pad"> ' + response[0][i].nbJoueurMin + ' - ' + response[0][i].nbJoueurMax + '</span>' +
+							' <span title="de '+ response[0][i].ageMin +' à '+ response[0][i].ageMax +' ans"><img src="{{ asset('img/age3.png')}}" width="20" class="pad"> ' + response[0][i].ageMin + '-' + response[0][i].ageMax + '</span>' +
+							' <span title="durée moyenne d\'une partie : ' + response[0][i].duree + ' min"><img src="{{ asset('img/minutes.png')}}" width="20" class="pad"> ' + response[0][i].duree + ' min ' + '</span>' +
+							'<br> <span class="ind orange">Catégorie</span> : ' + response[0][i].categories[0].name + 
+							'<br> <span class="ind orange">Public concerné </span>: ' + response[0][i].publicJeu.name + 
+							'<br> <span class="ind orange"> ' + response[0][i].prix + ' € TTC</span> ' + 								
+							'</div></div><hr>' ;
 						}
 						
 						$('#selection').html(result);

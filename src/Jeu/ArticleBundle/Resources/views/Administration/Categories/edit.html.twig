@@ -1,36 +1,30 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
-                <h2 class="title is-3 indieflower">Edition de la catégorie</h2>
-            </article>
-        </div>
+    <div>
+		<h2 class="bordeau ind centre">Edition de la Catégorie</h2>
     </div>
 
-    <div class="tile is-ancestor">
-        <div class="tile is-parent is-12">
-            <article class="tile is-child box is-12">
+    <div>
+        <div>
                 {{ form_start(edit_form, {'action': path('adminCategories_update', { 'id' : entity.id }), 'method': 'PUT' }) }}
-                <p class="control">
-                    {{ form_label(edit_form.name) }}
+                <p>
+                    {{ form_label(edit_form.name,'Nom',{'label_attr': {'class': 'ind'}}) }}
                     {{ form_widget(edit_form.name) }}
                 </p>
-                <br />
-                <div class="control is-grouped">
-                    <p class="control">
-                        <a href="{{ path('adminCategories_index') }}" class="button is-info is-outlined">Retour à la liste</a>
+                <br>
+                <div>
+                    <p>
+                        <a href="{{ path('adminCategories_index') }}" class="bouton1">Retour à la liste</a>
                     </p>
-                    <p class="control">
+                    <p>
                         {{ form_widget(edit_form.submit) }}
                     </p>
                     {{ form_end(edit_form) }}
-                    <p class="control">
+                    <p>
                         {{ form(delete_form) }}
                     </p>
                 </div>
-            </article>
         </div>
     </div>
 {% endblock %}

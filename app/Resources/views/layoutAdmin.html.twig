@@ -8,108 +8,72 @@
     <meta name="keywords" content="{% block motsCles %}{% endblock %}"/>
     <meta name="description" content="{% block description %}{% endblock %}"/>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bulma.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/menu.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
-		 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="{{ asset('css/jeux.css') }}">
+	  <link rel="stylesheet" href="{{ asset('css/stars.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}"/>
 </head>
-<body>
-<header class="navbar-fixed">
-    <nav id="navigation" class="nav has-shadow hero is-dark">
-        <div class="container">
-            <div class="nav-left">
-                <a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo.png') }}" alt="Jeu Logo"
-                                                   width="90px" class="is-12-desktop shadowfilter"></a>
-            </div>
-            <span id="nav-toggle" class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            <div id="nav-menu" class="nav-menu nav-menu1 nav-center">
-                <a class="nav-item is-tab{% if app.request.get('_route') == 'index' %} is-active{% endif %} indieflower menutitle"
-                   href="{{ path('jeu_article_homepage') }}">Accueil</a>
-                <a class="nav-item is-tab{% if '/produits/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle"
-                   href="{{ path('jeu_article_recherche') }}">Produits</a>
-                <a class="nav-item is-tab{% if '/panier/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle"
-                   href="{{ path('jeu_article_panier') }}">Panier</a>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="nav-item is-tab{% if '/profile/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle"
-                       href="{{ path('fos_user_profile_show') }}">Profil</a>
-                {% else %}
-                    <a class="nav-item is-tab{% if '/login' in app.request.requestUri %} is-active{% endif %} indieflower menutitle"
-                       href="{{ path('fos_user_security_login') }}">Connection</a>
-                {% endif %}
-                <span class="nav-item is-offset-2 is-12-mobile">
-                        {#{ render(controller('JeuBundle:Produits:recherche')) }#}
-                    </span>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="spacer"></div>
-
+<body id="bodyAdmin">
 <div class="container">
-    <div class="columns">
+    <header class="ind" id="headAdmin">
+		<div class="hautCote">
+			<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo"></a>
+		</div>
+		<div class="hautCentre">
+				
+			<div class="centre hautMilieu wid">
+				<div class="wid flex">
+							<div class="hautCache">
+						<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo" width="60px"></a>
+					</div>
+					<h1 class="bordeau titre">JeuxDeSociété</h1>
+					<div class="hautCache">
+						<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo" width="60px"></a>
+					</div>
+				</div>
+				<div>
+					<h2 class="bordeau">VOUS ETES EN MODE ADMINISTRATION</h2>
+				</div>			
+			</div>
+			<div class="menu wid">
+				<a href="{{ path('jeu_article_homepage') }}">Boutique</a>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<a href="{{ path('fos_user_profile_show') }}">Profil</a>
+					<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+				{% endif %}
+			</div>	
+		</div>	
+		<div class="hautCote">
+			<a href="{{ path('jeu_article_homepage') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="logo"></a>
+		</div>
+    </header>
 
-        <div class="column is-3">
+    <div class="section padb">
+
+        <div class="sidebar">
             {% include '::modulesUsed/navigationAdmin.html.twig' %}
         </div>
-
-        <div class="column is-9">
+        <div id="content" class="pad">
             {% block body %}{% endblock %}
         </div>
-
     </div>
-</div>
-
-<hr/>
-<footer class="footer">
-    <div class="container">
-		<div class="row">
-			<div class="col-md-4">	
-				<div class="content has-text-centered">		
+	<footer id="footerAdmin">
+				<div class="footer centre">		
 					<h4>Informations</h4>
 					{{ render(controller('JeuPagesBundle:Pages:menu')) }}
-				</div>
-			</div>				
-			<div class="col-md-4">	
-				<div class="content has-text-centered">		
+				</div>					
+				<div class="footer centre">		
 					<p class=" title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Street</b> (<a
 								href="http://audoinjean95300.com" target="_blank">jeannot95</a>)</p>
 				</div>
-			</div>
-			<div class="col-md-4">	
-				<div class="content has-text-centered">		
-					<h4>Nous contacter</h4>
-					<p>Tel : 06.20.00.00.00</p>
-					<p>Fax : 01.20.00.00.00</p>
+				<div class="footer centre">		
+						<h4>Nous contacter</h4>
+						<p>Tel : 06.20.00.00.00</p>
+						<p>Fax : 01.20.00.00.00</p>
 				</div>
-			</div>			
-		</div>		
-    </div>
-</footer>
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
-<script src="{{ asset('/js/bulma.js') }}"></script>
+	</footer>
+</div>
 <script src="{{ asset('bundles/jeupages/ckeditor/ckeditor.js') }}"></script>
-
 {% block javascripts %}{% endblock %}
-<script>
-    $(document).ready(function () {
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 60) {
-                $("#navigation").css("background-color", "rgba(54, 54, 54, 0.7)");
-            } else {
-                $("#navigation").css("background-color", "rgba(54, 54, 54, 1)");
-            }
-        });
-    });
-</script>
 </body>
 </html>
