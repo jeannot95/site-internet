@@ -189,6 +189,20 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         return $result;
     }
 	
+/* 	public function getMeilleur()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->leftJoin('')
+			->addSelect()
+			->orderBy()
+		
+		
+		return $qb
+			->getQuery()
+            ->getResult();	
+	}	 */
+	
 }
 
 

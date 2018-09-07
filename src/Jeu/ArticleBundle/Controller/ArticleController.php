@@ -139,17 +139,18 @@ class ArticleController extends Controller
         $request = Request::createFromGlobals();
         $form = $this->createForm(RechercheType::class);
         $searchTerm = $request->query->get('recherche');
+		$chaine = $searchTerm['recherche'];
         if ($searchTerm != '') {
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-			$nbPerPage = 4;
-            $findProduits = $em->getRepository('JeuArticleBundle:Article')->recherche($searchTerm['recherche'],$page, $nbPerPage);
+			$nbPerPage = 150;
+            $findProduits = $em->getRepository('JeuArticleBundle:Article')->recherche($chaine,$page, $nbPerPage);
 		$nbPages = ceil(count($findProduits) / $nbPerPage);
-
+		
 		if ($page > $nbPages && $page != 1) {
 		  throw $this->createNotFoundException("La page ".$page." n'existe pas.");
 		}   
-			//var_dump($findProduits);die();
+			/* //var_dump($findProduits);die();
             $categories = $em->getRepository('JeuArticleBundle:Categorie')->findBy(array(), array('id' => 'ASC'),4);
 			// var_dump($categories);die();
             foreach ($categories as $categorie)
@@ -157,16 +158,64 @@ class ArticleController extends Controller
                 $categorieid = $categorie->getId(); //var_dump($categorieid);die();
                 $suggestions[$categorieid] = $em->getRepository('JeuArticleBundle:Article')->RandomProducts(4, $categorieid);
 				//var_dump($suggestions[$categorieid]);die();
-            }
+            } */
         } else {
             throw $this->createNotFoundException('La page n\'existe pas.');
         }
+		//$chaine = $_GET['recherche'];
         return $this->render('JeuArticleBundle:Article:article.html.twig', array('articles' => $findProduits,
-                                                                                                 'suggestions' => $suggestions,
-                                                                                                 'categories' => $categories,
+                                                                                                 //'suggestions' => $suggestions,
+                                                                                                 //'categories' => $categories,
+                                                                                                 'resultat' => $chaine,
 																								 'nbPages'=>$nbPages,
 																								 'page'=>$page,	
 																								 ));
     }  
+	
+	public function meilleurAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$articles = $em->getRepository('JeuUserBundle:Commande')->getMeilleur();
+		$id = [];
+		$id2 = [];
+		$titre = [];
+		$total = [];
+		foreach($articles as $key => $art)
+		{
+			//var_dump($art['commande']['article']);
+			$id[] = $art['commande']['article'];
+			//$id2[] = $key;
+					foreach($art['commande']['article'] as $key => $art2)
+						{
+				//			var_dump($art2['reference']);
+							$titre[] = $art2['reference'];
+							$id2[] = $key;
+							if(!isset($total[$key]))
+							{
+								$total[$key] = array($art2['reference'],0);
+							}
+							$total[$key][1]++;
+/* 							foreach($id2 as $value)
+							{
+								if($key == $key){ $total += 1 ;}
+							} */
+						}
+		}
+		usort($total, function($a, $b) {
+			return $b[1] <=> $a[1];
+		});		
+		//var_dump($titre);
+		//var_dump($id);
+		//var_dump($id2);
+		//var_dump($total);
+		//die();
+		return $this->render('JeuArticleBundle:Article:meilleur.html.twig', array(
+			'articles' => $articles,
+			'id' => $id,
+			'titre' => $titre,
+			'id2' => $id2,
+			'total' => $total,
+		));
+	}
   
 }

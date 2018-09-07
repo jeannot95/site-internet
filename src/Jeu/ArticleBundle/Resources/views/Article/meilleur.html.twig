@@ -1,0 +1,40 @@
+{% extends "JeuArticleBundle::layout.html.twig" %}
+
+{% block title %}
+  TOP VENTES - {{ parent() }}
+{% endblock %}
+
+{% block jeu_article_body %}
+{% set tour = 0 %}
+  <h2>TOP VENTES</h2>
+		{#{ dump(articles) }#}
+		{#{ dump(total) }#}
+		{% for id,ref in total %}
+			{% if tour < 5 %}
+				titre : <a href="{{ path('jeu_article_view', {'id':  id  }) }}">{{ ref[0] }}</a>, id : {{ id }} , total : {{ ref[1] }}<br>
+			{% endif %}	
+			{% set tour = tour + 1 %}	
+		{% endfor %}
+		{#% for article in articles %}
+			{{ dump(article.commande.article) }}
+			{% set articles = article.commande.article %}
+			{% for art in articles %}
+				<a href="{{ path('jeu_article_view', {'id': 2}) }}">{{ art.reference }}</a>
+			{% endfor %}
+		{% endfor %#}		
+  
+  <ul>
+    {#% for article in articles %}
+      <li>
+        <a href="{{ path('jeu_article_view', {'id': article.id}) }}">
+          {{ article.titre }}
+        </a>, 
+        date de sortie {{ article.dateDeSortie|date('d/m/Y') }}
+		<br>catégories : {% for cat in article.categories %}{{ cat.name }},{% endfor %}<br>
+		Public concerné : {{ article.publicJeu.name }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'articles</li>
+    {% endfor %#}
+  </ul>
+{% endblock %}

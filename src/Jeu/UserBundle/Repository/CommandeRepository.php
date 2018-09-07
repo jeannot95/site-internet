@@ -46,5 +46,19 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 		// (n'oubliez pas le use correspondant en début de fichier)
 		return new Paginator($query, true);
 	} 	
+
+	public function getMeilleur()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->select('a.commande')
+			->where('a.valider = 1')
+			;
+		
+		
+		return $qb
+			->getQuery()
+            ->getResult();	
+	}		
 	
 }
