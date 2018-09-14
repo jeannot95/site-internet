@@ -11,6 +11,7 @@
       <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 	  <link rel="stylesheet" href="{{ asset('css/jeux.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/stars.css') }}">
+	  <link rel="stylesheet" href="{{ asset('css/boutons.css') }}">
     {% endblock %}
 	<link rel="icon" type="image/x-icon" href="{{ asset('img/logo2.jpg') }}"/>
   </head>
@@ -40,18 +41,27 @@
 					</p>
 				</div>			
 			</div>
-			<div class="menu wid">
-				<a href="{{ path('jeu_article_homepage') }}">Boutique</a>
+			<div class="menu wid" id="menu">
+				<ul>
+					<li><a href="{{ path('jeu_article_homepage') }}">Boutique</a></li>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			{% if is_granted("ROLE_SUPER_ADMIN") %}
-				<a href="{{ path('admin') }}">Administration</a>
-			{% endif %}
-			<a href="{{ path('fos_user_profile_show') }}">Profil</a>
-			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-		{% else %}
-			<a href="{{ path('fos_user_security_login') }}">Connexion</a>
-			<a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
-		{% endif %}
+					{% if is_granted("ROLE_SUPER_ADMIN") %}
+						<li><a href="{{ path('admin') }}">Administration</a></li>
+					{% endif %}
+					<li><a class="menuprofil">Mon compte</a>
+						<ul class="sousmenu">
+							<li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+							<li><a href="{{ path('fos_user_profile_edit') }}">Editer mes informations</a></li>
+							<li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+							<li><a href="{{ path('jeu_user_factures') }}">Mes factures</a></li>
+							<li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+						</ul>
+					</li>		
+				{% else %}
+					<li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+					<li><a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a></li>
+				{% endif %}
+				</ul>
 			</div>	
 		</div>	
 		<div class="hautCote">
@@ -147,6 +157,25 @@
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script>
+	// When the user scrolls the page, execute myFunction 
+		window.onscroll = function() {myFunction()};
+
+		// Get the header
+		var menu = document.getElementById("menu");
+
+		// Get the offset position of the navbar
+		var sticky = menu.offsetTop;
+
+		// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+		function myFunction() {
+		  if (window.pageYOffset > sticky) {
+			menu.classList.add("sticky");
+		  } else {
+			menu.classList.remove("sticky");
+		  }
+		}
+	</script>
   {% endblock %}
 
   </body>

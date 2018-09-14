@@ -66,7 +66,7 @@ class __TwigTemplate_42e6191fd67a64872c3855f499a993d1c9f12b0188499175990ed2c6ff7
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 15
-        echo "\t<div class=\"flex3\">\t\t
+        echo "\t<div class=\"flex3 contView\">\t\t
 \t\t<div class=\"item1\">
 \t\t\t";
         // line 17
@@ -76,7 +76,7 @@ class __TwigTemplate_42e6191fd67a64872c3855f499a993d1c9f12b0188499175990ed2c6ff7
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["article"] ?? null), "image", array()), "webPath", array())), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["article"] ?? null), "image", array()), "alt", array()), "html", null, true);
-            echo "\" width=\"200\" height=\"200\"/>
+            echo "\" width=\"100%\" height =\"90%\"/>
 \t\t\t";
         }
         // line 20

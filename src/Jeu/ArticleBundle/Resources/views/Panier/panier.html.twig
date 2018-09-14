@@ -15,11 +15,11 @@
 	  {{ dump(articles) }}
 	  {% endif %#}
 	  {% for flashMessage in app.session.flashbag.get('success') %}
-		<div class="alert alert-success">
+		<div class="success">
 			{{ flashMessage }}
 		</div>	
 	  {% endfor %}
-	<table class="table table-striped table-hover text-center">
+	<table class="centre">
 		<thead>
 			<tr>
 				<th class="text-center">Nom du jeu</th>
@@ -29,28 +29,34 @@
 		</thead>
 		<tbody>
 		{% if articles|length == 0 %}
-		<tr><td colspan="3" class="text-center">Aucun article dans votre panier</td></tr>
+			<tr><td colspan="3" class="centre">Aucun article dans votre panier</td></tr>
 		{% endif %}
 		{% for article in articles %}
 			<tr>
 				<td>{{ article.titre }}</td>
 				<td>{{ article.prix }} €</td>
-				<td> <a href="{{ path('jeu_article_supprimer_panier', {'id': article.id}) }}" ><i class="glyphicon glyphicon-trash"></i></a></td>
+				<td> <a href="{{ path('jeu_article_supprimer_panier', {'id': article.id}) }}" ><strong class="em12"> &#128465; </strong></a></td>
 			</tr>
 			{% set totalHT = totalHT + article.prix %}
 		{% endfor %}
 		</tbody>
 	</table><hr>
 	{% if articles|length != 0 %}
-		<dl class="dl-horizontal pull-right">
-					<dt>Total HT </dt><dd>{{ totalHT }} €</dd>
-					<dt>TVA 20% </dt><dd>{{ totalHT*0.2 }} €</dd>
-					<dt>Total TTC</dt><dd>{{ totalHT*1.2 }} €</dd>
+		<dl class="right padr bold">
+					<dt>Total HT </dt><dd class="padb10">{{ totalHT }} €</dd>
+					<dt>TVA 20% </dt><dd class="padb10">{{ totalHT*0.2 }} €</dd>
+					<dt>Total TTC</dt><dd class="padb10">{{ totalHT*1.2 }} €</dd>
 		</dl>
-		<div class="clearfix"></div>
-		<a href="{{ path('jeu_article_livraison') }}" class="btn btn-success pull-right">Valider mon panier</a>
+		<div class="clear"></div>
+		<div class="right">
+			<a href="{{ path('jeu_article_livraison') }}" class="bouton2">Valider mon panier</a>
+			<a href="{{ path('jeu_article_homepage') }}" class="bouton1">Continuer mes achats</a>
+		</div>
+	{% else %}
+		<div class="right">
+			<a href="{{ path('jeu_article_homepage') }}" class="bouton1">Continuer mes achats</a>
+		</div>
 	{% endif %}
-	<a href="{{ path('jeu_article_homepage') }}" class="btn btn-primary">Continuer mes achats</a>
   {% endblock fos_user_content %}
   
 {% endblock %}

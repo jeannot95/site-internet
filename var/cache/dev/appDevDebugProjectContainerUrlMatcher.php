@@ -636,8 +636,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             if (0 === strpos($pathinfo, '/user/profile/factures')) {
                 // jeu_user_factures
-                if ('/user/profile/factures' === $pathinfo) {
-                    return array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserController::facturesAction',  '_route' => 'jeu_user_factures',);
+                if (preg_match('#^/user/profile/factures(?:/(?P<page>\\d*))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'jeu_user_factures')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserController::facturesAction',  'page' => 1,));
                 }
 
                 // facturePDF

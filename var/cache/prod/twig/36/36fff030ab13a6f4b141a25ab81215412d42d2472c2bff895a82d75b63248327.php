@@ -137,22 +137,37 @@ class __TwigTemplate_db6bdb3f3ffe1d0dbc97f6d3a35f5d0440fc1c2cd35bce1e1216d77d2c8
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_view", array("id" => "article_id"));
         echo " \">';
 \t\t\t\t\t\t\turl = url.replace(\"article_id\", id1[i]);
-\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em><br><span title=\"de '+ response[0][i].nbJoueurMin +' à '+ response[0][i].nbJoueurMax +' joueurs\"><img src=\"";
-        // line 78
+\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
+\t\t\t\t\t\t\tvar note = \"<br>Pas encore de note ! \";
+\t\t\t\t\t\t\tfor(j = 0; j< response[1].length;j++){
+\t\t\t\t\t\t\t\t//console.log(response[1][j]);
+\t\t\t\t\t\t\t\tif (response[0][i].titre == response[1][j].titre ){
+\t\t\t\t\t\t\t\t  note = \"\" ;
+\t\t\t\t\t\t\t\tresult[i] +=  ' <div class=\"star-ratings-css\" title=\" ' + response[1][j].moyenne + ' /5\" > ';
+\t\t\t\t\t\t\t\t  result[i] += ' <div class=\"star-ratings-css-top\" style=\"width: ' + response[1][j].moyenne*20 + '%\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div> ';
+\t\t\t\t\t\t\t\t  result[i] += '<div class=\"star-ratings-css-bottom\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
+\t\t\t\t\t\t\t\tresult[i] += '</div>' ;
+\t\t\t\t\t\t\t\t}
+\t\t\t\t\t\t\t\t//result[i] += ' Moyenne = ' + response[1][j].moyenne + '/5 ' ;
+\t\t\t\t\t\t\t}
+\t\t\t\t\t\t\tresult[i] += note ;
+\t\t\t\t\t\t\tresult[i] += '<br><span title=\"de '+ response[0][i].nbJoueurMin +' à '+ response[0][i].nbJoueurMax +' joueurs\"><img src=\"";
+        // line 92
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/people.png"), "html", null, true);
         echo "\" width=\"20\" class=\"pad\"> ' + response[0][i].nbJoueurMin + ' - ' + response[0][i].nbJoueurMax + '</span>' +
 \t\t\t\t\t\t\t' <span title=\"de '+ response[0][i].ageMin +' à '+ response[0][i].ageMax +' ans\"><img src=\"";
-        // line 79
+        // line 93
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/age3.png"), "html", null, true);
         echo "\" width=\"20\" class=\"pad\"> ' + response[0][i].ageMin + '-' + response[0][i].ageMax + '</span>' +
 \t\t\t\t\t\t\t' <span title=\"durée moyenne d\\'une partie : ' + response[0][i].duree + ' min\"><img src=\"";
-        // line 80
+        // line 94
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/minutes.png"), "html", null, true);
         echo "\" width=\"20\" class=\"pad\"> ' + response[0][i].duree + ' min ' + '</span>' +
 \t\t\t\t\t\t\t'<br> <span class=\"ind orange\">Catégorie</span> : ' + response[0][i].categories[0].name + 
 \t\t\t\t\t\t\t'<br> <span class=\"ind orange\">Public concerné </span>: ' + response[0][i].publicJeu.name + 
 \t\t\t\t\t\t\t'<br> <span class=\"ind orange\"> ' + response[0][i].prix + ' € TTC</span> ' + \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t'</div></div><hr>' ;
+
 \t\t\t\t\t\t}
 \t\t\t\t\t\t
 \t\t\t\t\t\t\$('#selection').html(result);
@@ -181,7 +196,7 @@ class __TwigTemplate_db6bdb3f3ffe1d0dbc97f6d3a35f5d0440fc1c2cd35bce1e1216d77d2c8
 
     public function getDebugInfo()
     {
-        return array (  150 => 80,  146 => 79,  142 => 78,  137 => 76,  125 => 67,  103 => 48,  69 => 18,  66 => 17,  58 => 11,  55 => 10,  48 => 8,  45 => 7,  38 => 5,  35 => 4,  15 => 2,);
+        return array (  164 => 94,  160 => 93,  156 => 92,  137 => 76,  125 => 67,  103 => 48,  69 => 18,  66 => 17,  58 => 11,  55 => 10,  48 => 8,  45 => 7,  38 => 5,  35 => 4,  15 => 2,);
     }
 
     public function getSourceContext()

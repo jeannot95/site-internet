@@ -21,10 +21,10 @@ class PanierController extends Controller
 		if(!$session->has('panier'))  $session->set('panier', array());
 		$panier = $session->get('panier');
 
-			$panier[$id] = 1;
+		$panier[$id] = 1;
 		
-		$session->set('panier', $panier);
 		$this->get('session')->getFlashBag()->add('success','Article ajouté avec succès');
+		$session->set('panier', $panier);
 		
 		return $this->redirectToRoute('jeu_article_panier');
 		
@@ -32,19 +32,19 @@ class PanierController extends Controller
 	
 	public function panierAction()
 	{
+		//echo 'test'; die();
 		$session = $this->get('session');
-
+		
 		if(!$session->has('panier')) $session->set('panier', array());
-
+		//var_dump($session->get('panier'));die();
 		$em = $this->getDoctrine()->getManager();
 		$articles = $em->getRepository('JeuArticleBundle:Article')->findArray(array_keys($session->get('panier')));
-		
-		return $this->render('JeuArticleBundle:Panier:panier.html.twig', array('articles'=> $articles,'panier'=> $session->get('panier')));
+		//$articles = array();
+		return $this->render('JeuArticleBundle:Panier:panier.html.twig', array('articles'=> $articles));
 	}
 	
 	public function supprimerAction($id)
 	{
-		//die('ici');
 		$session = $this->get('session');
 		$panier = $session->get('panier');
 		if (array_key_exists($id,$panier))

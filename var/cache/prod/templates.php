@@ -120,6 +120,7 @@
   'JeuArticleBundle:Panier:panier.html.twig' => __DIR__.'/../../../src/Jeu/ArticleBundle/Resources/views/Panier/panier.html.twig',
   'JeuArticleBundle:Panier:validation.html.twig' => __DIR__.'/../../../src/Jeu/ArticleBundle/Resources/views/Panier/validation.html.twig',
   'JeuArticleBundle:Recherche:recherche.html.twig' => __DIR__.'/../../../src/Jeu/ArticleBundle/Resources/views/Recherche/recherche.html.twig',
+  'JeuArticleBundle:Swift:validationCommande.html.twig' => __DIR__.'/../../../src/Jeu/ArticleBundle/Resources/views/Swift/validationCommande.html.twig',
   'JeuUserBundle:Administration/Commandes:index.html.twig' => __DIR__.'/../../../src/Jeu/UserBundle/Resources/views/Administration/Commandes/index.html.twig',
   'JeuUserBundle:Administration/Utilisateurs:adresses.html.twig' => __DIR__.'/../../../src/Jeu/UserBundle/Resources/views/Administration/Utilisateurs/adresses.html.twig',
   'JeuUserBundle:Administration/Utilisateurs:factures.html.twig' => __DIR__.'/../../../src/Jeu/UserBundle/Resources/views/Administration/Utilisateurs/factures.html.twig',

@@ -75,13 +75,28 @@
 							url =[];
 							url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
 							url = url.replace("article_id", id1[i]);
-							result[i] = '<div class="flex3 mar"><div><img src="/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg" alt=" '+ response[0][i].image.alt +' " width="160" height="160"></div><div class="pad"><span class="ind bleu size2">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em><br><span title="de '+ response[0][i].nbJoueurMin +' à '+ response[0][i].nbJoueurMax +' joueurs"><img src="{{ asset('img/people.png')}}" width="20" class="pad"> ' + response[0][i].nbJoueurMin + ' - ' + response[0][i].nbJoueurMax + '</span>' +
+							result[i] = '<div class="flex3 mar"><div><img src="/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg" alt=" '+ response[0][i].image.alt +' " width="160" height="160"></div><div class="pad"><span class="ind bleu size2">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
+							var note = "<br>Pas encore de note ! ";
+							for(j = 0; j< response[1].length;j++){
+								//console.log(response[1][j]);
+								if (response[0][i].titre == response[1][j].titre ){
+								  note = "" ;
+								result[i] +=  ' <div class="star-ratings-css" title=" ' + response[1][j].moyenne + ' /5" > ';
+								  result[i] += ' <div class="star-ratings-css-top" style="width: ' + response[1][j].moyenne*20 + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div> ';
+								  result[i] += '<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
+								result[i] += '</div>' ;
+								}
+								//result[i] += ' Moyenne = ' + response[1][j].moyenne + '/5 ' ;
+							}
+							result[i] += note ;
+							result[i] += '<br><span title="de '+ response[0][i].nbJoueurMin +' à '+ response[0][i].nbJoueurMax +' joueurs"><img src="{{ asset('img/people.png')}}" width="20" class="pad"> ' + response[0][i].nbJoueurMin + ' - ' + response[0][i].nbJoueurMax + '</span>' +
 							' <span title="de '+ response[0][i].ageMin +' à '+ response[0][i].ageMax +' ans"><img src="{{ asset('img/age3.png')}}" width="20" class="pad"> ' + response[0][i].ageMin + '-' + response[0][i].ageMax + '</span>' +
 							' <span title="durée moyenne d\'une partie : ' + response[0][i].duree + ' min"><img src="{{ asset('img/minutes.png')}}" width="20" class="pad"> ' + response[0][i].duree + ' min ' + '</span>' +
 							'<br> <span class="ind orange">Catégorie</span> : ' + response[0][i].categories[0].name + 
 							'<br> <span class="ind orange">Public concerné </span>: ' + response[0][i].publicJeu.name + 
 							'<br> <span class="ind orange"> ' + response[0][i].prix + ' € TTC</span> ' + 								
 							'</div></div><hr>' ;
+
 						}
 						
 						$('#selection').html(result);

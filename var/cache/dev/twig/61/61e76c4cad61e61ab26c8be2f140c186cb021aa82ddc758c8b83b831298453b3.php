@@ -26,11 +26,11 @@ class __TwigTemplate_36915edd9729f2b3d05fe1e44039bc89de68e5c1dce40bc9e4c34f0147b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuUserBundle:Default:utilisateursConnecte.html.twig"));
 
         // line 1
-        echo "<div class=\"box related-list\">
-    <p class=\"menu-label title indieflower\">
+        echo "<div>
+    <p>
         Mon compte
     </p>
-    <ul class=\"menu-list\">
+    <ul>
         <li><a href=\"";
         // line 6
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
@@ -85,11 +85,11 @@ class __TwigTemplate_36915edd9729f2b3d05fe1e44039bc89de68e5c1dce40bc9e4c34f0147b
 
     public function getSourceContext()
     {
-        return new Twig_Source("<div class=\"box related-list\">
-    <p class=\"menu-label title indieflower\">
+        return new Twig_Source("<div>
+    <p>
         Mon compte
     </p>
-    <ul class=\"menu-list\">
+    <ul>
         <li><a href=\"{{ path('fos_user_profile_show') }}\">Mes informations</a></li>
         <li><a href=\"{{ path('fos_user_profile_edit') }}\">Editer mes informations</a></li>
         <li><a href=\"{{ path('fos_user_change_password') }}\">Changer mon mot de passe</a></li>

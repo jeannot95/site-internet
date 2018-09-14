@@ -120,25 +120,33 @@ class CommandeController extends Controller
         //$commande->setReference($this->container->get('setNewReference')->reference()); //Service a faire
 		 $commande->setReference($this->container->get('setNewReference')->reference());
         $em->flush();
-/*         $facture = $em->getRepository('JeuUserBundle:Commande')->findOneBy(array('user' => $this->getUser(),
+         $facture = $em->getRepository('JeuUserBundle:Commande')->findOneBy(array('user' => $this->getUser(),
             'valider' => 1,
-            'id' => $commande->getId())); */
+            'id' => $commande->getId())); 
         $session = $request->getSession();
         $session->remove('adresse');
         $session->remove('panier');
         $session->remove('commande');
         // ici le mail de validation
-/*         $message = \Swift_Message::newInstance()
+          $message = \Swift_Message::newInstance()
             ->setSubject('Validation de votre commande')
-            ->setFrom(array('audoinjean95610@gmail.com' => "Jeannot"))
+            ->setFrom(array('jeux@jeux.audoinjean95300.com' => 'JeuxDeSociété'))
             ->setTo($commande->getUser()->getEmailCanonical())
             ->setCharset('utf-8')
             ->setContentType('text/html')
-            ->setBody($this->renderView('JeuUserBundle:Commande:validationCommande.html.twig',array('user' => $commande->getUser(),
+            ->setBody($this->renderView('JeuArticleBundle:Swift:validationCommande.html.twig',array('user' => $commande->getUser(),
                                                                                                                  'facture' => $facture)));
-        $this->get('mailer')->send($message); */
-        $this->get('session')->getFlashBag()->add('success','Votre commande est validée avec succès');
-        return $this->redirectToRoute('jeu_article_homepage');
+        $this->get('mailer')->send($message);
+	
+        $this->get('session')->getFlashBag()->add('success','Votre commande est validée avec succès. Un mail récapitulatif à été envoyé dans votre boîte mail');
+        return $this->redirectToRoute('jeu_user_factures'); 
+		
+/* 		$message = "Line 1\r\nLine 2\r\nLine 3";
+
+		$message = wordwrap($message, 70, "\r\n");
+
+		mail('audoinjean95@hotmail.com', 'Mon Sujet', $message);
+		return $this->redirectToRoute('jeu_user_factures'); */
     }		
 	
 }	

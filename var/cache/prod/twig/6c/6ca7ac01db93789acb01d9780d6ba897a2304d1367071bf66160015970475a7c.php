@@ -50,7 +50,7 @@ class __TwigTemplate_ed59a2dd96d904d974ccbeb477c7551433bbdcc2bb2559fd43f83f7230b
   ";
         // line 11
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 71
+        // line 83
         echo "  
 ";
     }
@@ -164,7 +164,45 @@ class __TwigTemplate_ed59a2dd96d904d974ccbeb477c7551433bbdcc2bb2559fd43f83f7230b
                         </article>
                     </div>
                 </div>
-
+\t\t\t\t  ";
+        // line 66
+        if ( !twig_test_empty(($context["factures"] ?? null))) {
+            // line 67
+            echo "\t\t\t\t  <br>
+\t\t\t\t  <div class=\"centre\">
+\t\t\t\t\t  <div class=\"pagination\">
+\t\t\t\t\t\t";
+            // line 70
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(range(1, ($context["nbPages"] ?? null)));
+            foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
+                // line 71
+                echo "\t\t\t\t\t\t  ";
+                // line 72
+                echo "\t\t\t\t\t\t\t<a href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures", array("page" => $context["p"])), "html", null, true);
+                echo "\" ";
+                if (($context["p"] == ($context["page"] ?? null))) {
+                    echo " class=\"active\"";
+                }
+                echo ">";
+                echo twig_escape_filter($this->env, $context["p"], "html", null, true);
+                echo "</a>
+\t\t\t\t\t\t ";
+                // line 74
+                echo "\t\t\t\t\t\t";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 75
+            echo "\t\t\t\t\t  </div>
+\t\t\t\t  </div>
+\t\t\t\t  ";
+        }
+        // line 77
+        echo " 
+\t\t\t\t  <br>
             </div>
 \t\t</div>
 \t</div>
@@ -183,7 +221,7 @@ class __TwigTemplate_ed59a2dd96d904d974ccbeb477c7551433bbdcc2bb2559fd43f83f7230b
 
     public function getDebugInfo()
     {
-        return array (  162 => 61,  153 => 58,  149 => 57,  145 => 56,  141 => 55,  138 => 54,  133 => 53,  127 => 49,  125 => 48,  101 => 26,  92 => 23,  89 => 22,  84 => 21,  75 => 18,  72 => 17,  68 => 16,  62 => 12,  59 => 11,  54 => 71,  52 => 11,  47 => 8,  44 => 7,  37 => 4,  34 => 3,  15 => 1,);
+        return array (  204 => 77,  199 => 75,  193 => 74,  182 => 72,  180 => 71,  176 => 70,  171 => 67,  169 => 66,  162 => 61,  153 => 58,  149 => 57,  145 => 56,  141 => 55,  138 => 54,  133 => 53,  127 => 49,  125 => 48,  101 => 26,  92 => 23,  89 => 22,  84 => 21,  75 => 18,  72 => 17,  68 => 16,  62 => 12,  59 => 11,  54 => 83,  52 => 11,  47 => 8,  44 => 7,  37 => 4,  34 => 3,  15 => 1,);
     }
 
     public function getSourceContext()

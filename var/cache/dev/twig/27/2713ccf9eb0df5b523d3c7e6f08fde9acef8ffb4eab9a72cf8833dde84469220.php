@@ -96,7 +96,7 @@ class __TwigTemplate_7b98ccfecfea4689b7baa2ead006b552642b37034e5f2193cdb37d34c70
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 15
-        echo "\t<div class=\"flex3\">\t\t
+        echo "\t<div class=\"flex3 contView\">\t\t
 \t\t<div class=\"item1\">
 \t\t\t";
         // line 17
@@ -106,7 +106,7 @@ class __TwigTemplate_7b98ccfecfea4689b7baa2ead006b552642b37034e5f2193cdb37d34c70
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new Twig_Error_Runtime('Variable "article" does not exist.', 18, $this->source); })()), "image", array()), "webPath", array())), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new Twig_Error_Runtime('Variable "article" does not exist.', 18, $this->source); })()), "image", array()), "alt", array()), "html", null, true);
-            echo "\" width=\"200\" height=\"200\"/>
+            echo "\" width=\"100%\" height =\"90%\"/>
 \t\t\t";
         }
         // line 20
@@ -380,10 +380,10 @@ class __TwigTemplate_7b98ccfecfea4689b7baa2ead006b552642b37034e5f2193cdb37d34c70
 \t\t\t\t{{ flashMessage }}
 \t\t\t</div>\t
 \t\t{% endfor %}
-\t<div class=\"flex3\">\t\t
+\t<div class=\"flex3 contView\">\t\t
 \t\t<div class=\"item1\">
 \t\t\t{% if article.image is not null %}
-\t\t\t\t<img src=\"{{ asset(article.image.webPath) }}\" alt=\"{{ article.image.alt }}\" width=\"200\" height=\"200\"/>
+\t\t\t\t<img src=\"{{ asset(article.image.webPath) }}\" alt=\"{{ article.image.alt }}\" width=\"100%\" height =\"90%\"/>
 \t\t\t{% endif %}
 \t\t</div>
 \t\t<div class=\"item2 pad\">

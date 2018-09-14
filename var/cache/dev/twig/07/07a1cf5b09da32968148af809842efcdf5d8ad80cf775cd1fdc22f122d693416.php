@@ -92,48 +92,67 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
 \t\t\t<div class=\"menu wid\">
-\t\t\t\t<a href=\"";
-        // line 44
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
-        echo "\">Boutique</a>
-\t\t\t\t";
+\t\t\t\t<ul>
+\t\t\t\t\t<li><a href=\"";
         // line 45
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
+        echo "\">Boutique</a></li>
+\t\t\t\t";
+        // line 46
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 46
-            echo "\t\t\t";
+            // line 47
+            echo "\t\t\t\t\t";
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_SUPER_ADMIN")) {
-                // line 47
-                echo "\t\t\t\t<a href=\"";
+                // line 48
+                echo "\t\t\t\t\t\t<li><a href=\"";
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-                echo "\">Administration</a>
-\t\t\t";
+                echo "\">Administration</a></li>
+\t\t\t\t\t";
             }
-            // line 49
-            echo "\t\t\t<a href=\"";
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
-            echo "\">Profil</a>
-\t\t\t<a href=\"";
             // line 50
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
-            echo "\">Déconnexion</a>
-\t\t";
-        } else {
+            echo "\t\t\t\t\t<li><a class=\"menuprofil\">Compte</a>
+\t\t\t\t\t\t<ul class=\"sousmenu\">
+\t\t\t\t\t\t\t<li><a href=\"";
             // line 52
-            echo "\t\t\t<a href=\"";
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_login");
-            echo "\">Connexion</a>
-\t\t\t<a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
+            echo "\">Profil</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
             // line 53
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_edit");
+            echo "\">Editer mes informations</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 54
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_change_password");
+            echo "\">Changer mon mot de passe</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 55
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures");
+            echo "\">Mes factures</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 56
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
+            echo "\">Déconnexion</a></li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</li>\t\t
+\t\t\t\t";
+        } else {
+            // line 60
+            echo "\t\t\t\t\t<li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_login");
+            echo "\">Connexion</a></li>
+\t\t\t\t\t<li><a href=\"";
+            // line 61
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_registration_register");
-            echo "\">S'enregistrer</a>
-\t\t";
+            echo "\">S'enregistrer</a></li>
+\t\t\t\t";
         }
-        // line 55
-        echo "\t\t\t</div>\t
+        // line 63
+        echo "\t\t\t\t</ul>
+\t\t\t</div>\t
 \t\t</div>\t
 \t\t<div class=\"hautCote\">
 \t\t\t<a href=\"";
-        // line 58
+        // line 67
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -146,109 +165,109 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t<legend><h3>Les jeux</h3></legend>
         
           <a href=\"";
-        // line 66
+        // line 75
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\">Accueil</a><br><br>
           <a href=\"";
-        // line 67
+        // line 76
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("meilleurVente");
         echo "\">Top Ventes</a><br>
 \t\t  ";
-        // line 68
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 68, $this->source); })()), "request", array()), "get", array(0 => "_route"), "method") == "jeu_article_recherche")) {
-            // line 69
+        // line 77
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 77, $this->source); })()), "request", array()), "get", array(0 => "_route"), "method") == "jeu_article_recherche")) {
+            // line 78
             echo "\t\t  <h3>Recherche</h3>
 \t\t\t";
-            // line 70
-            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 70, $this->source); })()), 'form_start', array("attr" => array("class" => "form-horizontal", "id" => "form", "method" => "post")));
+            // line 79
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 79, $this->source); })()), 'form_start', array("attr" => array("class" => "form-horizontal", "id" => "form", "method" => "post")));
             echo "
 \t\t\t<div>
               ";
-            // line 72
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 72, $this->source); })()), "categories", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Categories"));
+            // line 81
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 81, $this->source); })()), "categories", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Categories"));
             echo " 
               ";
-            // line 73
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 73, $this->source); })()), "categories", array()), 'widget', array("attr" => array("class" => "categoriesclass span3")));
+            // line 82
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 82, $this->source); })()), "categories", array()), 'widget', array("attr" => array("class" => "categoriesclass span3")));
             echo "
               ";
-            // line 74
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 74, $this->source); })()), "categories", array()), 'errors');
+            // line 83
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 83, $this->source); })()), "categories", array()), 'errors');
             echo "
             </div><br>
 \t\t\t<div>
               ";
-            // line 77
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 77, $this->source); })()), "publicJeu", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Public concerné"));
+            // line 86
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 86, $this->source); })()), "publicJeu", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Public concerné"));
             echo "
               ";
-            // line 78
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 78, $this->source); })()), "publicJeu", array()), 'widget', array("attr" => array("class" => "publicJeuclass span3", "name" => "publicJeu")));
+            // line 87
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 87, $this->source); })()), "publicJeu", array()), 'widget', array("attr" => array("class" => "publicJeuclass span3", "name" => "publicJeu")));
             echo "
               ";
-            // line 79
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 79, $this->source); })()), "publicJeu", array()), 'errors');
+            // line 88
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 88, $this->source); })()), "publicJeu", array()), 'errors');
             echo "
             </div>
 \t\t\t";
-            // line 81
-            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 81, $this->source); })()), 'form_end');
+            // line 90
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 90, $this->source); })()), 'form_end');
             echo "
 \t\t  ";
         } else {
-            // line 83
+            // line 92
             echo "\t\t  <br><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_recherche");
             echo "\">Rechercher un jeu</a>
 \t\t  ";
         }
-        // line 85
+        // line 94
         echo "        </fieldset>
 \t\t
 
 \t\t";
-        // line 88
+        // line 97
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 89
+            // line 98
             echo "\t\t\t<br>
 \t\t\t";
-            // line 90
+            // line 99
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_SUPER_ADMIN")) {
-                // line 91
+                // line 100
                 echo "\t\t\tVous êtes Super Admin<br>
 \t\t\t";
             }
-            // line 93
+            // line 102
             echo "\t\t<fieldset><legend><h3>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 93, $this->source); })()), "user", array()), "username", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 102, $this->source); })()), "user", array()), "username", array()), "html", null, true);
             echo "</h3></legend>\t
 \t\t\t<a href=\"";
-            // line 94
+            // line 103
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
             echo "\"> Profil</a><br><br>
 \t\t\t";
-            // line 95
+            // line 104
             echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuArticleBundle:Panier:menu"));
             echo "<br>
 \t\t\t<a href=\"";
-            // line 96
+            // line 105
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures");
             echo "\"> Mes factures</a><br><br>
 \t\t\t<a href=\"";
-            // line 97
+            // line 106
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a>
 \t\t";
         }
-        // line 99
+        // line 108
         echo "\t\t</fieldset>
       </div>
 \t  <!-- <hr> -->
       <div id=\"content\" class=\"pad\">
         ";
-        // line 103
+        // line 112
         $this->displayBlock('body', $context, $blocks);
-        // line 105
+        // line 114
         echo "      </div>
     </div>
 
@@ -258,7 +277,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Informations</h4>
 \t\t\t\t";
-        // line 113
+        // line 122
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuPagesBundle:Pages:menu"));
         echo "
 \t\t</div>\t
@@ -283,7 +302,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t}(document, 'script', 'facebook-jssdk'));</script>
 \t\t\t\t<div class=\"fb-like\" data-href=\"https://developers.facebook.com/docs/plugins/\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"true\" data-share=\"true\"></div>\t\t\t\t\t
 \t\t\t\t<p class=\" title is-5 indieflower\">Copyright ";
-        // line 135
+        // line 144
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " - <b>Geek-Street</b> (<a
 \t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
@@ -297,9 +316,9 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
   </div>
 
   ";
-        // line 146
+        // line 155
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 151
+        // line 160
         echo "
   </body>
 </html>";
@@ -357,7 +376,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     }
 
-    // line 103
+    // line 112
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -366,7 +385,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 104
+        // line 113
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -376,7 +395,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     }
 
-    // line 146
+    // line 155
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -385,9 +404,9 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 147
+        // line 156
         echo "    ";
-        // line 148
+        // line 157
         echo "    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
     <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
   ";
@@ -411,7 +430,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     public function getDebugInfo()
     {
-        return array (  391 => 148,  389 => 147,  380 => 146,  370 => 104,  361 => 103,  349 => 13,  345 => 12,  342 => 11,  333 => 10,  315 => 8,  303 => 151,  301 => 146,  287 => 135,  262 => 113,  252 => 105,  250 => 103,  244 => 99,  239 => 97,  235 => 96,  231 => 95,  227 => 94,  222 => 93,  218 => 91,  216 => 90,  213 => 89,  211 => 88,  206 => 85,  200 => 83,  195 => 81,  190 => 79,  186 => 78,  182 => 77,  176 => 74,  172 => 73,  168 => 72,  163 => 70,  160 => 69,  158 => 68,  154 => 67,  150 => 66,  137 => 58,  132 => 55,  127 => 53,  122 => 52,  117 => 50,  112 => 49,  106 => 47,  103 => 46,  101 => 45,  97 => 44,  81 => 33,  72 => 29,  60 => 22,  49 => 15,  47 => 10,  42 => 8,  33 => 1,);
+        return array (  410 => 157,  408 => 156,  399 => 155,  389 => 113,  380 => 112,  368 => 13,  364 => 12,  361 => 11,  352 => 10,  334 => 8,  322 => 160,  320 => 155,  306 => 144,  281 => 122,  271 => 114,  269 => 112,  263 => 108,  258 => 106,  254 => 105,  250 => 104,  246 => 103,  241 => 102,  237 => 100,  235 => 99,  232 => 98,  230 => 97,  225 => 94,  219 => 92,  214 => 90,  209 => 88,  205 => 87,  201 => 86,  195 => 83,  191 => 82,  187 => 81,  182 => 79,  179 => 78,  177 => 77,  173 => 76,  169 => 75,  156 => 67,  150 => 63,  145 => 61,  140 => 60,  133 => 56,  129 => 55,  125 => 54,  121 => 53,  117 => 52,  113 => 50,  107 => 48,  104 => 47,  102 => 46,  98 => 45,  81 => 33,  72 => 29,  60 => 22,  49 => 15,  47 => 10,  42 => 8,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -459,17 +478,26 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
 \t\t\t<div class=\"menu wid\">
-\t\t\t\t<a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a>
+\t\t\t\t<ul>
+\t\t\t\t\t<li><a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a></li>
 \t\t\t\t{% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-\t\t\t{% if is_granted(\"ROLE_SUPER_ADMIN\") %}
-\t\t\t\t<a href=\"{{ path('admin') }}\">Administration</a>
-\t\t\t{% endif %}
-\t\t\t<a href=\"{{ path('fos_user_profile_show') }}\">Profil</a>
-\t\t\t<a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a>
-\t\t{% else %}
-\t\t\t<a href=\"{{ path('fos_user_security_login') }}\">Connexion</a>
-\t\t\t<a href=\"{{ path('fos_user_registration_register') }}\">S'enregistrer</a>
-\t\t{% endif %}
+\t\t\t\t\t{% if is_granted(\"ROLE_SUPER_ADMIN\") %}
+\t\t\t\t\t\t<li><a href=\"{{ path('admin') }}\">Administration</a></li>
+\t\t\t\t\t{% endif %}
+\t\t\t\t\t<li><a class=\"menuprofil\">Compte</a>
+\t\t\t\t\t\t<ul class=\"sousmenu\">
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_show') }}\">Profil</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_edit') }}\">Editer mes informations</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_change_password') }}\">Changer mon mot de passe</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('jeu_user_factures') }}\">Mes factures</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a></li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</li>\t\t
+\t\t\t\t{% else %}
+\t\t\t\t\t<li><a href=\"{{ path('fos_user_security_login') }}\">Connexion</a></li>
+\t\t\t\t\t<li><a href=\"{{ path('fos_user_registration_register') }}\">S'enregistrer</a></li>
+\t\t\t\t{% endif %}
+\t\t\t\t</ul>
 \t\t\t</div>\t
 \t\t</div>\t
 \t\t<div class=\"hautCote\">

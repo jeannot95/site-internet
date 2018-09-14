@@ -9,38 +9,39 @@
 <h2>Votre Facture</h2>
 
   {% block fos_user_content %}
-   <div class="container">
-        <div class="columns">
-            <div class="column is-9">
+   <div class="container space-around">
+        <div>
+            <div>
 
                 {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="notification is-success">
+                    <div class="success">
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
                 {% for flashMessage in app.session.flashbag.get('error') %}
-                    <div class="notification is-danger">
+                    <div class="danger">
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
 
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-12">
-                        <article class="tile is-child box is-12">
-                            <h2 class="title is-3 indieflower">Vos factures</h2>
+                <div>
+                    <div>
+                        <article>
+                            <h2>Vos factures</h2>
                         </article>
+						<span class="ind">Nombres total de commandes :</span><span class="ind tomate"> {{ factures|length }}</span>
                     </div>
                 </div>
 
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-12">
-                        <article class="tile is-child box is-12">
-                            <table class="table is-striped">
+                <div>
+                    <div>
+                        <article>
+                            <table >
                                 <thead>
                                     <tr>
-                                        <th class="title is-5 indieflower">Références</th>
-                                        <th class="title is-5 indieflower">Date</th>
-                                        <th class="title is-5 indieflower">Prix TTC</th>
+                                        <th>Références</th>
+                                        <th>Date</th>
+                                        <th>Prix TTC</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -63,7 +64,19 @@
                         </article>
                     </div>
                 </div>
-
+				  {% if factures is not empty %}
+				  <br>
+				  <div class="centre">
+					  <div class="pagination">
+						{% for p in range(1, nbPages) %}
+						  {# <li{% if p == page %} class="active"{% endif %} > #}
+							<a href="{{ path('jeu_user_factures', {'page': p}) }}" {% if p == page %} class="active"{% endif %}>{{ p }}</a>
+						 {# </li> #}
+						{% endfor %}
+					  </div>
+				  </div>
+				  {% endif %} 
+				  <br>
             </div>
 		</div>
 	</div>

@@ -9,11 +9,11 @@
 <h2>Validation</h2>
 
   {% block fos_user_content %} 
-	<table class="table table-striped table-hover text-center">
+	<table class="centre">
 		<thead>
 			<tr>
-				<th class="text-center">Nom du jeu</th>
-				<th class="text-center">Prix HT</th>
+				<th>Nom du jeu</th>
+				<th>Prix HT</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,38 +25,39 @@
 		{% endfor %}
 		</tbody>
 	</table><hr>
-		<dl class="dl-horizontal pull-right">
+		<dl class="right padr bold">
 					<dt>Total HT </dt><dd>{{ commande.commande.prixHT }} €</dd>
 					<dt>TVA 20% </dt><dd>{{ commande.commande.prixHT*0.2 }} €</dd>
 					<dt>Total TTC</dt><dd>{{ commande.commande.prixHT*1.2 }} €</dd>
 		</dl>
-	
-		<div class="col-md-4 pull-left">
-			<dl class="pull-left">
-				<dt><h4>Adresse de livraison</h4></dt>
-				<dt>{{ commande.commande.livraison.prenom }} {{ commande.commande.livraison.nom }}</dt>
-				<dt>{{ commande.commande.livraison.adresse }}</dt>
-				<dt>{{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}</dt>
-			</dl>
-		</div>
-		<div class="col-md-4 pull-left">
-			<dl class="pull-left">
-				<dt><h4>Adresse de facturation</h4></dt>
-				<dt>{{ commande.commande.facturation.prenom }} {{ commande.commande.facturation.nom }}</dt>
-				<dt>{{ commande.commande.facturation.adresse }}</dt>
-				<dt>{{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}</dt>
-			</dl>
-		</div>			
-		<div class="clearfix"></div>
+		<div class="flex4">
+			<div>
+				<dl>
+					<dt><h4>Adresse de livraison</h4></dt>
+					<dt>{{ commande.commande.livraison.prenom }} {{ commande.commande.livraison.nom }}</dt>
+					<dt>{{ commande.commande.livraison.adresse }}</dt>
+					<dt>{{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}</dt>
+				</dl>
+			</div>
+			<div>
+				<dl>
+					<dt><h4>Adresse de facturation</h4></dt>
+					<dt>{{ commande.commande.facturation.prenom }} {{ commande.commande.facturation.nom }}</dt>
+					<dt>{{ commande.commande.facturation.adresse }}</dt>
+					<dt>{{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}</dt>
+				</dl>
+			</div>
+		</div>	
+		<div class="clear"></div>
 		
 		<form action="{{ path('jeu_user_validation_commande', { 'id' : commande.id }) }}" method ="POST">
 			<input name="token" type="hidden" value="{{ commande.commande.token }}">
 			<input name="prix" type="hidden" value="{{ commande.commande.prixTTC }}">
 			<input name="date" type="hidden" value="{{ commande.date|date('dmy') }}">
-			<button type="submit" class="btn btn-success pull-right">Payer</button>
+			<div class="right floatright centre2"><button type="submit" class="bouton2 ">Payer</button></div>
 		</form>
 		
-	<a href="{{ path('jeu_article_livraison') }}" class="btn btn-primary">Retour</a>
+	<a href="{{ path('jeu_article_livraison') }}" class="bouton1">Retour</a>
   {% endblock fos_user_content %}
   
 {% endblock %}

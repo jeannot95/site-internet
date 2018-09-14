@@ -83,7 +83,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
   ";
         // line 13
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 55
+        // line 61
         echo "  
 ";
         
@@ -111,7 +111,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 17, $this->source); })()), "session", array()), "flashbag", array()), "get", array(0 => "success"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
             // line 18
-            echo "\t\t<div class=\"alert alert-success\">
+            echo "\t\t<div class=\"success\">
 \t\t\t";
             // line 19
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
@@ -123,7 +123,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 22
-        echo "\t<table class=\"table table-striped table-hover text-center\">
+        echo "\t<table class=\"centre\">
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th class=\"text-center\">Nom du jeu</th>
@@ -136,7 +136,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
         // line 31
         if ((twig_length_filter($this->env, (isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new Twig_Error_Runtime('Variable "articles" does not exist.', 31, $this->source); })())) == 0)) {
             // line 32
-            echo "\t\t<tr><td colspan=\"3\" class=\"text-center\">Aucun article dans votre panier</td></tr>
+            echo "\t\t\t<tr><td colspan=\"3\" class=\"centre\">Aucun article dans votre panier</td></tr>
 \t\t";
         }
         // line 34
@@ -157,7 +157,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
 \t\t\t\t<td> <a href=\"";
             // line 38
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_supprimer_panier", array("id" => twig_get_attribute($this->env, $this->source, $context["article"], "id", array()))), "html", null, true);
-            echo "\" ><i class=\"glyphicon glyphicon-trash\"></i></a></td>
+            echo "\" ><strong class=\"em12\"> &#128465; </strong></a></td>
 \t\t\t</tr>
 \t\t\t";
             // line 40
@@ -175,32 +175,44 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
         // line 44
         if ((twig_length_filter($this->env, (isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new Twig_Error_Runtime('Variable "articles" does not exist.', 44, $this->source); })())) != 0)) {
             // line 45
-            echo "\t\t<dl class=\"dl-horizontal pull-right\">
-\t\t\t\t\t<dt>Total HT </dt><dd>";
+            echo "\t\t<dl class=\"right padr bold\">
+\t\t\t\t\t<dt>Total HT </dt><dd class=\"padb10\">";
             // line 46
             echo twig_escape_filter($this->env, (isset($context["totalHT"]) || array_key_exists("totalHT", $context) ? $context["totalHT"] : (function () { throw new Twig_Error_Runtime('Variable "totalHT" does not exist.', 46, $this->source); })()), "html", null, true);
             echo " €</dd>
-\t\t\t\t\t<dt>TVA 20% </dt><dd>";
+\t\t\t\t\t<dt>TVA 20% </dt><dd class=\"padb10\">";
             // line 47
             echo twig_escape_filter($this->env, ((isset($context["totalHT"]) || array_key_exists("totalHT", $context) ? $context["totalHT"] : (function () { throw new Twig_Error_Runtime('Variable "totalHT" does not exist.', 47, $this->source); })()) * 0.2), "html", null, true);
             echo " €</dd>
-\t\t\t\t\t<dt>Total TTC</dt><dd>";
+\t\t\t\t\t<dt>Total TTC</dt><dd class=\"padb10\">";
             // line 48
             echo twig_escape_filter($this->env, ((isset($context["totalHT"]) || array_key_exists("totalHT", $context) ? $context["totalHT"] : (function () { throw new Twig_Error_Runtime('Variable "totalHT" does not exist.', 48, $this->source); })()) * 1.2), "html", null, true);
             echo " €</dd>
 \t\t</dl>
-\t\t<div class=\"clearfix\"></div>
-\t\t<a href=\"";
-            // line 51
+\t\t<div class=\"clear\"></div>
+\t\t<div class=\"right\">
+\t\t\t<a href=\"";
+            // line 52
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_livraison");
-            echo "\" class=\"btn btn-success pull-right\">Valider mon panier</a>
+            echo "\" class=\"bouton2\">Valider mon panier</a>
+\t\t\t<a href=\"";
+            // line 53
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
+            echo "\" class=\"bouton1\">Continuer mes achats</a>
+\t\t</div>
+\t";
+        } else {
+            // line 56
+            echo "\t\t<div class=\"right\">
+\t\t\t<a href=\"";
+            // line 57
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
+            echo "\" class=\"bouton1\">Continuer mes achats</a>
+\t\t</div>
 \t";
         }
-        // line 53
-        echo "\t<a href=\"";
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
-        echo "\" class=\"btn btn-primary\">Continuer mes achats</a>
-  ";
+        // line 60
+        echo "  ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -221,7 +233,7 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
 
     public function getDebugInfo()
     {
-        return array (  200 => 53,  195 => 51,  189 => 48,  185 => 47,  181 => 46,  178 => 45,  176 => 44,  172 => 42,  166 => 41,  164 => 40,  159 => 38,  155 => 37,  151 => 36,  148 => 35,  143 => 34,  139 => 32,  137 => 31,  126 => 22,  117 => 19,  114 => 18,  109 => 17,  98 => 13,  87 => 55,  85 => 13,  80 => 10,  71 => 9,  58 => 6,  49 => 5,  39 => 1,  37 => 3,  15 => 1,);
+        return array (  215 => 60,  209 => 57,  206 => 56,  200 => 53,  196 => 52,  189 => 48,  185 => 47,  181 => 46,  178 => 45,  176 => 44,  172 => 42,  166 => 41,  164 => 40,  159 => 38,  155 => 37,  151 => 36,  148 => 35,  143 => 34,  139 => 32,  137 => 31,  126 => 22,  117 => 19,  114 => 18,  109 => 17,  98 => 13,  87 => 61,  85 => 13,  80 => 10,  71 => 9,  58 => 6,  49 => 5,  39 => 1,  37 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -243,11 +255,11 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
 \t  {{ dump(articles) }}
 \t  {% endif %#}
 \t  {% for flashMessage in app.session.flashbag.get('success') %}
-\t\t<div class=\"alert alert-success\">
+\t\t<div class=\"success\">
 \t\t\t{{ flashMessage }}
 \t\t</div>\t
 \t  {% endfor %}
-\t<table class=\"table table-striped table-hover text-center\">
+\t<table class=\"centre\">
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th class=\"text-center\">Nom du jeu</th>
@@ -257,28 +269,34 @@ class __TwigTemplate_944c23825a508c6712e008f187b2c6242f5f747ba8513aca7a5e29967dd
 \t\t</thead>
 \t\t<tbody>
 \t\t{% if articles|length == 0 %}
-\t\t<tr><td colspan=\"3\" class=\"text-center\">Aucun article dans votre panier</td></tr>
+\t\t\t<tr><td colspan=\"3\" class=\"centre\">Aucun article dans votre panier</td></tr>
 \t\t{% endif %}
 \t\t{% for article in articles %}
 \t\t\t<tr>
 \t\t\t\t<td>{{ article.titre }}</td>
 \t\t\t\t<td>{{ article.prix }} €</td>
-\t\t\t\t<td> <a href=\"{{ path('jeu_article_supprimer_panier', {'id': article.id}) }}\" ><i class=\"glyphicon glyphicon-trash\"></i></a></td>
+\t\t\t\t<td> <a href=\"{{ path('jeu_article_supprimer_panier', {'id': article.id}) }}\" ><strong class=\"em12\"> &#128465; </strong></a></td>
 \t\t\t</tr>
 \t\t\t{% set totalHT = totalHT + article.prix %}
 \t\t{% endfor %}
 \t\t</tbody>
 \t</table><hr>
 \t{% if articles|length != 0 %}
-\t\t<dl class=\"dl-horizontal pull-right\">
-\t\t\t\t\t<dt>Total HT </dt><dd>{{ totalHT }} €</dd>
-\t\t\t\t\t<dt>TVA 20% </dt><dd>{{ totalHT*0.2 }} €</dd>
-\t\t\t\t\t<dt>Total TTC</dt><dd>{{ totalHT*1.2 }} €</dd>
+\t\t<dl class=\"right padr bold\">
+\t\t\t\t\t<dt>Total HT </dt><dd class=\"padb10\">{{ totalHT }} €</dd>
+\t\t\t\t\t<dt>TVA 20% </dt><dd class=\"padb10\">{{ totalHT*0.2 }} €</dd>
+\t\t\t\t\t<dt>Total TTC</dt><dd class=\"padb10\">{{ totalHT*1.2 }} €</dd>
 \t\t</dl>
-\t\t<div class=\"clearfix\"></div>
-\t\t<a href=\"{{ path('jeu_article_livraison') }}\" class=\"btn btn-success pull-right\">Valider mon panier</a>
+\t\t<div class=\"clear\"></div>
+\t\t<div class=\"right\">
+\t\t\t<a href=\"{{ path('jeu_article_livraison') }}\" class=\"bouton2\">Valider mon panier</a>
+\t\t\t<a href=\"{{ path('jeu_article_homepage') }}\" class=\"bouton1\">Continuer mes achats</a>
+\t\t</div>
+\t{% else %}
+\t\t<div class=\"right\">
+\t\t\t<a href=\"{{ path('jeu_article_homepage') }}\" class=\"bouton1\">Continuer mes achats</a>
+\t\t</div>
 \t{% endif %}
-\t<a href=\"{{ path('jeu_article_homepage') }}\" class=\"btn btn-primary\">Continuer mes achats</a>
   {% endblock fos_user_content %}
   
 {% endblock %}

@@ -26,8 +26,8 @@ class __TwigTemplate_255fd105e3616dffc3ff8b4d071b96e00a8a39799d1e453a23bfe0df7b4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuUser/Default/utilisateurs.html.twig"));
 
         // line 1
-        echo "<div class=\"box related-list\">
-    <ul class=\"menu-list\">
+        echo "<div>
+    <ul>
         <li><a href=\"";
         // line 3
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_login");
@@ -63,8 +63,8 @@ class __TwigTemplate_255fd105e3616dffc3ff8b4d071b96e00a8a39799d1e453a23bfe0df7b4
 
     public function getSourceContext()
     {
-        return new Twig_Source("<div class=\"box related-list\">
-    <ul class=\"menu-list\">
+        return new Twig_Source("<div>
+    <ul>
         <li><a href=\"{{ path('fos_user_security_login') }}\">Se connecter</a></li>
         <li><a href=\"{{ path('fos_user_registration_register') }}\">S'inscrire</a></li>
     </ul>

@@ -7,16 +7,22 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function byFacture($user)
+    public function byFacture($user,$page, $nbPerPage)
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.user = :user')
             ->andWhere('u.valider = 1')
             ->andWhere('u.reference != 0')
-            ->orderBy('u.id')
-            ->setParameter('user', $user);
-        return $qb->getQuery()->getResult();
+            ->orderBy('u.id','DESC')
+            ->setParameter('user', $user)
+			->getQuery();
+		//return $qb->getQuery()->getResult();
+		$qb
+		  ->setFirstResult(($page-1) * $nbPerPage)
+		  ->setMaxResults($nbPerPage)
+		;
+		return new Paginator($qb, true);
     }
     public function byDateCommand($date)
     {

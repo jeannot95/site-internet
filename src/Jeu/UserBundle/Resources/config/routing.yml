@@ -9,9 +9,13 @@ jeu_user_validation_commande:
     defaults: { _controller: JeuUserBundle:Commande:validationCommande }  
 
 jeu_user_factures:
-    path: /profile/factures
-    defaults: { _controller: JeuUserBundle:User:factures } 
-
+    path: /profile/factures/{page}
+    defaults: 
+        _controller: JeuUserBundle:User:factures
+        page:   1
+    requirements:
+        page: \d*    
+    
 facturePDF:
     path:    /profile/factures/PDF/{id}
     defaults: { _controller: JeuUserBundle:User:facturePDF } 
@@ -22,4 +26,4 @@ routingUtilisateursAdmin:
     
 routingCommandesAdmin:
     resource: "@JeuUserBundle/Resources/config/routing/routingCommandesAdmin.yml"
-    prefix: /admin/commandes
+    prefix: /admin/commandes    

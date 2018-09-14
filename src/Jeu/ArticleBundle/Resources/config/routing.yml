@@ -34,7 +34,7 @@ routingStatistiquesAdmin:
 jeu_article_testprod:
     path: /testprod
     defaults:
-        _controller: JeuArticleBundle:Article:test
+        _controller: JeuArticleBundle:Article:test   
 
     
     

@@ -8,41 +8,43 @@
 
 <h2>Livraison</h2>
 
-  {% block fos_user_content %} 
-	<div class="col-md-6 pull-left">
-		{% if user.adresses|length != 0 %}
-		<form action="{{ path('jeu_article_validation') }}" method="POST">
-			<h4>Adresse de livraison</h4>
-			{% for adresse in user.adresses %}
-				<label class="radio">
-					<input type="radio" name="livraison" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked" {% endif %}>
-					{{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }}
-					<a href="{{ path('livraison_adresse_suppression', { 'id': adresse.id }) }}"><i>supprimer</i></a><br>
-					{{ adresse.prenom }} {{ adresse.nom }}
-				</label>
-			{% endfor %}
-			<br><br>
-			<h4>Adresse de facturation</h4>
-			{% for adresse in user.adresses %}
-				<label class="radio">
-					<input type="radio" name="facturation" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked" {% endif %} >
-					{{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }}
-					<a href="{{ path('livraison_adresse_suppression', { 'id': adresse.id }) }}"><i>supprimer</i></a><br>
-					{{ adresse.prenom }} {{ adresse.nom }}
-				</label>
-			{% endfor %}
-			<br>			
-			<button class="btn btn-primary" type="submit" >Valider mes adresses</button>
-		</form>
-		{% endif %}
-	</div>
-	<div class="col-md-6 pull-right">
-		<h4>Ajouter une nouvelle adresse</h4>
-		<form action="{{ path('jeu_article_livraison') }}" method="POST">
-			{{ form_widget(form) }}
-			<button class="btn btn-primary" type="submit" >Ajouter</button>
-		</form>
-	</div>
+  {% block fos_user_content %}
+	<div class="flex4 flex-wrap">
+		<div>
+			{% if user.adresses|length != 0 %}
+			<form action="{{ path('jeu_article_validation') }}" method="POST">
+				<h4>Adresse de livraison</h4>
+				{% for adresse in user.adresses %}
+					<label class="radio">
+						<input type="radio" name="livraison" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked" {% endif %}>
+						{{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }}<br>						
+						{{ adresse.prenom }} {{ adresse.nom }}<br>
+						<a href="{{ path('livraison_adresse_suppression', { 'id': adresse.id }) }}"><i>supprimer</i></a><br>
+					</label>
+				{% endfor %}
+				<br>
+				<h4>Adresse de facturation</h4>
+				{% for adresse in user.adresses %}
+					<label class="radio">
+						<input type="radio" name="facturation" value="{{ adresse.id }}" {% if loop.index0 == 0 %}checked="checked" {% endif %} >
+						{{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }}<br>						
+						{{ adresse.prenom }} {{ adresse.nom }}<br>
+						<a href="{{ path('livraison_adresse_suppression', { 'id': adresse.id }) }}"><i>supprimer</i></a><br>
+					</label>
+				{% endfor %}
+				<br>			
+				<button class="bouton1" type="submit" >Valider mes adresses</button>
+			</form>
+			{% endif %}
+		</div>
+		<div>
+			<h4>Ajouter une nouvelle adresse</h4>
+			<form action="{{ path('jeu_article_livraison') }}" method="POST">
+				{{ form_widget(form) }}
+				<button class="bouton2" type="submit" >Ajouter</button>
+			</form>
+		</div>
+	</div>	
   {% endblock fos_user_content %}
   
 {% endblock %}
