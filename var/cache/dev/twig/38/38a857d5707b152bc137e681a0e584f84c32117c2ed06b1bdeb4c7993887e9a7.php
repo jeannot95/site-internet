@@ -41,9 +41,10 @@ class __TwigTemplate_8fc6191bd11514cb0dd8ceb762d053d0a5f8569f7a6270327899cd77485
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" />
     </div>
+\t
 ";
-        // line 8
-        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 8, $this->source); })()), 'form_end');
+        // line 9
+        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 9, $this->source); })()), 'form_end');
         echo "
 ";
         
@@ -66,7 +67,7 @@ class __TwigTemplate_8fc6191bd11514cb0dd8ceb762d053d0a5f8569f7a6270327899cd77485
 
     public function getDebugInfo()
     {
-        return array (  46 => 8,  41 => 6,  36 => 4,  32 => 3,  29 => 2,);
+        return array (  47 => 9,  41 => 6,  36 => 4,  32 => 3,  29 => 2,);
     }
 
     public function getSourceContext()
@@ -78,6 +79,7 @@ class __TwigTemplate_8fc6191bd11514cb0dd8ceb762d053d0a5f8569f7a6270327899cd77485
     <div>
         <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" />
     </div>
+\t
 {{ form_end(form) }}
 ", "@FOSUser/Registration/register_content.html.twig", "C:\\wamp\\www\\jeux\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Registration\\register_content.html.twig");
     }

@@ -84,7 +84,9 @@ fos_user:
         sender_name: "%mailer_user%"
     registration:
         form:
-            type: Jeu\UserBundle\Form\RegistrationType  
+            type: Jeu\UserBundle\Form\RegistrationType
+        confirmation:
+            enabled: true            
 
 assetic:
     debug:          '%kernel.debug%'

@@ -79,6 +79,10 @@ class __TwigTemplate_525625fe9c9b62fdfddf102c6d6ceb4634a45a1d22f5c6369c7e19c2787
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" />
 </form>
+<a href=\"";
+        // line 23
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_resetting_request");
+        echo "\">Mot de passe oublié ?</a>
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -100,7 +104,7 @@ class __TwigTemplate_525625fe9c9b62fdfddf102c6d6ceb4634a45a1d22f5c6369c7e19c2787
 
     public function getDebugInfo()
     {
-        return array (  79 => 21,  74 => 19,  67 => 15,  62 => 13,  58 => 12,  55 => 11,  49 => 9,  47 => 8,  43 => 7,  40 => 6,  34 => 4,  32 => 3,  29 => 2,);
+        return array (  84 => 23,  79 => 21,  74 => 19,  67 => 15,  62 => 13,  58 => 12,  55 => 11,  49 => 9,  47 => 8,  43 => 7,  40 => 6,  34 => 4,  32 => 3,  29 => 2,);
     }
 
     public function getSourceContext()
@@ -127,6 +131,7 @@ class __TwigTemplate_525625fe9c9b62fdfddf102c6d6ceb4634a45a1d22f5c6369c7e19c2787
 
     <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"{{ 'security.login.submit'|trans }}\" />
 </form>
+<a href=\"{{ path('fos_user_resetting_request') }}\">Mot de passe oublié ?</a>
 ", "@FOSUser/Security/login_content.html.twig", "C:\\wamp\\www\\jeux\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Security\\login_content.html.twig");
     }
 }
