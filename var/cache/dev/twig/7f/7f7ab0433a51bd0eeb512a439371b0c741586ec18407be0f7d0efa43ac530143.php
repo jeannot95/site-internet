@@ -80,7 +80,7 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
   ";
         // line 11
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 84
+        // line 85
         echo "  
 ";
         
@@ -146,9 +146,10 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
                         <article>
                             <h2>Vos factures</h2>
                         </article>
-\t\t\t\t\t\t<span class=\"ind\">Nombres total de commandes :</span><span class=\"ind tomate\"> ";
-        // line 32
-        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 32, $this->source); })())), "html", null, true);
+\t\t\t\t\t\t";
+        // line 33
+        echo "\t\t\t\t\t\t<span class=\"ind\">Nombres total de commandes :</span><span class=\"ind tomate\"> ";
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 33, $this->source); })())), "html", null, true);
         echo "</span>
                     </div>
                 </div>
@@ -167,35 +168,35 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
                                 </thead>
                                 <tbody>
                                     ";
-        // line 49
-        if ((twig_length_filter($this->env, (isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 49, $this->source); })())) == 0)) {
-            // line 50
+        // line 50
+        if ((twig_length_filter($this->env, (isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 50, $this->source); })())) == 0)) {
+            // line 51
             echo "                                        <tr>
                                             <td colspan=\"4\">Aucune facture actuellement</td>
                                         </tr>
                                     ";
         }
-        // line 54
+        // line 55
         echo "                                    ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 54, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 55, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["facture"]) {
-            // line 55
+            // line 56
             echo "                                        <tr>
                                             <td>ref : ";
-            // line 56
+            // line 57
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "reference", array()), "html", null, true);
             echo "</td>
                                             <td>";
-            // line 57
+            // line 58
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "date", array()), "d/m/Y"), "html", null, true);
             echo "</td>
                                             <td>";
-            // line 58
+            // line 59
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["facture"], "commande", array()), "prixTTC", array()), "html", null, true);
             echo " €</td>
                                             <td><a href=\"";
-            // line 59
+            // line 60
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturePDF", array("id" => twig_get_attribute($this->env, $this->source, $context["facture"], "id", array()))), "html", null, true);
             echo "\" target=\"_blank\" title=\"Consulter le PDF\">PDF</a></td>
                                         </tr>
@@ -204,49 +205,49 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['facture'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 62
+        // line 63
         echo "                                </tbody>
                             </table>
                         </article>
                     </div>
                 </div>
 \t\t\t\t  ";
-        // line 67
-        if ( !twig_test_empty((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 67, $this->source); })()))) {
-            // line 68
+        // line 68
+        if ( !twig_test_empty((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new Twig_Error_Runtime('Variable "factures" does not exist.', 68, $this->source); })()))) {
+            // line 69
             echo "\t\t\t\t  <br>
 \t\t\t\t  <div class=\"centre\">
 \t\t\t\t\t  <div class=\"pagination\">
 \t\t\t\t\t\t";
-            // line 71
+            // line 72
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nbPages"]) || array_key_exists("nbPages", $context) ? $context["nbPages"] : (function () { throw new Twig_Error_Runtime('Variable "nbPages" does not exist.', 71, $this->source); })())));
+            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nbPages"]) || array_key_exists("nbPages", $context) ? $context["nbPages"] : (function () { throw new Twig_Error_Runtime('Variable "nbPages" does not exist.', 72, $this->source); })())));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 72
-                echo "\t\t\t\t\t\t  ";
                 // line 73
+                echo "\t\t\t\t\t\t  ";
+                // line 74
                 echo "\t\t\t\t\t\t\t<a href=\"";
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures", array("page" => $context["p"])), "html", null, true);
                 echo "\" ";
-                if (($context["p"] == (isset($context["page"]) || array_key_exists("page", $context) ? $context["page"] : (function () { throw new Twig_Error_Runtime('Variable "page" does not exist.', 73, $this->source); })()))) {
+                if (($context["p"] == (isset($context["page"]) || array_key_exists("page", $context) ? $context["page"] : (function () { throw new Twig_Error_Runtime('Variable "page" does not exist.', 74, $this->source); })()))) {
                     echo " class=\"active\"";
                 }
                 echo ">";
                 echo twig_escape_filter($this->env, $context["p"], "html", null, true);
                 echo "</a>
 \t\t\t\t\t\t ";
-                // line 75
+                // line 76
                 echo "\t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 76
+            // line 77
             echo "\t\t\t\t\t  </div>
 \t\t\t\t  </div>
 \t\t\t\t  ";
         }
-        // line 78
+        // line 79
         echo " 
 \t\t\t\t  <br>
             </div>
@@ -273,7 +274,7 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
 
     public function getDebugInfo()
     {
-        return array (  250 => 78,  245 => 76,  239 => 75,  228 => 73,  226 => 72,  222 => 71,  217 => 68,  215 => 67,  208 => 62,  199 => 59,  195 => 58,  191 => 57,  187 => 56,  184 => 55,  179 => 54,  173 => 50,  171 => 49,  151 => 32,  143 => 26,  134 => 23,  131 => 22,  126 => 21,  117 => 18,  114 => 17,  110 => 16,  104 => 12,  95 => 11,  84 => 84,  82 => 11,  77 => 8,  68 => 7,  55 => 4,  46 => 3,  15 => 1,);
+        return array (  251 => 79,  246 => 77,  240 => 76,  229 => 74,  227 => 73,  223 => 72,  218 => 69,  216 => 68,  209 => 63,  200 => 60,  196 => 59,  192 => 58,  188 => 57,  185 => 56,  180 => 55,  174 => 51,  172 => 50,  151 => 33,  143 => 26,  134 => 23,  131 => 22,  126 => 21,  117 => 18,  114 => 17,  110 => 16,  104 => 12,  95 => 11,  84 => 85,  82 => 11,  77 => 8,  68 => 7,  55 => 4,  46 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -309,6 +310,7 @@ class __TwigTemplate_2a4766e6dfea7a1fb6630c6372101ecabc4f412956bf52d2f951a24c05e
                         <article>
                             <h2>Vos factures</h2>
                         </article>
+\t\t\t\t\t\t{#{ dump(factures) }#}
 \t\t\t\t\t\t<span class=\"ind\">Nombres total de commandes :</span><span class=\"ind tomate\"> {{ factures|length }}</span>
                     </div>
                 </div>

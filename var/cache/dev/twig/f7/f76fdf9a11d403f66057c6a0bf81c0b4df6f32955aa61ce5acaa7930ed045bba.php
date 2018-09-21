@@ -90,7 +90,7 @@ class __TwigTemplate_917eaf1e3794c4aa1883ec1beb463d5db8507a86782ed7b6679e06e247d
             echo "</td>
 \t\t\t\t<td>";
             // line 18
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "moyenne", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "moyenne", array()), 0, 4), "html", null, true);
             echo "</td>
 \t\t\t</tr>
 \t\t";
@@ -160,7 +160,7 @@ class __TwigTemplate_917eaf1e3794c4aa1883ec1beb463d5db8507a86782ed7b6679e06e247d
 \t\t\t<tr>
 \t\t\t\t<td>{{ loop.index }}</td>
 \t\t\t\t<td>{{ art.titre }}</td>
-\t\t\t\t<td>{{ art.moyenne }}</td>
+\t\t\t\t<td>{{ art.moyenne|slice(0,4) }}</td>
 \t\t\t</tr>
 \t\t{% endfor %}
 \t\t</table>

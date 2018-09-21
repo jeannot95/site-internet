@@ -350,6 +350,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     }
                     not_adminProduits_delete:
 
+                    // rechercheArticle
+                    if (0 === strpos($pathinfo, '/admin/produits/recherches') && preg_match('#^/admin/produits/recherches(?:/(?P<page>\\d*))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'rechercheArticle')), array (  '_controller' => 'Jeu\\ArticleBundle\\Controller\\ArticlesAdminController::rechercheTraitementAction',  'page' => 1,));
+                    }
+
                 }
 
                 elseif (0 === strpos($pathinfo, '/admin/public')) {
@@ -671,20 +676,38 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_adminAdressesUtilisateurs;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminAdressesUtilisateurs')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::utilisateurAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminAdressesUtilisateurs')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::utilisateurAdressesAction',));
                 }
                 not_adminAdressesUtilisateurs:
 
                 // adminFacturesUtilisateurs
-                if (preg_match('#^/user/admin/utilisateurs/(?P<id>[^/]++)/factures$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/user/admin/utilisateurs/(?P<id>[^/]++)/factures(?:/(?P<page>\\d*))?$#s', $pathinfo, $matches)) {
                     if ('GET' !== $canonicalMethod) {
                         $allow[] = 'GET';
                         goto not_adminFacturesUtilisateurs;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminFacturesUtilisateurs')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::utilisateurAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminFacturesUtilisateurs')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::utilisateurFacturesAction',  'page' => 1,));
                 }
                 not_adminFacturesUtilisateurs:
+
+                if (0 === strpos($pathinfo, '/user/admin/utilisateurs/recherche')) {
+                    // jeu_userbundle_recherche
+                    if ('/user/admin/utilisateurs/recherche' === $pathinfo) {
+                        return array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::rechercheAction',  '_route' => 'jeu_userbundle_recherche',);
+                    }
+
+                    // rechercheUser
+                    if (0 === strpos($pathinfo, '/user/admin/utilisateurs/recherches') && preg_match('#^/user/admin/utilisateurs/recherches(?:/(?P<page>\\d*))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'rechercheUser')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::rechercheTraitementAction',  'page' => 1,));
+                    }
+
+                }
+
+                // editeUser
+                if (0 === strpos($pathinfo, '/user/admin/utilisateurs/editer') && preg_match('#^/user/admin/utilisateurs/editer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'editeUser')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::editRolesAction',));
+                }
 
             }
 

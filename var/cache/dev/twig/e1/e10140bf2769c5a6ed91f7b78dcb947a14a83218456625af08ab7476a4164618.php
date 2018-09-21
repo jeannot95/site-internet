@@ -55,7 +55,13 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
 \t\t<p class=\"ind\">Nombre total de produits : <span class=\"tomate\">";
         // line 6
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["entities"]) || array_key_exists("entities", $context) ? $context["entities"] : (function () { throw new Twig_Error_Runtime('Variable "entities" does not exist.', 6, $this->source); })())), "html", null, true);
-        echo "</span></p>\t\t
+        echo "</span></p>
+\t\t<div>
+\t\t\t";
+        // line 8
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuArticleBundle:ArticlesAdmin:recherche"));
+        echo "
+\t\t</div>\t\t
     </div>
     <div>
 \t\t<table class=\"centre\">
@@ -63,20 +69,20 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Categorie</th>
 \t\t\t\t\t<th>Nom</th>
-\t\t\t\t\t<th>Prix</th>
+\t\t\t\t\t<th>Prix(TTC)</th>
 \t\t\t\t\t<th>Actions</th>
 \t\t\t\t</tr>
 \t\t\t</thead>
 \t\t\t<tbody>
 \t\t\t\t";
-        // line 19
+        // line 22
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) || array_key_exists("entities", $context) ? $context["entities"] : (function () { throw new Twig_Error_Runtime('Variable "entities" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) || array_key_exists("entities", $context) ? $context["entities"] : (function () { throw new Twig_Error_Runtime('Variable "entities" does not exist.', 22, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 20
+            // line 23
             echo "\t\t\t\t\t<tr>
 \t\t\t\t\t\t<td>";
-            // line 21
+            // line 24
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["entity"], "categories", array()));
             $context['loop'] = array(
@@ -113,20 +119,20 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
             $context = array_intersect_key($context, $_parent) + $_parent;
             echo "</td>
 \t\t\t\t\t\t<td>";
-            // line 22
+            // line 25
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["entity"], "titre", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t<td>";
-            // line 23
+            // line 26
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["entity"], "prix", array()), "html", null, true);
             echo " €</td>
 \t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t<a href=\"";
-            // line 25
+            // line 28
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminProduits_show", array("id" => twig_get_attribute($this->env, $this->source, $context["entity"], "id", array()))), "html", null, true);
             echo "\">voir</a> /
 \t\t\t\t\t\t\t<a href=\"";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminProduits_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["entity"], "id", array()))), "html", null, true);
             echo "\">editer</i></a>
 \t\t\t\t\t\t</td>
@@ -136,30 +142,30 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 30
+        // line 33
         echo "\t\t\t</tbody>
 \t\t</table>
 \t\t<br>
 \t\t<a href=\"";
-        // line 33
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminProduits_new");
         echo "\" class=\"bouton2\">Ajouter un nouveau produit</a>
     </div>
 \t<div class=\"centre\">
 \t\t<div class=\"pagination\">
 \t\t\t";
-        // line 37
-        if ( !twig_test_empty((isset($context["entities"]) || array_key_exists("entities", $context) ? $context["entities"] : (function () { throw new Twig_Error_Runtime('Variable "entities" does not exist.', 37, $this->source); })()))) {
-            // line 38
+        // line 40
+        if ( !twig_test_empty((isset($context["entities"]) || array_key_exists("entities", $context) ? $context["entities"] : (function () { throw new Twig_Error_Runtime('Variable "entities" does not exist.', 40, $this->source); })()))) {
+            // line 41
             echo "\t\t\t\t";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nbPages"]) || array_key_exists("nbPages", $context) ? $context["nbPages"] : (function () { throw new Twig_Error_Runtime('Variable "nbPages" does not exist.', 38, $this->source); })())));
+            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nbPages"]) || array_key_exists("nbPages", $context) ? $context["nbPages"] : (function () { throw new Twig_Error_Runtime('Variable "nbPages" does not exist.', 41, $this->source); })())));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 39
+                // line 42
                 echo "\t\t\t\t\t<a href=\"";
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminProduits_index", array("page" => $context["p"])), "html", null, true);
                 echo "\" ";
-                if (($context["p"] == (isset($context["page"]) || array_key_exists("page", $context) ? $context["page"] : (function () { throw new Twig_Error_Runtime('Variable "page" does not exist.', 39, $this->source); })()))) {
+                if (($context["p"] == (isset($context["page"]) || array_key_exists("page", $context) ? $context["page"] : (function () { throw new Twig_Error_Runtime('Variable "page" does not exist.', 42, $this->source); })()))) {
                     echo " class=\"active\"";
                 }
                 echo ">";
@@ -170,10 +176,10 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 41
+            // line 44
             echo "\t\t\t";
         }
-        // line 42
+        // line 45
         echo "\t\t</div>
 \t</div>
 ";
@@ -197,7 +203,7 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
 
     public function getDebugInfo()
     {
-        return array (  177 => 42,  174 => 41,  159 => 39,  154 => 38,  152 => 37,  145 => 33,  140 => 30,  130 => 26,  126 => 25,  121 => 23,  117 => 22,  80 => 21,  77 => 20,  73 => 19,  57 => 6,  53 => 4,  44 => 3,  15 => 1,);
+        return array (  183 => 45,  180 => 44,  165 => 42,  160 => 41,  158 => 40,  151 => 36,  146 => 33,  136 => 29,  132 => 28,  127 => 26,  123 => 25,  86 => 24,  83 => 23,  79 => 22,  62 => 8,  57 => 6,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -207,7 +213,10 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
 {% block body -%}
     <div>
 \t\t<h2 class=\"bordeau centre ind\">Liste des Produits</h2>
-\t\t<p class=\"ind\">Nombre total de produits : <span class=\"tomate\">{{ entities|length }}</span></p>\t\t
+\t\t<p class=\"ind\">Nombre total de produits : <span class=\"tomate\">{{ entities|length }}</span></p>
+\t\t<div>
+\t\t\t{{ render(controller('JeuArticleBundle:ArticlesAdmin:recherche')) }}
+\t\t</div>\t\t
     </div>
     <div>
 \t\t<table class=\"centre\">
@@ -215,7 +224,7 @@ class __TwigTemplate_9ecca625e8c01049547220cb72257ebb9b528b0b5020c02b0a0c956dfe8
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Categorie</th>
 \t\t\t\t\t<th>Nom</th>
-\t\t\t\t\t<th>Prix</th>
+\t\t\t\t\t<th>Prix(TTC)</th>
 \t\t\t\t\t<th>Actions</th>
 \t\t\t\t</tr>
 \t\t\t</thead>

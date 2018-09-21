@@ -777,7 +777,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <argument>C:/wamp/www/jeux/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -787,7 +787,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -2810,6 +2810,13 @@
         <argument>null</argument>
       </call>
       <call method="add">
+        <argument type="service" id="security.request_matcher.1c0ce2c0b3b77a4fa1cd4dfa33fae5c1969614339ec9b4d54bbcd92b61967e87fcdb88fc"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
         <argument type="service" id="security.request_matcher.1b30b8c2a4b8b29522ee0ab75e51026f54c63dc2d3039a22976916a4ed1da7c4bb320ae7"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
@@ -3157,12 +3164,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main_login" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5b9b54c533bb30.91845483</argument>
+      <argument>5ba4bb58ca2cd2.39111050</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main_login" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5b9b54c533bb30.91845483</argument>
+      <argument>5ba4bb58ca2cd2.39111050</argument>
     </service>
     <service id="security.exception_listener.main_login" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3342,12 +3349,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5b9b54c533bb30.91845483</argument>
+      <argument>5ba4bb58ca2cd2.39111050</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5b9b54c533bb30.91845483</argument>
+      <argument>5ba4bb58ca2cd2.39111050</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3392,6 +3399,9 @@
     </service>
     <service id="security.request_matcher.fc1361a081a79d43baa3b010f55efe95a2cf43369ee73dcd2182ec1b9334ab99334e0826" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin/</argument>
+    </service>
+    <service id="security.request_matcher.1c0ce2c0b3b77a4fa1cd4dfa33fae5c1969614339ec9b4d54bbcd92b61967e87fcdb88fc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/user/admin/</argument>
     </service>
     <service id="security.request_matcher.1b30b8c2a4b8b29522ee0ab75e51026f54c63dc2d3039a22976916a4ed1da7c4bb320ae7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/avis/depos</argument>
@@ -5648,7 +5658,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>OyBW-zF1Gz</argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <argument>C:/wamp/www/jeux/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5656,7 +5666,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>6hfdSwbPju</argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <argument>C:/wamp/www/jeux/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5664,7 +5674,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>Wg8vtIGoRV</argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <argument>C:/wamp/www/jeux/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5672,7 +5682,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>33UpuDDiIu</argument>
       <argument>0</argument>
-      <argument>9pvUnLDMmsgdMkW-WzdKLQ</argument>
+      <argument>lVGk8JI2B4k7ATL-1rTSEA</argument>
       <argument>C:/wamp/www/jeux/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

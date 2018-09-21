@@ -87,7 +87,7 @@ class ArticleController extends Controller
 			'placeholder' => 'None',
 			'choice_label'  => 'name',
 			'multiple'      => false)) 
-		 // ->add('save',      SubmitType::class)	
+		 // ->add('save', SubmitType::class)	
 		;		
 		
 		$form = $formBuilder->getForm();

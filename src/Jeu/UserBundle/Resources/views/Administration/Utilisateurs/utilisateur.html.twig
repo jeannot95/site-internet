@@ -1,0 +1,59 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+		<h2 class="centre orange ind">Liste des Utilisateurs</h2>
+		<span class="ind">Nombre d'utilisateur pour "{{ resultat }}" : </span><span class="ind tomate">{{ utilisateurs|length }}</span>
+		<div>
+			{{ render(controller('JeuUserBundle:UserAdmin:recherche')) }}
+		</div>
+    </div>
+    <div class="centre">
+		<table>
+			<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Actions</th>
+				{% if is_granted("ROLE_SUPER_ADMIN") %}<th>Editer</th>{% endif %}
+			</tr>
+			</thead>
+			<tbody>
+			{% for utilisateur in utilisateurs %}
+				<tr>
+					<td>{{ utilisateur.username }}</td>
+					<td>
+						{% if utilisateur.adresses|length != 0 %}
+							<a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
+							   title="Consulter les Adresses">Adresses</a>&nbsp;&nbsp;
+						{% endif %}
+						{% if utilisateur.commandes|length != 0 %}
+							<a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
+							   title="Consulter les Factures">Factures</a>
+						{% endif %}
+					</td>
+					{% if is_granted("ROLE_SUPER_ADMIN") %}
+						<td>						
+							{% for role in utilisateur.roles %}
+								{% if "ROLE_SUPER_ADMIN" not in utilisateur.roles %}
+								<a href=" {{ path('editeUser',{ 'id': utilisateur.id }) }} ">{{ role }}</a>
+								{% endif %}	
+							{% endfor %}
+						</td>
+					{% endif %}					
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+    </div>
+	<br>
+	<a href="{{ path('adminUtilisateurs_index') }}" class="bouton2">Retour à la liste</a>
+	<div class="centre">		
+		<div class="pagination">
+			{% if utilisateurs is not empty %}
+				{% for p in range(1, nbPages) %}
+					<a href="{{ path('adminUtilisateurs_index', {'page': p}) }}" {% if p == page %} class="active"{% endif %}>{{ p }}</a>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>	
+{% endblock %}

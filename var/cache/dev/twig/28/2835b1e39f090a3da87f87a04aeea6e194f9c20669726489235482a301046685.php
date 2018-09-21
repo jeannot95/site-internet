@@ -1,6 +1,6 @@
 <?php
 
-/* JeuCoreBundle::layout.html.twig */
+/* @JeuCore/layout.html.twig */
 class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d4760f59 extends Twig_Template
 {
     private $source;
@@ -24,10 +24,10 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuCoreBundle::layout.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuCore/layout.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuCoreBundle::layout.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuCore/layout.html.twig"));
 
         // line 1
         echo "
@@ -102,11 +102,11 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 48
             echo "\t\t\t\t\t";
-            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_SUPER_ADMIN")) {
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
                 // line 49
                 echo "\t\t\t\t\t\t<li><a href=\"";
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-                echo "\">Administration</a></li>
+                echo "\" id=\"adminmenu\" >Administration</a></li>
 \t\t\t\t\t";
             }
             // line 51
@@ -283,29 +283,21 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 \t\t</div>\t
 \t\t<div class=\"footer centre\">\t
 \t\t\t<h4>Réseaux sociaux</h4>
-\t\t\t<a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
-\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a>
-\t\t\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
-\t\t\t\t<script type=\"text/javascript\" src=\"http://platform.linkedin.com/in.js\"></script>
-\t\t\t\t<script type=\"in/share\" data-counter=\"top\"></script>
-\t\t\t\t<g:plusone size=\"tall\"></g:plusone>
-\t\t\t\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
-\t\t\t\t{lang: 'fr'}
-\t\t\t\t</script>
-\t\t\t\t<div id=\"fb-root\"></div>
-\t\t\t\t<script>(function(d, s, id) {
-\t\t\t\tvar js, fjs = d.getElementsByTagName(s)[0];
-\t\t\t\tif (d.getElementById(id)) return;
-\t\t\t\tjs = d.createElement(s); js.id = id;
-\t\t\t\tjs.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
-\t\t\t\tfjs.parentNode.insertBefore(js, fjs);
-\t\t\t\t}(document, 'script', 'facebook-jssdk'));</script>
-\t\t\t\t<div class=\"fb-like\" data-href=\"https://developers.facebook.com/docs/plugins/\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"true\" data-share=\"true\"></div>\t\t\t\t\t
-\t\t\t\t<p class=\" title is-5 indieflower\">Copyright ";
-        // line 145
+\t\t\t<div class=\"flex3 justify-center\">
+\t\t\t\t\t<div class=\"mar2\"><a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
+\t\t\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a></div>
+\t\t\t\t\t<div class=\"fb-like mar2\" data-href=\"http://jeux.audoinjean95300.com\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"false\" data-share=\"true\"></div><div class=\"mar2\">
+\t\t\t\t\t<g:plusone size=\"tall\"></g:plusone></div>
+\t\t\t\t\t<div>
+\t\t\t\t\t<script src=\"//platform.linkedin.com/in.js\" type=\"text/javascript\"> lang: fr_FR</script>
+\t\t\t\t\t<script type=\"IN/Share\" data-url=\"http://jeux.audoinjean95300.com\"></script></div>
+\t\t\t</div>\t\t\t
+\t\t\t\t\t<p>Copyright ";
+        // line 136
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " - <b>Geek-Street</b> (<a
-\t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t\thref=\"http://jeux.audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t
 \t\t</div>\t\t\t\t
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Nous contacter</h4>
@@ -316,9 +308,9 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
   </div>
 
   ";
-        // line 156
+        // line 148
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 180
+        // line 177
         echo "
   </body>
 </html>";
@@ -399,7 +391,7 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 
     }
 
-    // line 156
+    // line 148
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -408,22 +400,15 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 157
+        // line 149
         echo "    ";
-        // line 158
-        echo "    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
-    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
+        // line 150
+        echo "<!--     <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
+    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script> -->
 \t<script>
-\t// When the user scrolls the page, execute myFunction 
 \t\twindow.onscroll = function() {myFunction()};
-
-\t\t// Get the header
 \t\tvar menu = document.getElementById(\"menu\");
-
-\t\t// Get the offset position of the navbar
 \t\tvar sticky = menu.offsetTop;
-
-\t\t// Add the sticky class to the header when you reach its scroll position. Remove \"sticky\" when you leave the scroll position
 \t\tfunction myFunction() {
 \t\t  if (window.pageYOffset > sticky) {
 \t\t\tmenu.classList.add(\"sticky\");
@@ -432,6 +417,18 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 \t\t  }
 \t\t}
 \t</script>
+\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
+\t<script>(function(d, s, id) {
+\t\t  var js, fjs = d.getElementsByTagName(s)[0];
+\t\t  if (d.getElementById(id)) return;
+\t\t  js = d.createElement(s); js.id = id;
+\t\t  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
+\t\t  fjs.parentNode.insertBefore(js, fjs);
+\t\t}(document, 'script', 'facebook-jssdk'));
+\t</script>
+\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
+\t\t{lang: 'fr'}
+\t</script>\t
   ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -443,7 +440,7 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 
     public function getTemplateName()
     {
-        return "JeuCoreBundle::layout.html.twig";
+        return "@JeuCore/layout.html.twig";
     }
 
     public function isTraitable()
@@ -453,7 +450,7 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 
     public function getDebugInfo()
     {
-        return array (  414 => 158,  412 => 157,  403 => 156,  393 => 114,  384 => 113,  372 => 14,  368 => 13,  364 => 12,  361 => 11,  352 => 10,  334 => 8,  322 => 180,  320 => 156,  306 => 145,  281 => 123,  271 => 115,  269 => 113,  263 => 109,  258 => 107,  254 => 106,  250 => 105,  246 => 104,  241 => 103,  237 => 101,  235 => 100,  232 => 99,  230 => 98,  225 => 95,  219 => 93,  214 => 91,  209 => 89,  205 => 88,  201 => 87,  195 => 84,  191 => 83,  187 => 82,  182 => 80,  179 => 79,  177 => 78,  173 => 77,  169 => 76,  156 => 68,  150 => 64,  145 => 62,  140 => 61,  133 => 57,  129 => 56,  125 => 55,  121 => 54,  117 => 53,  113 => 51,  107 => 49,  104 => 48,  102 => 47,  98 => 46,  81 => 34,  72 => 30,  60 => 23,  49 => 16,  47 => 10,  42 => 8,  33 => 1,);
+        return array (  406 => 150,  404 => 149,  395 => 148,  385 => 114,  376 => 113,  364 => 14,  360 => 13,  356 => 12,  353 => 11,  344 => 10,  326 => 8,  314 => 177,  312 => 148,  297 => 136,  281 => 123,  271 => 115,  269 => 113,  263 => 109,  258 => 107,  254 => 106,  250 => 105,  246 => 104,  241 => 103,  237 => 101,  235 => 100,  232 => 99,  230 => 98,  225 => 95,  219 => 93,  214 => 91,  209 => 89,  205 => 88,  201 => 87,  195 => 84,  191 => 83,  187 => 82,  182 => 80,  179 => 79,  177 => 78,  173 => 77,  169 => 76,  156 => 68,  150 => 64,  145 => 62,  140 => 61,  133 => 57,  129 => 56,  125 => 55,  121 => 54,  117 => 53,  113 => 51,  107 => 49,  104 => 48,  102 => 47,  98 => 46,  81 => 34,  72 => 30,  60 => 23,  49 => 16,  47 => 10,  42 => 8,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -505,8 +502,8 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 \t\t\t\t<ul>
 \t\t\t\t\t<li><a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a></li>
 \t\t\t\t{% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-\t\t\t\t\t{% if is_granted(\"ROLE_SUPER_ADMIN\") %}
-\t\t\t\t\t\t<li><a href=\"{{ path('admin') }}\">Administration</a></li>
+\t\t\t\t\t{% if is_granted(\"ROLE_ADMIN\") %}
+\t\t\t\t\t\t<li><a href=\"{{ path('admin') }}\" id=\"adminmenu\" >Administration</a></li>
 \t\t\t\t\t{% endif %}
 \t\t\t\t\t<li><a class=\"menuprofil\">Mon compte</a>
 \t\t\t\t\t\t<ul class=\"sousmenu\">
@@ -584,26 +581,18 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 \t\t</div>\t
 \t\t<div class=\"footer centre\">\t
 \t\t\t<h4>Réseaux sociaux</h4>
-\t\t\t<a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
-\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a>
-\t\t\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
-\t\t\t\t<script type=\"text/javascript\" src=\"http://platform.linkedin.com/in.js\"></script>
-\t\t\t\t<script type=\"in/share\" data-counter=\"top\"></script>
-\t\t\t\t<g:plusone size=\"tall\"></g:plusone>
-\t\t\t\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
-\t\t\t\t{lang: 'fr'}
-\t\t\t\t</script>
-\t\t\t\t<div id=\"fb-root\"></div>
-\t\t\t\t<script>(function(d, s, id) {
-\t\t\t\tvar js, fjs = d.getElementsByTagName(s)[0];
-\t\t\t\tif (d.getElementById(id)) return;
-\t\t\t\tjs = d.createElement(s); js.id = id;
-\t\t\t\tjs.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
-\t\t\t\tfjs.parentNode.insertBefore(js, fjs);
-\t\t\t\t}(document, 'script', 'facebook-jssdk'));</script>
-\t\t\t\t<div class=\"fb-like\" data-href=\"https://developers.facebook.com/docs/plugins/\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"true\" data-share=\"true\"></div>\t\t\t\t\t
-\t\t\t\t<p class=\" title is-5 indieflower\">Copyright {{ \"now\"|date('Y') }} - <b>Geek-Street</b> (<a
-\t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t<div class=\"flex3 justify-center\">
+\t\t\t\t\t<div class=\"mar2\"><a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
+\t\t\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a></div>
+\t\t\t\t\t<div class=\"fb-like mar2\" data-href=\"http://jeux.audoinjean95300.com\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"false\" data-share=\"true\"></div><div class=\"mar2\">
+\t\t\t\t\t<g:plusone size=\"tall\"></g:plusone></div>
+\t\t\t\t\t<div>
+\t\t\t\t\t<script src=\"//platform.linkedin.com/in.js\" type=\"text/javascript\"> lang: fr_FR</script>
+\t\t\t\t\t<script type=\"IN/Share\" data-url=\"http://jeux.audoinjean95300.com\"></script></div>
+\t\t\t</div>\t\t\t
+\t\t\t\t\t<p>Copyright {{ \"now\"|date('Y') }} - <b>Geek-Street</b> (<a
+\t\t\t\t\t\t\thref=\"http://jeux.audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t
 \t\t</div>\t\t\t\t
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Nous contacter</h4>
@@ -615,19 +604,12 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
-    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
+<!--     <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
+    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script> -->
 \t<script>
-\t// When the user scrolls the page, execute myFunction 
 \t\twindow.onscroll = function() {myFunction()};
-
-\t\t// Get the header
 \t\tvar menu = document.getElementById(\"menu\");
-
-\t\t// Get the offset position of the navbar
 \t\tvar sticky = menu.offsetTop;
-
-\t\t// Add the sticky class to the header when you reach its scroll position. Remove \"sticky\" when you leave the scroll position
 \t\tfunction myFunction() {
 \t\t  if (window.pageYOffset > sticky) {
 \t\t\tmenu.classList.add(\"sticky\");
@@ -636,9 +618,21 @@ class __TwigTemplate_3c1bb8d44f72a02ba4f4b9315773c6aeaf65444487c1d5569853d2f7d47
 \t\t  }
 \t\t}
 \t</script>
+\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
+\t<script>(function(d, s, id) {
+\t\t  var js, fjs = d.getElementsByTagName(s)[0];
+\t\t  if (d.getElementById(id)) return;
+\t\t  js = d.createElement(s); js.id = id;
+\t\t  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
+\t\t  fjs.parentNode.insertBefore(js, fjs);
+\t\t}(document, 'script', 'facebook-jssdk'));
+\t</script>
+\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
+\t\t{lang: 'fr'}
+\t</script>\t
   {% endblock %}
 
   </body>
-</html>", "JeuCoreBundle::layout.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\CoreBundle\\Resources\\views\\layout.html.twig");
+</html>", "@JeuCore/layout.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\CoreBundle\\Resources\\views\\layout.html.twig");
     }
 }

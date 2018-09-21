@@ -70,6 +70,14 @@ tr:hover {background-color: #f5f5f5;}
   background-image: linear-gradient(#3399ff, lightblue,white,white);
   z-index:999;
 }
+.sticky2 {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+  background-image: linear-gradient(#ff5050, #ffcc66,white,white);
+  z-index:999;
+}
 .menu li{float:left; position:relative;}
 .menu ul ul {
 	display:none;
@@ -89,6 +97,7 @@ tr:hover {background-color: #f5f5f5;}
 	}
 .menu li a:hover {background:#a5fff6;}	
 .menu li ul {position:absolute}
+#adminmenu{width:250px}
 /* MENU *//* MENU *//* MENU *//* MENU *//* MENU *//* MENU *//* MENU *//* MENU *//* MENU */
 
 /* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE */
@@ -111,6 +120,7 @@ tr:hover {background-color: #f5f5f5;}
 .flex4{display:flex;justify-content: space-around;}
 .space-around{justify-content: space-around;}
 .flex3{display:flex;}
+.justify-center{justify-content: center;}
 .wrap{flex-wrap: wrap;}
 /* Couleur  */
 .vert{color:#00B366}
@@ -132,8 +142,10 @@ tr:hover {background-color: #f5f5f5;}
 .wid{width:100%}
 .wid33{width:33.33%}
 .mar{margin:10px}
+.mar2{margin-right:5px;}
 .item1{width:25%;}
 .item2{width:75%;}
+.mart{margin-top:10px;}
 /* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE *//* PRINCIPALE */
 
 /* PAGINATION *//* PAGINATION *//* PAGINATION *//* PAGINATION *//* PAGINATION *//* PAGINATION */
@@ -196,6 +208,7 @@ select{padding:5px; border-radius:5px;margin-top:5px;}
 @media screen and (max-width: 780px) {
 	.menu li a{font-size:1.5em;}
 	.menu ul li ul a{font-size:1.1em;}
+	#adminmenu{width:200px}
 	.titre{font-size:2em;}
 	.hautCote{display:none;}
 	.flex{display:flex;justify-content: space-between;}
@@ -205,7 +218,9 @@ select{padding:5px; border-radius:5px;margin-top:5px;}
 	.wid33{width:100%;}
 	.contView{flex-wrap: wrap;margin-left:20px;}
 	.flex-wrap{flex-wrap: wrap;}
-	.centre2{text-align:center;float:none;}	
+	.centre2{text-align:center;float:none;}
+	.footer{width:100%;}
+	footer{flex-wrap: wrap;}	
 }
 @media screen and (max-width: 1180px) {
 	header{width:100%}		

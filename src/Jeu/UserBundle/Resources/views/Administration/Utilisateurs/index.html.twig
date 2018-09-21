@@ -4,13 +4,22 @@
     <div>
 		<h2 class="centre orange ind">Liste des Utilisateurs</h2>
 		<span class="ind">Nombre total d'utilisateur : </span><span class="ind tomate">{{ utilisateurs|length }}</span>
+		<div>
+			{{ render(controller('JeuUserBundle:UserAdmin:recherche')) }}
+		</div>
     </div>
+	{% for flashMessage in app.session.flashbag.get('success') %}
+		<div class="success">
+			{{ flashMessage }}
+		</div>	
+	{% endfor %}
     <div class="centre">
 		<table>
 			<thead>
 			<tr>
 				<th>Nom</th>
 				<th>Actions</th>
+				{% if is_granted("ROLE_SUPER_ADMIN") %}<th>Editer</th>{% endif %}
 			</tr>
 			</thead>
 			<tbody>
@@ -27,6 +36,15 @@
 							   title="Consulter les Factures">Factures</a>
 						{% endif %}
 					</td>
+					{% if is_granted("ROLE_SUPER_ADMIN") %}
+						<td>						
+							{% for role in utilisateur.roles %}
+								{% if "ROLE_SUPER_ADMIN" not in utilisateur.roles %}
+								<a href=" {{ path('editeUser',{ 'id': utilisateur.id }) }} ">{{ role }}</a>
+								{% endif %}	
+							{% endfor %}
+						</td>
+					{% endif %}
 				</tr>
 			{% endfor %}
 			</tbody>

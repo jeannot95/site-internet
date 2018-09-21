@@ -53,8 +53,8 @@ class __TwigTemplate_ff6e059dc09b75ec8d559984ea38b62342676492854d0b6c51a0b064b71
         echo "    <div>
 \t\t<h2 class=\"ind\">Panier Moyen : ";
         // line 5
-        echo twig_escape_filter($this->env, (isset($context["somme"]) || array_key_exists("somme", $context) ? $context["somme"] : (function () { throw new Twig_Error_Runtime('Variable "somme" does not exist.', 5, $this->source); })()), "html", null, true);
-        echo " €</h2>
+        echo twig_escape_filter($this->env, twig_slice($this->env, (isset($context["somme"]) || array_key_exists("somme", $context) ? $context["somme"] : (function () { throw new Twig_Error_Runtime('Variable "somme" does not exist.', 5, $this->source); })()), 0, 5), "html", null, true);
+        echo " € TTC</h2>
     </div>
 \t<div>\t\t\t
 \t\t<ul>
@@ -96,7 +96,7 @@ class __TwigTemplate_ff6e059dc09b75ec8d559984ea38b62342676492854d0b6c51a0b064b71
 
 {% block body %}
     <div>
-\t\t<h2 class=\"ind\">Panier Moyen : {{ somme }} €</h2>
+\t\t<h2 class=\"ind\">Panier Moyen : {{ somme|slice(0,5) }} € TTC</h2>
     </div>
 \t<div>\t\t\t
 \t\t<ul>

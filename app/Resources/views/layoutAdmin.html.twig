@@ -10,6 +10,7 @@
     {% block stylesheets %}
 	  <link rel="stylesheet" href="{{ asset('css/jeux.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/stars.css') }}">
+	  <link rel="stylesheet" href="{{ asset('css/boutons.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}"/>
 </head>
@@ -35,12 +36,21 @@
 					<h2 class="bordeau">VOUS ETES EN MODE ADMINISTRATION</h2>
 				</div>			
 			</div>
-			<div class="menu wid">
-				<a href="{{ path('jeu_article_homepage') }}">Boutique</a>
+			<div class="menu wid" id="menu">
+				<ul>
+					<li><a href="{{ path('jeu_article_homepage') }}">Boutique</a></li>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-					<a href="{{ path('fos_user_profile_show') }}">Profil</a>
-					<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+					<li><a class="menuprofil">Mon compte</a>
+						<ul class="sousmenu">
+							<li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+							<li><a href="{{ path('fos_user_profile_edit') }}">Editer mes informations</a></li>
+							<li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+							<li><a href="{{ path('jeu_user_factures') }}">Mes factures</a></li>
+							<li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+						</ul>
+					<li>
 				{% endif %}
+				</ul>
 			</div>	
 		</div>	
 		<div class="hautCote">
@@ -74,6 +84,19 @@
 	</footer>
 </div>
 <script src="{{ asset('bundles/jeupages/ckeditor/ckeditor.js') }}"></script>
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onscroll = function() {myFunction()};
+		var menu = document.getElementById("menu");
+		var sticky = menu.offsetTop;
+		function myFunction() {
+		  if (window.pageYOffset > sticky) {
+			menu.classList.add("sticky2");
+		  } else {
+			menu.classList.remove("sticky2");
+		  }
+		}
+	</script>
+{% endblock %}
 </body>
 </html>

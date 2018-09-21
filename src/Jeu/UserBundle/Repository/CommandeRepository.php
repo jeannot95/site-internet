@@ -24,6 +24,25 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 		;
 		return new Paginator($qb, true);
     }
+
+    public function byFacture2($user,$page, $nbPerPage)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.user = :user')
+            //->andWhere('u.valider = 1')
+            //->andWhere('u.reference != 0')
+            ->orderBy('u.id','DESC')
+            ->setParameter('user', $user)
+			->getQuery();
+		//return $qb->getQuery()->getResult();
+		$qb
+		  ->setFirstResult(($page-1) * $nbPerPage)
+		  ->setMaxResults($nbPerPage)
+		;
+		return new Paginator($qb, true);
+    }
+	
     public function byDateCommand($date)
     {
         $qb = $this->createQueryBuilder('u')
@@ -38,6 +57,7 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 	public function getCommandes($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('a')
+		  ->orderBy('a.date','DESC')	
 		  ->getQuery()
 		;
 

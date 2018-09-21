@@ -1,11 +1,16 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
-    <div>
-		<h2 class="orange ind centre">Liste des factures de l'utilisateur</h2>
+{% set util = utilisateur.query.parameters[0].value  %}
+   <div>
+		<h2 class="orange ind centre">Liste des factures de l'utilisateur "{{ util.username}}"</h2>
     </div>
+	{#{ dump(utilisateur) }#}
+	{#{ dump(utilisateur.query.parameters[0].value) }#}
+	{#{ dump(id) }#}
+	<span class="ind">Nombre total de factures : </span><span class="ind tomate">{{ utilisateur|length }}</span>
     <div>
-		<table>
+		<table class="centre">
 			<thead>
 			<tr>
 				<th>Références</th>
@@ -15,12 +20,12 @@
 			</tr>
 			</thead>
 			<tbody>
-			{% if utilisateur.commandes|length == 0 %}
+			{% if util.commandes|length == 0 %}
 				<tr>
 					<td>Aucune facture actuellement.</td>
 				</tr>
 			{% endif %}
-			{% for facture in utilisateur.commandes %}
+			{% for facture in utilisateur %}
 				<tr>
 					<td>ref : {{ facture.reference }}</td>
 					<td>{{ facture.date|date('d/m/Y') }}</td>
@@ -30,6 +35,14 @@
 			{% endfor %}
 			</tbody>
 		</table>
+		<br>
+		<div class="centre">
+			<div class="pagination">
+				{% for p in range(1, nbPages) %}
+					<a href="{{ path('adminFacturesUtilisateurs', {'page': p,'id': id}) }}" {% if p == page %} class="active"{% endif %}>{{ p }}</a>
+				{% endfor %}
+			</div>
+		</div>
 		<p>
 			<a href="{{ path('adminUtilisateurs_index') }}" class="bouton1">Retour à la liste</a>
 		</p>		

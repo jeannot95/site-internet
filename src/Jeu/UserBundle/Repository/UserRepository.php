@@ -31,6 +31,38 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 		return new Paginator($query, true);
 	}
 	
+	public function getUtilisateur($id,$page, $nbPerPage)
+	{
+		$query = $this->createQueryBuilder('a')
+			->leftJoin('a.commandes','c')
+			->where('a.id = :id')
+			->setParameter('id', $id)
+			->getQuery()
+			
+		;
+		 
+		$query
+		  // On définit l'annonce à partir de laquelle commencer la liste
+		  ->setFirstResult(($page-1) * $nbPerPage)
+		  // Ainsi que le nombre d'annonce à afficher sur une page
+		  ->setMaxResults($nbPerPage)
+		  //->getSingleResult()
+		;
+
+		// Enfin, on retourne l'objet Paginator correspondant à la requête construite
+		// (n'oubliez pas le use correspondant en début de fichier)
+		return new Paginator($query, true);
+	}	
+	
+	public function test($id)
+	{
+			$query = $this->createQueryBuilder('a')
+			->where('a.id = :id')
+			->setParameter('id', $id);
+			
+			return $query->getQuery()->getSingleResult();
+	}
+	
 	public function getCommandes()
 	{
 		$qb = $this->createQueryBuilder('a');
@@ -43,4 +75,19 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 			;
 		return $qb->getQuery()->getResult();
 	}
+	
+    public function recherche($chaine,$page, $nbPerPage)
+    {
+        $qb = $this->createQueryBuilder('u');
+            $qb->select('u')
+            ->where($qb->expr()->like('u.username', ':chaine'))
+            ->orderBy('u.id')
+            ->setParameter('chaine', '%'.$chaine.'%');
+			$qb 
+			->setFirstResult(($page-1) * $nbPerPage)
+			->setMaxResults($nbPerPage)
+		;
+		return new Paginator($qb, true);
+    }
+	
 }

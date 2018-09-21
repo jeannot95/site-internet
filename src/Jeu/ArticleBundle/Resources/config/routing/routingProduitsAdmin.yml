@@ -36,3 +36,11 @@ adminProduits_delete:
     path:     /{id}/delete
     defaults: { _controller: "JeuArticleBundle:ArticlesAdmin:delete" }
     methods:  DELETE
+    
+rechercheArticle:
+    path:  /recherches/{page}
+    defaults: 
+        _controller: JeuArticleBundle:ArticlesAdmin:rechercheTraitement
+        page:   1
+    requirements: 
+        page: \d*    

@@ -15,7 +15,7 @@
 			<tr>
 				<td>{{ loop.index }}</td>
 				<td>{{ art.titre }}</td>
-				<td>{{ art.moyenne }}</td>
+				<td>{{ art.moyenne|slice(0,4) }}</td>
 			</tr>
 		{% endfor %}
 		</table>

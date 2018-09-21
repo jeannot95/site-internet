@@ -75,13 +75,13 @@
 							url =[];
 							url = '<a href="{{ path('jeu_article_view', {'id': 'article_id' }) }} ">';
 							url = url.replace("article_id", id1[i]);
-							result[i] = '<div class="flex3 mar"><div><img src="/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg" alt=" '+ response[0][i].image.alt +' " width="160" height="160"></div><div class="pad"><span class="ind bleu size2">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
+							result[i] = '<div class="flex3 mar"><div><img src="http://audoinjean95300.com/symfony/web/uploads/img/'+ response[0][i].image.id + '.'+ response[0][i].image.url + '" alt=" '+ response[0][i].image.alt +' " width="160" height="160"></div><div class="pad"><span class="ind bleu size2">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
 							var note = "<br>Pas encore de note ! ";
 							for(j = 0; j< response[1].length;j++){
 								//console.log(response[1][j]);
 								if (response[0][i].titre == response[1][j].titre ){
 								  note = "" ;
-								result[i] +=  ' <div class="star-ratings-css" title=" ' + response[1][j].moyenne + ' /5" > ';
+								result[i] +=  ' <div class="star-ratings-css" title=" ' + response[1][j].moyenne.substring(0,3) + ' /5" > ';
 								  result[i] += ' <div class="star-ratings-css-top" style="width: ' + response[1][j].moyenne*20 + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div> ';
 								  result[i] += '<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
 								result[i] += '</div>' ;

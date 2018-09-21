@@ -1,0 +1,6 @@
+<form action="{{ path('rechercheUser') }}" method="GET" name="test">
+	<div class="pad">
+		Rechercher un utilisateur par son nom : {{ form_widget(form.recherche) }}
+		{{ form_widget(form) }}
+	</div>
+</form>

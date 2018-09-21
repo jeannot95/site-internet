@@ -10,7 +10,7 @@ class CommandesAdminController extends Controller
 			  throw $this->createNotFoundException("La page ".$page." n'existe pas.");
 			}		
 		$em = $this->getDoctrine()->getManager();
-		$nbPerPage = 5;		
+		$nbPerPage = 10;		
         $commandes = $em->getRepository('JeuUserBundle:Commande')->getCommandes($page, $nbPerPage);
 		$nbPages = ceil(count($commandes) / $nbPerPage);
 		if ($page > $nbPages && $page != 1) {

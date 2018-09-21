@@ -6,6 +6,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/user/admin/, role: ROLE_ADMIN }
         - { path: ^/avis/depos, role: ROLE_USER }
         
   encoders:

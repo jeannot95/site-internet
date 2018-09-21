@@ -1,7 +1,7 @@
 
 <h3>Formulaire d'article</h3>
 
-<div class="flex3">
+<div class="flex3 well">
 	<div class="wid33 pad">
 		{{ form_start(edit_form, {'action': path('adminProduits_update', { 'id' : entity.id }), 'method': 'PUT' }) }}
 		{{ form_errors(edit_form) }}

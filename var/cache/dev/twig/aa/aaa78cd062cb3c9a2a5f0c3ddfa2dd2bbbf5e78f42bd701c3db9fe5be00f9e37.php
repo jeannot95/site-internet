@@ -191,13 +191,13 @@ class __TwigTemplate_013d406108ed47fdda9c1dad422220ddbbb7d8ce3c0b5203b7717c3ae63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_view", array("id" => "article_id"));
         echo " \">';
 \t\t\t\t\t\t\turl = url.replace(\"article_id\", id1[i]);
-\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
+\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"http://audoinjean95300.com/symfony/web/uploads/img/'+ response[0][i].image.id + '.'+ response[0][i].image.url + '\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
 \t\t\t\t\t\t\tvar note = \"<br>Pas encore de note ! \";
 \t\t\t\t\t\t\tfor(j = 0; j< response[1].length;j++){
 \t\t\t\t\t\t\t\t//console.log(response[1][j]);
 \t\t\t\t\t\t\t\tif (response[0][i].titre == response[1][j].titre ){
 \t\t\t\t\t\t\t\t  note = \"\" ;
-\t\t\t\t\t\t\t\tresult[i] +=  ' <div class=\"star-ratings-css\" title=\" ' + response[1][j].moyenne + ' /5\" > ';
+\t\t\t\t\t\t\t\tresult[i] +=  ' <div class=\"star-ratings-css\" title=\" ' + response[1][j].moyenne.substring(0,3) + ' /5\" > ';
 \t\t\t\t\t\t\t\t  result[i] += ' <div class=\"star-ratings-css-top\" style=\"width: ' + response[1][j].moyenne*20 + '%\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div> ';
 \t\t\t\t\t\t\t\t  result[i] += '<div class=\"star-ratings-css-bottom\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
 \t\t\t\t\t\t\t\tresult[i] += '</div>' ;
@@ -338,13 +338,13 @@ class __TwigTemplate_013d406108ed47fdda9c1dad422220ddbbb7d8ce3c0b5203b7717c3ae63
 \t\t\t\t\t\t\turl =[];
 \t\t\t\t\t\t\turl = '<a href=\"{{ path('jeu_article_view', {'id': 'article_id' }) }} \">';
 \t\t\t\t\t\t\turl = url.replace(\"article_id\", id1[i]);
-\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"/jeux/web/uploads/img/'+ response[0][i].image.id + '.jpeg\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
+\t\t\t\t\t\t\tresult[i] = '<div class=\"flex3 mar\"><div><img src=\"http://audoinjean95300.com/symfony/web/uploads/img/'+ response[0][i].image.id + '.'+ response[0][i].image.url + '\" alt=\" '+ response[0][i].image.alt +' \" width=\"160\" height=\"160\"></div><div class=\"pad\"><span class=\"ind bleu size2\">' + url + response[0][i].titre + '</a></span>, <em>sorti le '+ response[0][i].dateDeSortie.date.substring(0,10) +'</em> ';
 \t\t\t\t\t\t\tvar note = \"<br>Pas encore de note ! \";
 \t\t\t\t\t\t\tfor(j = 0; j< response[1].length;j++){
 \t\t\t\t\t\t\t\t//console.log(response[1][j]);
 \t\t\t\t\t\t\t\tif (response[0][i].titre == response[1][j].titre ){
 \t\t\t\t\t\t\t\t  note = \"\" ;
-\t\t\t\t\t\t\t\tresult[i] +=  ' <div class=\"star-ratings-css\" title=\" ' + response[1][j].moyenne + ' /5\" > ';
+\t\t\t\t\t\t\t\tresult[i] +=  ' <div class=\"star-ratings-css\" title=\" ' + response[1][j].moyenne.substring(0,3) + ' /5\" > ';
 \t\t\t\t\t\t\t\t  result[i] += ' <div class=\"star-ratings-css-top\" style=\"width: ' + response[1][j].moyenne*20 + '%\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div> ';
 \t\t\t\t\t\t\t\t  result[i] += '<div class=\"star-ratings-css-bottom\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
 \t\t\t\t\t\t\t\tresult[i] += '</div>' ;

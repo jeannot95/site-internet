@@ -24,7 +24,7 @@
 				{% for n in note %} 
 					{% if n.titre == article.titre %}						
 							{#{ n.moyenne }#} {% set notes = '' %}
-					<div class="star-ratings-css" title="{{ n.moyenne }}/5">
+					<div class="star-ratings-css" title="{{ n.moyenne|slice(0,4) }}/5">
 					  <div class="star-ratings-css-top" style="width: {{ n.moyenne * 20 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 					  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 					</div>

@@ -31,7 +31,7 @@ class __TwigTemplate_355f02b2278c75725a0facebab7d879412d2752997f75b82b9cdec16af2
     <head>
         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>
         <title>Facture</title>
-        <link href=\"C:/wamp/www/symfony/web/css/facture.css\" rel=\"stylesheet\" type=\"text/css\"/>
+        <link href=\"C:/wamp/www/jeux/web/css/facture.css\" rel=\"stylesheet\" type=\"text/css\"/>
     </head>
     <body>
         <h1>Jeux de Société</h1>
@@ -138,8 +138,7 @@ class __TwigTemplate_355f02b2278c75725a0facebab7d879412d2752997f75b82b9cdec16af2
         </table>
         <div id=\"footer\">
             <span class=\"color strong\"></span>
-            <br/>
-           
+            <br>           
         </div>
     </body>
 </html>";
@@ -173,7 +172,7 @@ class __TwigTemplate_355f02b2278c75725a0facebab7d879412d2752997f75b82b9cdec16af2
     <head>
         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>
         <title>Facture</title>
-        <link href=\"C:/wamp/www/symfony/web/css/facture.css\" rel=\"stylesheet\" type=\"text/css\"/>
+        <link href=\"C:/wamp/www/jeux/web/css/facture.css\" rel=\"stylesheet\" type=\"text/css\"/>
     </head>
     <body>
         <h1>Jeux de Société</h1>
@@ -231,8 +230,7 @@ class __TwigTemplate_355f02b2278c75725a0facebab7d879412d2752997f75b82b9cdec16af2
         </table>
         <div id=\"footer\">
             <span class=\"color strong\"></span>
-            <br/>
-           
+            <br>           
         </div>
     </body>
 </html>", "JeuUserBundle:User:facturePDF.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\UserBundle/Resources/views/User/facturePDF.html.twig");

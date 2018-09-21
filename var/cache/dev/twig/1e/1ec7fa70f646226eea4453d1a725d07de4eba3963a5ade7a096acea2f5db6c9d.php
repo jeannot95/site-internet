@@ -30,7 +30,7 @@ class __TwigTemplate_28bcebdf72da7e64029399196fd962d5b57220b0582f10a3e9ef542386d
 <h3>Formulaire de création d'article</h3>
 
 <div class=\"flex3\">
-\t<div class=\"wid33 pad\"
+\t<div class=\"wid33 pad\">
 \t\t";
         // line 7
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 7, $this->source); })()), 'form_start', array("attr" => array("action" => $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminProduits_create"), "method" => "POST")));
@@ -254,7 +254,7 @@ class __TwigTemplate_28bcebdf72da7e64029399196fd962d5b57220b0582f10a3e9ef542386d
 <h3>Formulaire de création d'article</h3>
 
 <div class=\"flex3\">
-\t<div class=\"wid33 pad\"
+\t<div class=\"wid33 pad\">
 \t\t{{ form_start(form, {'attr': {'action': path('adminProduits_create'), 'method': 'POST'}}) }}
 \t\t{{ form_errors(form) }}
 \t\t{% if form.date_de_sortie is defined %}

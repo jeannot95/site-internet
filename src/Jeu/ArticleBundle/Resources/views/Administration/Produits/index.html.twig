@@ -3,7 +3,10 @@
 {% block body -%}
     <div>
 		<h2 class="bordeau centre ind">Liste des Produits</h2>
-		<p class="ind">Nombre total de produits : <span class="tomate">{{ entities|length }}</span></p>		
+		<p class="ind">Nombre total de produits : <span class="tomate">{{ entities|length }}</span></p>
+		<div>
+			{{ render(controller('JeuArticleBundle:ArticlesAdmin:recherche')) }}
+		</div>		
     </div>
     <div>
 		<table class="centre">
@@ -11,7 +14,7 @@
 				<tr>
 					<th>Categorie</th>
 					<th>Nom</th>
-					<th>Prix</th>
+					<th>Prix(TTC)</th>
 					<th>Actions</th>
 				</tr>
 			</thead>

@@ -2,7 +2,7 @@
 
 {% block body %}
     <div>
-		<h2 class="ind">Panier Moyen : {{ somme }} €</h2>
+		<h2 class="ind">Panier Moyen : {{ somme|slice(0,5) }} € TTC</h2>
     </div>
 	<div>			
 		<ul>

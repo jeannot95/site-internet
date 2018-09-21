@@ -45,7 +45,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
     ";
         // line 10
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 15
+        // line 16
         echo "\t<link rel=\"icon\" type=\"image/x-icon\" href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
         echo "\"/>
@@ -56,7 +56,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
     <header class=\"ind\">
 \t\t<div class=\"hautCote\">
 \t\t\t<a href=\"";
-        // line 22
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -68,7 +68,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t<div class=\"wid flex\">
 \t\t\t\t\t\t\t<div class=\"hautCache\">
 \t\t\t\t\t\t<a href=\"";
-        // line 29
+        // line 30
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -77,7 +77,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t\t<h1 class=\"vertfonce titre\">JeuxDeSociété</h1>
 \t\t\t\t\t<div class=\"hautCache\">
 \t\t\t\t\t\t<a href=\"";
-        // line 33
+        // line 34
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -91,68 +91,68 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t\t</p>
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
-\t\t\t<div class=\"menu wid\">
+\t\t\t<div class=\"menu wid\" id=\"menu\">
 \t\t\t\t<ul>
 \t\t\t\t\t<li><a href=\"";
-        // line 45
+        // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\">Boutique</a></li>
 \t\t\t\t";
-        // line 46
+        // line 47
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 47
+            // line 48
             echo "\t\t\t\t\t";
-            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_SUPER_ADMIN")) {
-                // line 48
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 49
                 echo "\t\t\t\t\t\t<li><a href=\"";
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-                echo "\">Administration</a></li>
+                echo "\" id=\"adminmenu\" >Administration</a></li>
 \t\t\t\t\t";
             }
-            // line 50
-            echo "\t\t\t\t\t<li><a class=\"menuprofil\">Compte</a>
+            // line 51
+            echo "\t\t\t\t\t<li><a class=\"menuprofil\">Mon compte</a>
 \t\t\t\t\t\t<ul class=\"sousmenu\">
 \t\t\t\t\t\t\t<li><a href=\"";
-            // line 52
+            // line 53
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
             echo "\">Profil</a></li>
 \t\t\t\t\t\t\t<li><a href=\"";
-            // line 53
+            // line 54
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_edit");
             echo "\">Editer mes informations</a></li>
 \t\t\t\t\t\t\t<li><a href=\"";
-            // line 54
+            // line 55
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_change_password");
             echo "\">Changer mon mot de passe</a></li>
 \t\t\t\t\t\t\t<li><a href=\"";
-            // line 55
+            // line 56
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures");
             echo "\">Mes factures</a></li>
 \t\t\t\t\t\t\t<li><a href=\"";
-            // line 56
+            // line 57
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
 \t\t\t\t\t\t</ul>
 \t\t\t\t\t</li>\t\t
 \t\t\t\t";
         } else {
-            // line 60
+            // line 61
             echo "\t\t\t\t\t<li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_login");
             echo "\">Connexion</a></li>
 \t\t\t\t\t<li><a href=\"";
-            // line 61
+            // line 62
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_registration_register");
             echo "\">S'enregistrer</a></li>
 \t\t\t\t";
         }
-        // line 63
+        // line 64
         echo "\t\t\t\t</ul>
 \t\t\t</div>\t
 \t\t</div>\t
 \t\t<div class=\"hautCote\">
 \t\t\t<a href=\"";
-        // line 67
+        // line 68
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -165,109 +165,109 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t<legend><h3>Les jeux</h3></legend>
         
           <a href=\"";
-        // line 75
+        // line 76
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\">Accueil</a><br><br>
           <a href=\"";
-        // line 76
+        // line 77
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("meilleurVente");
         echo "\">Top Ventes</a><br>
 \t\t  ";
-        // line 77
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 77, $this->source); })()), "request", array()), "get", array(0 => "_route"), "method") == "jeu_article_recherche")) {
-            // line 78
+        // line 78
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 78, $this->source); })()), "request", array()), "get", array(0 => "_route"), "method") == "jeu_article_recherche")) {
+            // line 79
             echo "\t\t  <h3>Recherche</h3>
 \t\t\t";
-            // line 79
-            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 79, $this->source); })()), 'form_start', array("attr" => array("class" => "form-horizontal", "id" => "form", "method" => "post")));
+            // line 80
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 80, $this->source); })()), 'form_start', array("attr" => array("class" => "form-horizontal", "id" => "form", "method" => "post")));
             echo "
 \t\t\t<div>
               ";
-            // line 81
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 81, $this->source); })()), "categories", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Categories"));
+            // line 82
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 82, $this->source); })()), "categories", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Categories"));
             echo " 
               ";
-            // line 82
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 82, $this->source); })()), "categories", array()), 'widget', array("attr" => array("class" => "categoriesclass span3")));
+            // line 83
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 83, $this->source); })()), "categories", array()), 'widget', array("attr" => array("class" => "categoriesclass span3")));
             echo "
               ";
-            // line 83
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 83, $this->source); })()), "categories", array()), 'errors');
+            // line 84
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 84, $this->source); })()), "categories", array()), 'errors');
             echo "
             </div><br>
 \t\t\t<div>
               ";
-            // line 86
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 86, $this->source); })()), "publicJeu", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Public concerné"));
-            echo "
-              ";
             // line 87
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 87, $this->source); })()), "publicJeu", array()), 'widget', array("attr" => array("class" => "publicJeuclass span3", "name" => "publicJeu")));
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 87, $this->source); })()), "publicJeu", array()), 'label', array("label_attr" => array("class" => "ind orange"), "label" => "Public concerné"));
             echo "
               ";
             // line 88
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 88, $this->source); })()), "publicJeu", array()), 'errors');
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 88, $this->source); })()), "publicJeu", array()), 'widget', array("attr" => array("class" => "publicJeuclass span3", "name" => "publicJeu")));
+            echo "
+              ";
+            // line 89
+            echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 89, $this->source); })()), "publicJeu", array()), 'errors');
             echo "
             </div>
 \t\t\t";
-            // line 90
-            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 90, $this->source); })()), 'form_end');
+            // line 91
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 91, $this->source); })()), 'form_end');
             echo "
 \t\t  ";
         } else {
-            // line 92
+            // line 93
             echo "\t\t  <br><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_recherche");
             echo "\">Rechercher un jeu</a>
 \t\t  ";
         }
-        // line 94
+        // line 95
         echo "        </fieldset>
 \t\t
 
 \t\t";
-        // line 97
+        // line 98
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 98
+            // line 99
             echo "\t\t\t<br>
 \t\t\t";
-            // line 99
+            // line 100
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_SUPER_ADMIN")) {
-                // line 100
+                // line 101
                 echo "\t\t\tVous êtes Super Admin<br>
 \t\t\t";
             }
-            // line 102
+            // line 103
             echo "\t\t<fieldset><legend><h3>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 102, $this->source); })()), "user", array()), "username", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 103, $this->source); })()), "user", array()), "username", array()), "html", null, true);
             echo "</h3></legend>\t
 \t\t\t<a href=\"";
-            // line 103
+            // line 104
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
             echo "\"> Profil</a><br><br>
 \t\t\t";
-            // line 104
+            // line 105
             echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuArticleBundle:Panier:menu"));
             echo "<br>
 \t\t\t<a href=\"";
-            // line 105
+            // line 106
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures");
             echo "\"> Mes factures</a><br><br>
 \t\t\t<a href=\"";
-            // line 106
+            // line 107
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a>
 \t\t";
         }
-        // line 108
+        // line 109
         echo "\t\t</fieldset>
       </div>
 \t  <!-- <hr> -->
       <div id=\"content\" class=\"pad\">
         ";
-        // line 112
+        // line 113
         $this->displayBlock('body', $context, $blocks);
-        // line 114
+        // line 115
         echo "      </div>
     </div>
 
@@ -277,35 +277,27 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Informations</h4>
 \t\t\t\t";
-        // line 122
+        // line 123
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuPagesBundle:Pages:menu"));
         echo "
 \t\t</div>\t
 \t\t<div class=\"footer centre\">\t
 \t\t\t<h4>Réseaux sociaux</h4>
-\t\t\t<a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
-\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a>
-\t\t\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
-\t\t\t\t<script type=\"text/javascript\" src=\"http://platform.linkedin.com/in.js\"></script>
-\t\t\t\t<script type=\"in/share\" data-counter=\"top\"></script>
-\t\t\t\t<g:plusone size=\"tall\"></g:plusone>
-\t\t\t\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
-\t\t\t\t{lang: 'fr'}
-\t\t\t\t</script>
-\t\t\t\t<div id=\"fb-root\"></div>
-\t\t\t\t<script>(function(d, s, id) {
-\t\t\t\tvar js, fjs = d.getElementsByTagName(s)[0];
-\t\t\t\tif (d.getElementById(id)) return;
-\t\t\t\tjs = d.createElement(s); js.id = id;
-\t\t\t\tjs.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
-\t\t\t\tfjs.parentNode.insertBefore(js, fjs);
-\t\t\t\t}(document, 'script', 'facebook-jssdk'));</script>
-\t\t\t\t<div class=\"fb-like\" data-href=\"https://developers.facebook.com/docs/plugins/\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"true\" data-share=\"true\"></div>\t\t\t\t\t
-\t\t\t\t<p class=\" title is-5 indieflower\">Copyright ";
-        // line 144
+\t\t\t<div class=\"flex3 justify-center\">
+\t\t\t\t\t<div class=\"mar2\"><a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
+\t\t\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a></div>
+\t\t\t\t\t<div class=\"fb-like mar2\" data-href=\"http://jeux.audoinjean95300.com\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"false\" data-share=\"true\"></div><div class=\"mar2\">
+\t\t\t\t\t<g:plusone size=\"tall\"></g:plusone></div>
+\t\t\t\t\t<div>
+\t\t\t\t\t<script src=\"//platform.linkedin.com/in.js\" type=\"text/javascript\"> lang: fr_FR</script>
+\t\t\t\t\t<script type=\"IN/Share\" data-url=\"http://jeux.audoinjean95300.com\"></script></div>
+\t\t\t</div>\t\t\t
+\t\t\t\t\t<p>Copyright ";
+        // line 136
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " - <b>Geek-Street</b> (<a
-\t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t\thref=\"http://jeux.audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t
 \t\t</div>\t\t\t\t
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Nous contacter</h4>
@@ -316,9 +308,9 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
   </div>
 
   ";
-        // line 155
+        // line 148
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 160
+        // line 177
         echo "
   </body>
 </html>";
@@ -367,6 +359,10 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
         // line 13
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/stars.css"), "html", null, true);
         echo "\">
+\t  <link rel=\"stylesheet\" href=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/boutons.css"), "html", null, true);
+        echo "\">
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -376,7 +372,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     }
 
-    // line 112
+    // line 113
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -385,7 +381,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 113
+        // line 114
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -395,7 +391,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     }
 
-    // line 155
+    // line 148
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -404,11 +400,35 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 156
+        // line 149
         echo "    ";
-        // line 157
-        echo "    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
-    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
+        // line 150
+        echo "<!--     <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
+    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script> -->
+\t<script>
+\t\twindow.onscroll = function() {myFunction()};
+\t\tvar menu = document.getElementById(\"menu\");
+\t\tvar sticky = menu.offsetTop;
+\t\tfunction myFunction() {
+\t\t  if (window.pageYOffset > sticky) {
+\t\t\tmenu.classList.add(\"sticky\");
+\t\t  } else {
+\t\t\tmenu.classList.remove(\"sticky\");
+\t\t  }
+\t\t}
+\t</script>
+\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
+\t<script>(function(d, s, id) {
+\t\t  var js, fjs = d.getElementsByTagName(s)[0];
+\t\t  if (d.getElementById(id)) return;
+\t\t  js = d.createElement(s); js.id = id;
+\t\t  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
+\t\t  fjs.parentNode.insertBefore(js, fjs);
+\t\t}(document, 'script', 'facebook-jssdk'));
+\t</script>
+\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
+\t\t{lang: 'fr'}
+\t</script>\t
   ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -430,7 +450,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
     public function getDebugInfo()
     {
-        return array (  410 => 157,  408 => 156,  399 => 155,  389 => 113,  380 => 112,  368 => 13,  364 => 12,  361 => 11,  352 => 10,  334 => 8,  322 => 160,  320 => 155,  306 => 144,  281 => 122,  271 => 114,  269 => 112,  263 => 108,  258 => 106,  254 => 105,  250 => 104,  246 => 103,  241 => 102,  237 => 100,  235 => 99,  232 => 98,  230 => 97,  225 => 94,  219 => 92,  214 => 90,  209 => 88,  205 => 87,  201 => 86,  195 => 83,  191 => 82,  187 => 81,  182 => 79,  179 => 78,  177 => 77,  173 => 76,  169 => 75,  156 => 67,  150 => 63,  145 => 61,  140 => 60,  133 => 56,  129 => 55,  125 => 54,  121 => 53,  117 => 52,  113 => 50,  107 => 48,  104 => 47,  102 => 46,  98 => 45,  81 => 33,  72 => 29,  60 => 22,  49 => 15,  47 => 10,  42 => 8,  33 => 1,);
+        return array (  406 => 150,  404 => 149,  395 => 148,  385 => 114,  376 => 113,  364 => 14,  360 => 13,  356 => 12,  353 => 11,  344 => 10,  326 => 8,  314 => 177,  312 => 148,  297 => 136,  281 => 123,  271 => 115,  269 => 113,  263 => 109,  258 => 107,  254 => 106,  250 => 105,  246 => 104,  241 => 103,  237 => 101,  235 => 100,  232 => 99,  230 => 98,  225 => 95,  219 => 93,  214 => 91,  209 => 89,  205 => 88,  201 => 87,  195 => 84,  191 => 83,  187 => 82,  182 => 80,  179 => 79,  177 => 78,  173 => 77,  169 => 76,  156 => 68,  150 => 64,  145 => 62,  140 => 61,  133 => 57,  129 => 56,  125 => 55,  121 => 54,  117 => 53,  113 => 51,  107 => 49,  104 => 48,  102 => 47,  98 => 46,  81 => 34,  72 => 30,  60 => 23,  49 => 16,  47 => 10,  42 => 8,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -448,6 +468,7 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
       <!-- <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\"> -->
 \t  <link rel=\"stylesheet\" href=\"{{ asset('css/jeux.css') }}\">
 \t  <link rel=\"stylesheet\" href=\"{{ asset('css/stars.css') }}\">
+\t  <link rel=\"stylesheet\" href=\"{{ asset('css/boutons.css') }}\">
     {% endblock %}
 \t<link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('img/logo2.jpg') }}\"/>
   </head>
@@ -477,14 +498,14 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t\t\t\t</p>
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
-\t\t\t<div class=\"menu wid\">
+\t\t\t<div class=\"menu wid\" id=\"menu\">
 \t\t\t\t<ul>
 \t\t\t\t\t<li><a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a></li>
 \t\t\t\t{% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-\t\t\t\t\t{% if is_granted(\"ROLE_SUPER_ADMIN\") %}
-\t\t\t\t\t\t<li><a href=\"{{ path('admin') }}\">Administration</a></li>
+\t\t\t\t\t{% if is_granted(\"ROLE_ADMIN\") %}
+\t\t\t\t\t\t<li><a href=\"{{ path('admin') }}\" id=\"adminmenu\" >Administration</a></li>
 \t\t\t\t\t{% endif %}
-\t\t\t\t\t<li><a class=\"menuprofil\">Compte</a>
+\t\t\t\t\t<li><a class=\"menuprofil\">Mon compte</a>
 \t\t\t\t\t\t<ul class=\"sousmenu\">
 \t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_show') }}\">Profil</a></li>
 \t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_edit') }}\">Editer mes informations</a></li>
@@ -560,26 +581,18 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 \t\t</div>\t
 \t\t<div class=\"footer centre\">\t
 \t\t\t<h4>Réseaux sociaux</h4>
-\t\t\t<a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
-\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a>
-\t\t\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
-\t\t\t\t<script type=\"text/javascript\" src=\"http://platform.linkedin.com/in.js\"></script>
-\t\t\t\t<script type=\"in/share\" data-counter=\"top\"></script>
-\t\t\t\t<g:plusone size=\"tall\"></g:plusone>
-\t\t\t\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
-\t\t\t\t{lang: 'fr'}
-\t\t\t\t</script>
-\t\t\t\t<div id=\"fb-root\"></div>
-\t\t\t\t<script>(function(d, s, id) {
-\t\t\t\tvar js, fjs = d.getElementsByTagName(s)[0];
-\t\t\t\tif (d.getElementById(id)) return;
-\t\t\t\tjs = d.createElement(s); js.id = id;
-\t\t\t\tjs.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
-\t\t\t\tfjs.parentNode.insertBefore(js, fjs);
-\t\t\t\t}(document, 'script', 'facebook-jssdk'));</script>
-\t\t\t\t<div class=\"fb-like\" data-href=\"https://developers.facebook.com/docs/plugins/\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"true\" data-share=\"true\"></div>\t\t\t\t\t
-\t\t\t\t<p class=\" title is-5 indieflower\">Copyright {{ \"now\"|date('Y') }} - <b>Geek-Street</b> (<a
-\t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t<div class=\"flex3 justify-center\">
+\t\t\t\t\t<div class=\"mar2\"><a href=\"http://twitter.com/share\" class=\"twitter-share-button\" 
+\t\t\t\t\t  data-count=\"vertical\" data-via=\"InfoWebMaster\">Tweet</a></div>
+\t\t\t\t\t<div class=\"fb-like mar2\" data-href=\"http://jeux.audoinjean95300.com\" data-layout=\"button\" data-action=\"like\" data-size=\"small\" data-show-faces=\"false\" data-share=\"true\"></div><div class=\"mar2\">
+\t\t\t\t\t<g:plusone size=\"tall\"></g:plusone></div>
+\t\t\t\t\t<div>
+\t\t\t\t\t<script src=\"//platform.linkedin.com/in.js\" type=\"text/javascript\"> lang: fr_FR</script>
+\t\t\t\t\t<script type=\"IN/Share\" data-url=\"http://jeux.audoinjean95300.com\"></script></div>
+\t\t\t</div>\t\t\t
+\t\t\t\t\t<p>Copyright {{ \"now\"|date('Y') }} - <b>Geek-Street</b> (<a
+\t\t\t\t\t\t\thref=\"http://jeux.audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
+\t\t\t\t\t\t
 \t\t</div>\t\t\t\t
 \t\t<div class=\"footer centre\">\t\t
 \t\t\t<h4>Nous contacter</h4>
@@ -591,8 +604,32 @@ class __TwigTemplate_d1964d16f43bd0aab182ff139c7492f9550d189bd2d6150f90d22977a10
 
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
-    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
+<!--     <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>
+    <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script> -->
+\t<script>
+\t\twindow.onscroll = function() {myFunction()};
+\t\tvar menu = document.getElementById(\"menu\");
+\t\tvar sticky = menu.offsetTop;
+\t\tfunction myFunction() {
+\t\t  if (window.pageYOffset > sticky) {
+\t\t\tmenu.classList.add(\"sticky\");
+\t\t  } else {
+\t\t\tmenu.classList.remove(\"sticky\");
+\t\t  }
+\t\t}
+\t</script>
+\t<script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
+\t<script>(function(d, s, id) {
+\t\t  var js, fjs = d.getElementsByTagName(s)[0];
+\t\t  if (d.getElementById(id)) return;
+\t\t  js = d.createElement(s); js.id = id;
+\t\t  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.1';
+\t\t  fjs.parentNode.insertBefore(js, fjs);
+\t\t}(document, 'script', 'facebook-jssdk'));
+\t</script>
+\t<script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\">
+\t\t{lang: 'fr'}
+\t</script>\t
   {% endblock %}
 
   </body>

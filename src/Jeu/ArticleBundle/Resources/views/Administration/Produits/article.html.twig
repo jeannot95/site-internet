@@ -1,0 +1,47 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <div>
+		<h2 class="bordeau centre ind">Liste des Produits</h2>
+		<p class="ind">Nombre total de produits pour "{{ resultat }}" : <span class="tomate">{{ entities|length }}</span></p>
+		<div>
+			{{ render(controller('JeuArticleBundle:ArticlesAdmin:recherche')) }}
+		</div>		
+    </div>
+    <div>
+		<table class="centre">
+			<thead>
+				<tr>
+					<th>Categorie</th>
+					<th>Nom</th>
+					<th>Prix(TTC)</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for entity in entities %}
+					<tr>
+						<td>{% for cat in entity.categories %}{% if not loop.last%}{{ cat.name }},{% else %}{{ cat.name }}{% endif %}{% endfor %}</td>
+						<td>{{ entity.titre }}</td>
+						<td>{{ entity.prix }} €</td>
+						<td>
+							<a href="{{ path('adminProduits_show', { 'id': entity.id }) }}">voir</a> /
+							<a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}">editer</i></a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<br>
+		<a href="{{ path('adminProduits_index') }}" class="bouton2">Retour à la liste</a>
+    </div>
+	<div class="centre">
+		<div class="pagination">
+			{% if entities is not empty %}
+				{% for p in range(1, nbPages) %}
+					<a href="{{ path('adminProduits_index', {'page': p}) }}" {% if p == page %} class="active"{% endif %}>{{ p }}</a>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

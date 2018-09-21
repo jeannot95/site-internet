@@ -9,10 +9,31 @@ adminUtilisateurs_index:
 
 adminAdressesUtilisateurs:
     path:     /{id}/adresses
-    defaults: { _controller: "JeuUserBundle:UserAdmin:utilisateur" }
+    defaults: { _controller: "JeuUserBundle:UserAdmin:utilisateurAdresses" }
     methods:  GET
 
 adminFacturesUtilisateurs:
-    path:     /{id}/factures
-    defaults: { _controller: "JeuUserBundle:UserAdmin:utilisateur" }
+    path:     /{id}/factures/{page}
+    defaults: 
+        _controller: "JeuUserBundle:UserAdmin:utilisateurFactures"
+        page: 1
+    requirements: 
+        page: \d*
     methods:  GET
+    
+jeu_userbundle_recherche:
+    path: /recherche 
+    defaults: { _controller: JeuUserBundle:UserAdmin:recherche } 
+
+rechercheUser:
+    path:  /recherches/{page}
+    defaults: 
+        _controller: JeuUserBundle:UserAdmin:rechercheTraitement
+        page:   1
+    requirements: 
+        page: \d*
+
+editeUser:
+    path: /editer/{id}        
+    defaults: 
+        _controller: JeuUserBundle:UserAdmin:editRoles    

@@ -1,0 +1,12 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+		<h2 class="centre orange ind">Utilisateur "{{ user.username }}"</h2>
+    </div>
+    <div class="centre">
+		{{ form(form) }}
+    </div>
+	<br>
+	<a href="{{ path('adminUtilisateurs_index') }}" class="bouton2">Retour à la liste</a>
+{% endblock %}

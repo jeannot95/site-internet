@@ -137,7 +137,7 @@ class __TwigTemplate_22ad88bde8af0328d4ecd234915aba871066f36dc4182aec891ef568d8e
                                 $context["notes"] = "";
                                 // line 29
                                 echo "\t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css\" title=\"";
-                                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["n"], "moyenne", array()), "html", null, true);
+                                echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["n"], "moyenne", array()), 0, 3), "html", null, true);
                                 echo "/5\">
 \t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css-top\" style=\"width: ";
                                 // line 30
@@ -308,7 +308,7 @@ class __TwigTemplate_22ad88bde8af0328d4ecd234915aba871066f36dc4182aec891ef568d8e
 \t\t\t\t\t\t\t{% for n in note %} 
 \t\t\t\t\t\t\t\t{% if n.titre == article.titre %}\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t\t {% set notes = '' %}
-\t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css\" title=\"{{ n.moyenne }}/5\">
+\t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css\" title=\"{{ n.moyenne|slice(0,3) }}/5\">
 \t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css-top\" style=\"width: {{ n.moyenne * 20 }}%\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 \t\t\t\t\t\t\t\t\t<div class=\"star-ratings-css-bottom\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 \t\t\t\t\t\t\t\t\t</div>

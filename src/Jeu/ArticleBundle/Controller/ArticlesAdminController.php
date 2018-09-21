@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Jeu\ArticleBundle\Entity\Article;
 use Jeu\ArticleBundle\Form\ArticleType;
+use Jeu\UserBundle\Form\RechercheType;
 /**
  * Produits controller.
  *
@@ -82,17 +83,17 @@ class ArticlesAdminController extends Controller
     private function createCreateForm(Article $entity)
     {
         $form = $this->createForm(ArticleType::class, $entity);
-        //$form->add('submit', SubmitType::class, array('label' => 'Ajouter', 'attr'=> array('class'=>'button is-success is-outlined',)));
+        //$form->add('submit', SubmitType::class, array('label' => 'Ajouter', 'attr'=> array('class'=>'bouton2',)));
         return $form;
     }
     /**
      * Displays a form to create a new Produits entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {	
 	
-/* 		$article = new Article();
+/*  		$article = new Article();
 		$form   = $this->get('form.factory')->create(ArticleType::class, $article);
 
 		 if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -105,16 +106,16 @@ class ArticlesAdminController extends Controller
 		  return $this->redirectToRoute('jeu_article_view', array('id' => $article->getId()));
 		} 
 
-		return $this->render('JeuArticleBundle:Administration:new.html.twig', array(
+		return $this->render('JeuArticleBundle:Administration:Produits/new.html.twig', array(
 		  'form' => $form->createView(),
-		));*/
+		)); */
 		
-        $entity = new Article();
+         $entity = new Article();
         $form   = $this->createCreateForm($entity);
         return $this->render('JeuArticleBundle:Administration:Produits/new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        )); 
     }
     /**
      * Finds and displays a Produits entity.
@@ -203,7 +204,7 @@ class ArticlesAdminController extends Controller
                 $em->flush();
                 return $this->redirect($this->generateUrl('adminProduits_show', array('id' => $id)));
             }else{
-                die('test');
+                //die('test');
                 return $editForm->getErrors();
             }
         }
@@ -248,4 +249,38 @@ class ArticlesAdminController extends Controller
             ->getForm()
             ;
     }
+	
+	public function rechercheAction()
+	{
+        $form = $this->createForm(RechercheType::class);
+        return $this->render('JeuArticleBundle:Administration:Produits/recherche.html.twig', array('form' => $form->createView()));		
+	}
+    public function rechercheTraitementAction($page)
+    {
+		if ($page < 1) {
+		  throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+		}
+        $request = Request::createFromGlobals();
+        $form = $this->createForm(RechercheType::class);
+        $searchTerm = $request->query->get('recherche');
+		$chaine = $searchTerm['recherche'];
+        if ($searchTerm != '') {
+            $form->handleRequest($request);
+            $em = $this->getDoctrine()->getManager();
+			$nbPerPage = 150;
+            $findArticle = $em->getRepository('JeuArticleBundle:Article')->recherche($chaine,$page, $nbPerPage);
+		$nbPages = ceil(count($findArticle) / $nbPerPage);
+		
+		if ($page > $nbPages && $page != 1) {
+		  throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+		}   
+        } else {
+            throw $this->createNotFoundException('La page n\'existe pas.');
+        }
+        return $this->render('JeuArticleBundle:Administration:Produits/article.html.twig', array('entities' => $findArticle,
+                                                                                                 'resultat' => $chaine,
+																								 'nbPages'=>$nbPages,
+																								 'page'=>$page,	
+																								 ));
+    }  	
 }

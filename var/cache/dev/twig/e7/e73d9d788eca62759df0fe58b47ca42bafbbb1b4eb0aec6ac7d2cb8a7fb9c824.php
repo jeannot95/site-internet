@@ -29,7 +29,7 @@ class __TwigTemplate_192c18f77f73880b20d3b47866a9a74776a51dac2f7a4e67a9dc95d649e
         echo "
 <h3>Formulaire d'article</h3>
 
-<div class=\"flex3\">
+<div class=\"flex3 well\">
 \t<div class=\"wid33 pad\">
 \t\t";
         // line 6
@@ -263,7 +263,7 @@ class __TwigTemplate_192c18f77f73880b20d3b47866a9a74776a51dac2f7a4e67a9dc95d649e
         return new Twig_Source("
 <h3>Formulaire d'article</h3>
 
-<div class=\"flex3\">
+<div class=\"flex3 well\">
 \t<div class=\"wid33 pad\">
 \t\t{{ form_start(edit_form, {'action': path('adminProduits_update', { 'id' : entity.id }), 'method': 'PUT' }) }}
 \t\t{{ form_errors(edit_form) }}

@@ -53,7 +53,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
     ";
         // line 10
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 14
+        // line 15
         echo "    <link rel=\"icon\" type=\"image/x-icon\" href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo.png"), "html", null, true);
         echo "\"/>
@@ -63,7 +63,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
     <header class=\"ind\" id=\"headAdmin\">
 \t\t<div class=\"hautCote\">
 \t\t\t<a href=\"";
-        // line 20
+        // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -75,7 +75,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t\t\t\t<div class=\"wid flex\">
 \t\t\t\t\t\t\t<div class=\"hautCache\">
 \t\t\t\t\t\t<a href=\"";
-        // line 27
+        // line 28
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -84,7 +84,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t\t\t\t\t<h1 class=\"bordeau titre\">JeuxDeSociété</h1>
 \t\t\t\t\t<div class=\"hautCache\">
 \t\t\t\t\t\t<a href=\"";
-        // line 31
+        // line 32
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -95,30 +95,49 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t\t\t\t\t<h2 class=\"bordeau\">VOUS ETES EN MODE ADMINISTRATION</h2>
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
-\t\t\t<div class=\"menu wid\">
-\t\t\t\t<a href=\"";
-        // line 39
+\t\t\t<div class=\"menu wid\" id=\"menu\">
+\t\t\t\t<ul>
+\t\t\t\t\t<li><a href=\"";
+        // line 41
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
-        echo "\">Boutique</a>
+        echo "\">Boutique</a></li>
 \t\t\t\t";
-        // line 40
+        // line 42
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 41
-            echo "\t\t\t\t\t<a href=\"";
+            // line 43
+            echo "\t\t\t\t\t<li><a class=\"menuprofil\">Mon compte</a>
+\t\t\t\t\t\t<ul class=\"sousmenu\">
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 45
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_show");
-            echo "\">Profil</a>
-\t\t\t\t\t<a href=\"";
-            // line 42
+            echo "\">Profil</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 46
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_profile_edit");
+            echo "\">Editer mes informations</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 47
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_change_password");
+            echo "\">Changer mon mot de passe</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 48
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_factures");
+            echo "\">Mes factures</a></li>
+\t\t\t\t\t\t\t<li><a href=\"";
+            // line 49
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_logout");
-            echo "\">Déconnexion</a>
+            echo "\">Déconnexion</a></li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t<li>
 \t\t\t\t";
         }
-        // line 44
-        echo "\t\t\t</div>\t
+        // line 53
+        echo "\t\t\t\t</ul>
+\t\t\t</div>\t
 \t\t</div>\t
 \t\t<div class=\"hautCote\">
 \t\t\t<a href=\"";
-        // line 47
+        // line 57
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo2.jpg"), "html", null, true);
@@ -130,28 +149,28 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 
         <div class=\"sidebar\">
             ";
-        // line 54
-        $this->loadTemplate("::modulesUsed/navigationAdmin.html.twig", "::layoutAdmin.html.twig", 54)->display($context);
-        // line 55
+        // line 64
+        $this->loadTemplate("::modulesUsed/navigationAdmin.html.twig", "::layoutAdmin.html.twig", 64)->display($context);
+        // line 65
         echo "        </div>
         <div id=\"content\" class=\"pad\">
             ";
-        // line 57
+        // line 67
         $this->displayBlock('body', $context, $blocks);
-        // line 58
+        // line 68
         echo "        </div>
     </div>
 \t<footer id=\"footerAdmin\">
 \t\t\t\t<div class=\"footer centre\">\t\t
 \t\t\t\t\t<h4>Informations</h4>
 \t\t\t\t\t";
-        // line 63
+        // line 73
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("JeuPagesBundle:Pages:menu"));
         echo "
 \t\t\t\t</div>\t\t\t\t\t
 \t\t\t\t<div class=\"footer centre\">\t\t
 \t\t\t\t\t<p class=\" title is-5 indieflower\">Copyright ";
-        // line 66
+        // line 76
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " - <b>Geek-Street</b> (<a
 \t\t\t\t\t\t\t\thref=\"http://audoinjean95300.com\" target=\"_blank\">jeannot95</a>)</p>
@@ -164,13 +183,13 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t</footer>
 </div>
 <script src=\"";
-        // line 76
+        // line 86
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/jeupages/ckeditor/ckeditor.js"), "html", null, true);
         echo "\"></script>
 ";
-        // line 77
+        // line 87
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 78
+        // line 101
         echo "</body>
 </html>";
         
@@ -250,6 +269,10 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
         // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/stars.css"), "html", null, true);
         echo "\">
+\t  <link rel=\"stylesheet\" href=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/boutons.css"), "html", null, true);
+        echo "\">
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -259,7 +282,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 
     }
 
-    // line 57
+    // line 67
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -276,7 +299,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 
     }
 
-    // line 77
+    // line 87
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -285,6 +308,20 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
+        // line 88
+        echo "\t<script>
+\t\twindow.onscroll = function() {myFunction()};
+\t\tvar menu = document.getElementById(\"menu\");
+\t\tvar sticky = menu.offsetTop;
+\t\tfunction myFunction() {
+\t\t  if (window.pageYOffset > sticky) {
+\t\t\tmenu.classList.add(\"sticky2\");
+\t\t  } else {
+\t\t\tmenu.classList.remove(\"sticky2\");
+\t\t  }
+\t\t}
+\t</script>
+";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -305,7 +342,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 
     public function getDebugInfo()
     {
-        return array (  280 => 77,  263 => 57,  251 => 12,  246 => 11,  237 => 10,  220 => 9,  203 => 8,  185 => 5,  174 => 78,  172 => 77,  168 => 76,  155 => 66,  149 => 63,  142 => 58,  140 => 57,  136 => 55,  134 => 54,  122 => 47,  117 => 44,  112 => 42,  107 => 41,  105 => 40,  101 => 39,  88 => 31,  79 => 27,  67 => 20,  57 => 14,  55 => 10,  51 => 9,  47 => 8,  41 => 5,  35 => 1,);
+        return array (  312 => 88,  303 => 87,  286 => 67,  274 => 13,  270 => 12,  265 => 11,  256 => 10,  239 => 9,  222 => 8,  204 => 5,  193 => 101,  191 => 87,  187 => 86,  174 => 76,  168 => 73,  161 => 68,  159 => 67,  155 => 65,  153 => 64,  141 => 57,  135 => 53,  128 => 49,  124 => 48,  120 => 47,  116 => 46,  112 => 45,  108 => 43,  106 => 42,  102 => 41,  88 => 32,  79 => 28,  67 => 21,  57 => 15,  55 => 10,  51 => 9,  47 => 8,  41 => 5,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -322,6 +359,7 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
     {% block stylesheets %}
 \t  <link rel=\"stylesheet\" href=\"{{ asset('css/jeux.css') }}\">
 \t  <link rel=\"stylesheet\" href=\"{{ asset('css/stars.css') }}\">
+\t  <link rel=\"stylesheet\" href=\"{{ asset('css/boutons.css') }}\">
     {% endblock %}
     <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('img/logo.png') }}\"/>
 </head>
@@ -347,12 +385,21 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t\t\t\t\t<h2 class=\"bordeau\">VOUS ETES EN MODE ADMINISTRATION</h2>
 \t\t\t\t</div>\t\t\t
 \t\t\t</div>
-\t\t\t<div class=\"menu wid\">
-\t\t\t\t<a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a>
+\t\t\t<div class=\"menu wid\" id=\"menu\">
+\t\t\t\t<ul>
+\t\t\t\t\t<li><a href=\"{{ path('jeu_article_homepage') }}\">Boutique</a></li>
 \t\t\t\t{% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-\t\t\t\t\t<a href=\"{{ path('fos_user_profile_show') }}\">Profil</a>
-\t\t\t\t\t<a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a>
+\t\t\t\t\t<li><a class=\"menuprofil\">Mon compte</a>
+\t\t\t\t\t\t<ul class=\"sousmenu\">
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_show') }}\">Profil</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_profile_edit') }}\">Editer mes informations</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_change_password') }}\">Changer mon mot de passe</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('jeu_user_factures') }}\">Mes factures</a></li>
+\t\t\t\t\t\t\t<li><a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a></li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t<li>
 \t\t\t\t{% endif %}
+\t\t\t\t</ul>
 \t\t\t</div>\t
 \t\t</div>\t
 \t\t<div class=\"hautCote\">
@@ -386,7 +433,20 @@ class __TwigTemplate_c2465f1f524f03e0a8b85543201dd22bdb4df0cb146d6104bfd15ece3a9
 \t</footer>
 </div>
 <script src=\"{{ asset('bundles/jeupages/ckeditor/ckeditor.js') }}\"></script>
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+\t<script>
+\t\twindow.onscroll = function() {myFunction()};
+\t\tvar menu = document.getElementById(\"menu\");
+\t\tvar sticky = menu.offsetTop;
+\t\tfunction myFunction() {
+\t\t  if (window.pageYOffset > sticky) {
+\t\t\tmenu.classList.add(\"sticky2\");
+\t\t  } else {
+\t\t\tmenu.classList.remove(\"sticky2\");
+\t\t  }
+\t\t}
+\t</script>
+{% endblock %}
 </body>
 </html>", "::layoutAdmin.html.twig", "C:\\wamp\\www\\jeux\\app/Resources\\views/layoutAdmin.html.twig");
     }

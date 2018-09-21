@@ -3,7 +3,7 @@
 <h3>Formulaire de création d'article</h3>
 
 <div class="flex3">
-	<div class="wid33 pad"
+	<div class="wid33 pad">
 		{{ form_start(form, {'attr': {'action': path('adminProduits_create'), 'method': 'POST'}}) }}
 		{{ form_errors(form) }}
 		{% if form.date_de_sortie is defined %}

@@ -137,7 +137,7 @@ class __TwigTemplate_f1f0b8d469f308ab3083d5e298579bf29bbf654678bf4adc143ddf84d26
                     $context["notes"] = "";
                     // line 31
                     echo "\t\t\t\t\t<div class=\"star-ratings-css\" title=\"";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["n"], "moyenne", array()), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["n"], "moyenne", array()), 0, 3), "html", null, true);
                     echo "/5\">
 \t\t\t\t\t  <div class=\"star-ratings-css-top\" style=\"width: ";
                     // line 32
@@ -241,7 +241,7 @@ class __TwigTemplate_f1f0b8d469f308ab3083d5e298579bf29bbf654678bf4adc143ddf84d26
 \t\t\t\t<span class=\"ind orange size2\">";
             // line 47
             echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, $context["article"], "prix", array()) * 1.2), "html", null, true);
-            echo " €</span><br>
+            echo " € T.T.C</span><br>
 \t\t\t</div>
 \t\t</div>
 \t\t<hr>
@@ -354,7 +354,7 @@ class __TwigTemplate_f1f0b8d469f308ab3083d5e298579bf29bbf654678bf4adc143ddf84d26
 \t\t\t\t{% for n in note %} 
 \t\t\t\t\t{% if n.titre == article.titre %}\t\t\t\t\t\t
 \t\t\t\t\t\t\t{#{ n.moyenne }#} {% set notes = '' %}
-\t\t\t\t\t<div class=\"star-ratings-css\" title=\"{{ n.moyenne }}/5\">
+\t\t\t\t\t<div class=\"star-ratings-css\" title=\"{{ n.moyenne|slice(0,3) }}/5\">
 \t\t\t\t\t  <div class=\"star-ratings-css-top\" style=\"width: {{ n.moyenne * 20 }}%\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 \t\t\t\t\t  <div class=\"star-ratings-css-bottom\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 \t\t\t\t\t</div>
@@ -370,7 +370,7 @@ class __TwigTemplate_f1f0b8d469f308ab3083d5e298579bf29bbf654678bf4adc143ddf84d26
 \t\t\t\t<img src=\"{{ asset('img/minutes.png')}}\" width=\"20\" class=\"pad\">  {{ article.duree }} '<br><br>
 \t\t\t\t<span class=\"ind orange\">Catégories </span>: {% for cat in article.categories %}{% if not loop.last %}{{ cat.name }},{% else %}{{ cat.name }}{% endif %}{% endfor %}<br>
 \t\t\t\t<span class=\"ind orange\">Public concerné</span> : {{ article.publicJeu.name }}<br>
-\t\t\t\t<span class=\"ind orange size2\">{{article.prix * 1.2}} €</span><br>
+\t\t\t\t<span class=\"ind orange size2\">{{article.prix * 1.2}} € T.T.C</span><br>
 \t\t\t</div>
 \t\t</div>
 \t\t<hr>
