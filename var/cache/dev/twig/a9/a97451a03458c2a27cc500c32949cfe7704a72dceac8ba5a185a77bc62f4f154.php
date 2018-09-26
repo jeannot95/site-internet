@@ -1,6 +1,6 @@
 <?php
 
-/* @JeuUser/User/facturePDF.html.twig */
+/* JeuUserBundle:User:facturePDF.html.twig */
 class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91c321d extends Twig_Template
 {
     private $source;
@@ -20,10 +20,10 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuUser/User/facturePDF.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuUserBundle:User:facturePDF.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuUser/User/facturePDF.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuUserBundle:User:facturePDF.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
@@ -124,7 +124,7 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
                     <td width=\"110\">TVA <span class=\"color min\"></span> :</td>
                     <td width=\"100\" class=\"color\"> ";
         // line 54
-        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new Twig_Error_Runtime('Variable "facture" does not exist.', 54, $this->source); })()), "commande", array()), "prixTTC", array()) - twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new Twig_Error_Runtime('Variable "facture" does not exist.', 54, $this->source); })()), "commande", array()), "prixHT", array())), "html", null, true);
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new Twig_Error_Runtime('Variable "facture" does not exist.', 54, $this->source); })()), "commande", array()), "prixHT", array()) * 0.2), "html", null, true);
         echo "€</td>
                 </tr>
 
@@ -135,7 +135,21 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new Twig_Error_Runtime('Variable "facture" does not exist.', 59, $this->source); })()), "commande", array()), "prixTTC", array()), "html", null, true);
         echo " €</td>
             </tr>
-        </table>
+\t\t\t";
+        // line 61
+        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["facture"] ?? null), "commande", array(), "any", false, true), "prixTTC2", array(), "any", true, true)) {
+            // line 62
+            echo "\t\t\t<tr>
+                <td width=\"110\">TOTAL TTC après promo :</td>
+                <td width=\"100\" class=\"color\">";
+            // line 64
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new Twig_Error_Runtime('Variable "facture" does not exist.', 64, $this->source); })()), "commande", array()), "prixTTC2", array()), "html", null, true);
+            echo " €</td>
+            </tr>
+\t\t\t";
+        }
+        // line 67
+        echo "        </table>
         <div id=\"footer\">
             <span class=\"color strong\"></span>
             <br>           
@@ -152,7 +166,7 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
 
     public function getTemplateName()
     {
-        return "@JeuUser/User/facturePDF.html.twig";
+        return "JeuUserBundle:User:facturePDF.html.twig";
     }
 
     public function isTraitable()
@@ -162,7 +176,7 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
 
     public function getDebugInfo()
     {
-        return array (  135 => 59,  127 => 54,  119 => 49,  113 => 45,  104 => 42,  100 => 41,  96 => 40,  93 => 39,  89 => 38,  74 => 30,  70 => 29,  64 => 28,  57 => 24,  53 => 23,  29 => 1,);
+        return array (  152 => 67,  146 => 64,  142 => 62,  140 => 61,  135 => 59,  127 => 54,  119 => 49,  113 => 45,  104 => 42,  100 => 41,  96 => 40,  93 => 39,  89 => 38,  74 => 30,  70 => 29,  64 => 28,  57 => 24,  53 => 23,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -220,19 +234,25 @@ class __TwigTemplate_173b5d7ee2fccbee6f0d158d4d7acbbded28a50fc5a7f51f6b54a982d91
  
                 <tr>
                     <td width=\"110\">TVA <span class=\"color min\"></span> :</td>
-                    <td width=\"100\" class=\"color\"> {{ facture.commande.prixTTC - facture.commande.prixHT }}€</td>
+                    <td width=\"100\" class=\"color\"> {{ facture.commande.prixHT * 0.2 }}€</td>
                 </tr>
 
             <tr>
                 <td width=\"110\">TOTAL TTC :</td>
                 <td width=\"100\" class=\"color\">{{ facture.commande.prixTTC }} €</td>
             </tr>
+\t\t\t{% if facture.commande.prixTTC2 is defined %}
+\t\t\t<tr>
+                <td width=\"110\">TOTAL TTC après promo :</td>
+                <td width=\"100\" class=\"color\">{{ facture.commande.prixTTC2 }} €</td>
+            </tr>
+\t\t\t{% endif %}
         </table>
         <div id=\"footer\">
             <span class=\"color strong\"></span>
             <br>           
         </div>
     </body>
-</html>", "@JeuUser/User/facturePDF.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\UserBundle\\Resources\\views\\User\\facturePDF.html.twig");
+</html>", "JeuUserBundle:User:facturePDF.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\UserBundle\\Resources\\views\\User\\facturePDF.html.twig");
     }
 }

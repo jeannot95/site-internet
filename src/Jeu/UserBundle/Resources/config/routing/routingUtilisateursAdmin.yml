@@ -36,4 +36,14 @@ rechercheUser:
 editeUser:
     path: /editer/{id}        
     defaults: 
-        _controller: JeuUserBundle:UserAdmin:editRoles    
+        _controller: JeuUserBundle:UserAdmin:editRoles
+
+panierAbandonne:
+    path: /abandon
+    defaults:
+        _controller: JeuUserBundle:UserAdmin:panierAbandonne
+
+relanceUser:
+    path: /relanceUser
+    defaults:
+        _controller: JeuUserBundle:UserAdmin:relance    

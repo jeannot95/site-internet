@@ -114,48 +114,56 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'Jeu\\ArticleBundle\\Controller\\PanierController::panierAction',  '_route' => 'jeu_article_panier',);
             }
 
-            // presentation
-            if (0 === strpos($pathinfo, '/produit') && preg_match('#^/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'presentation')), array (  '_controller' => 'Jeu\\ArticleBundle\\Controller\\ArticleController::presentationAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/profile')) {
-                // fos_user_profile_show
-                if ('/profile' === $trimmedPathinfo) {
-                    if ('GET' !== $canonicalMethod) {
-                        $allow[] = 'GET';
-                        goto not_fos_user_profile_show;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($rawPathinfo.'/', 'fos_user_profile_show');
-                    }
-
-                    return array (  '_controller' => 'fos_user.profile.controller:showAction',  '_route' => 'fos_user_profile_show',);
+            if (0 === strpos($pathinfo, '/pro')) {
+                // promo
+                if ('/promo' === $pathinfo) {
+                    return array (  '_controller' => 'Jeu\\ArticleBundle\\Controller\\PanierController::promoAction',  '_route' => 'promo',);
                 }
-                not_fos_user_profile_show:
 
-                // fos_user_profile_edit
-                if ('/profile/edit' === $pathinfo) {
-                    if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                        $allow = array_merge($allow, array('GET', 'POST'));
-                        goto not_fos_user_profile_edit;
-                    }
-
-                    return array (  '_controller' => 'fos_user.profile.controller:editAction',  '_route' => 'fos_user_profile_edit',);
+                // presentation
+                if (0 === strpos($pathinfo, '/produit') && preg_match('#^/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'presentation')), array (  '_controller' => 'Jeu\\ArticleBundle\\Controller\\ArticleController::presentationAction',));
                 }
-                not_fos_user_profile_edit:
 
-                // fos_user_change_password
-                if ('/profile/change-password' === $pathinfo) {
-                    if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                        $allow = array_merge($allow, array('GET', 'POST'));
-                        goto not_fos_user_change_password;
+                if (0 === strpos($pathinfo, '/profile')) {
+                    // fos_user_profile_show
+                    if ('/profile' === $trimmedPathinfo) {
+                        if ('GET' !== $canonicalMethod) {
+                            $allow[] = 'GET';
+                            goto not_fos_user_profile_show;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($rawPathinfo.'/', 'fos_user_profile_show');
+                        }
+
+                        return array (  '_controller' => 'fos_user.profile.controller:showAction',  '_route' => 'fos_user_profile_show',);
                     }
+                    not_fos_user_profile_show:
 
-                    return array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',  '_route' => 'fos_user_change_password',);
+                    // fos_user_profile_edit
+                    if ('/profile/edit' === $pathinfo) {
+                        if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                            $allow = array_merge($allow, array('GET', 'POST'));
+                            goto not_fos_user_profile_edit;
+                        }
+
+                        return array (  '_controller' => 'fos_user.profile.controller:editAction',  '_route' => 'fos_user_profile_edit',);
+                    }
+                    not_fos_user_profile_edit:
+
+                    // fos_user_change_password
+                    if ('/profile/change-password' === $pathinfo) {
+                        if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                            $allow = array_merge($allow, array('GET', 'POST'));
+                            goto not_fos_user_change_password;
+                        }
+
+                        return array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',  '_route' => 'fos_user_change_password',);
+                    }
+                    not_fos_user_change_password:
+
                 }
-                not_fos_user_change_password:
 
             }
 
@@ -704,9 +712,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
                 }
 
+                // relanceUser
+                if ('/user/admin/utilisateurs/relanceUser' === $pathinfo) {
+                    return array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::relanceAction',  '_route' => 'relanceUser',);
+                }
+
                 // editeUser
                 if (0 === strpos($pathinfo, '/user/admin/utilisateurs/editer') && preg_match('#^/user/admin/utilisateurs/editer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'editeUser')), array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::editRolesAction',));
+                }
+
+                // panierAbandonne
+                if ('/user/admin/utilisateurs/abandon' === $pathinfo) {
+                    return array (  '_controller' => 'Jeu\\UserBundle\\Controller\\UserAdminController::panierAbandonneAction',  '_route' => 'panierAbandonne',);
                 }
 
             }

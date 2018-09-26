@@ -59,7 +59,11 @@ class __TwigTemplate_36d1ac6b249362d63677f624b378d63403223193a6282c03fda04f4d5fe
 \t<a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminStatistiques_index");
-        echo "\">Statistiques</a><br>
+        echo "\">Statistiques</a><br><br>
+\t<a href=\"";
+        // line 11
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("panierAbandonne");
+        echo "\">Abandon Panier</a><br>
 </fieldset>";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -81,7 +85,7 @@ class __TwigTemplate_36d1ac6b249362d63677f624b378d63403223193a6282c03fda04f4d5fe
 
     public function getDebugInfo()
     {
-        return array (  61 => 10,  57 => 9,  53 => 8,  49 => 7,  45 => 6,  41 => 5,  37 => 4,  33 => 3,  29 => 1,);
+        return array (  65 => 11,  61 => 10,  57 => 9,  53 => 8,  49 => 7,  45 => 6,  41 => 5,  37 => 4,  33 => 3,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -95,7 +99,8 @@ class __TwigTemplate_36d1ac6b249362d63677f624b378d63403223193a6282c03fda04f4d5fe
 \t<a href=\"{{ path('adminPages') }}\">Gestion des Pages</a><br><br>
 \t<a href=\"{{ path('adminPublic_index') }}\">Public produits</a><br><br>
 \t<a href=\"{{ path('adminAvis_index') }}\">Gestion des Avis</a><br><br>
-\t<a href=\"{{ path('adminStatistiques_index') }}\">Statistiques</a><br>
+\t<a href=\"{{ path('adminStatistiques_index') }}\">Statistiques</a><br><br>
+\t<a href=\"{{ path('panierAbandonne') }}\">Abandon Panier</a><br>
 </fieldset>", ":modulesUsed:navigationAdmin.html.twig", "C:\\wamp\\www\\jeux\\app/Resources\\views/modulesUsed/navigationAdmin.html.twig");
     }
 }

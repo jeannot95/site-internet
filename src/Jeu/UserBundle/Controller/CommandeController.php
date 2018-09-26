@@ -66,7 +66,9 @@ class CommandeController extends Controller
 											'complement'=> $facturation->getComplement(),
 											);	
 
-			$commande['prixHT'] = round($totalHT, 2);									
+			$commande['prixHT'] = round($totalHT, 2);
+			if($session->has('promo')){			
+			$commande['prixTTC2'] = round($totalTTC, 2)*0.9;}
 			$commande['prixTTC'] = round($totalTTC, 2);
 			$commande['token'] = bin2hex($random);
 
@@ -127,6 +129,14 @@ class CommandeController extends Controller
         $session->remove('adresse');
         $session->remove('panier');
         $session->remove('commande');
+		if($session->has('promo')){
+			$prom = $session->get('promo');
+			$promo = $em->getRepository('JeuUserBundle:Promo')->findPromo($prom);
+			//var_dump($promo);
+			$promo[0]->setUtilise(1);
+			$em->flush();
+			$session->remove('promo');
+		}
         // ici le mail de validation
           $message = \Swift_Message::newInstance()
             ->setSubject('Validation de votre commande')

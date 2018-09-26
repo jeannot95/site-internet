@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Jeu\ArticleBundle\Entity\Article;
 use Jeu\UserBundle\Entity\UserAdresses;
 use Jeu\UserBundle\Form\UserAdressesType;
+use Jeu\UserBundle\Form\PromoType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -122,12 +123,59 @@ class PanierController extends Controller
 		if ($request->isMethod('POST')) 
 			$this->setLivraisonSession($request);
 		$em = $this->getDoctrine()->getManager();
-		$prepareCommande = $this->forward('JeuUserBundle:Commande:prepareCommande');
-
-		$commande = $em->getRepository('JeuUserBundle:Commande')->find($prepareCommande->getContent());
+		$session = $request->getSession();
+/* 		if($session->has('promo'))
+        $session->remove('promo'); */
+		//if(!$session->has('promo')) $session->set('promo',array());
 				
-		return $this->render('JeuArticleBundle:Panier:validation.html.twig', array('commande'=> $commande));
-	}	
+		//$prix = ($commande->getCommande()['prixTTC'])*0.9;
+		//$commande->getCommande()['prixTTC'] = $prix;
+		//var_dump($prix);
+
+		//var_dump($commande->getCommande()['prixTTC']);
+		
+		$form = $this->createForm(PromoType::class);
+		$form->handleRequest($request);
+		if($form->isValid()){
+			$promotion = $_POST["promo"];
+			//var_dump($promotion);
+			$promo = $em->getRepository('JeuUserBundle:Promo')->findPromo($promotion['promo']);
+			//var_dump($promo);
+			if (!empty($promo)){
+				if(!$session->has('promo')) $session->set('promo',$promo[0]->getPromo());
+				$prom = $session->get('promo');
+				$prepareCommande = $this->forward('JeuUserBundle:Commande:prepareCommande');
+				$commande = $em->getRepository('JeuUserBundle:Commande')->find($prepareCommande->getContent());
+				//var_dump($prom);
+			return $this->render('JeuArticleBundle:Panier:validation.html.twig', array(
+				'commande'=> $commande,
+				'promo'=>$promo	
+			));	}
+			$prepareCommande = $this->forward('JeuUserBundle:Commande:prepareCommande');
+			$commande = $em->getRepository('JeuUserBundle:Commande')->find($prepareCommande->getContent());
+			$this->get('session')->getFlashBag()->add('loss','Ce code promotion n\'est pas valide');
+			return $this->render('JeuArticleBundle:Panier:validation.html.twig', array(
+			'commande'=> $commande,
+			'form' => $form->createView()
+		));
+		} 
+		else {	
+				$prepareCommande = $this->forward('JeuUserBundle:Commande:prepareCommande');
+				$commande = $em->getRepository('JeuUserBundle:Commande')->find($prepareCommande->getContent());		
+			return $this->render('JeuArticleBundle:Panier:validation.html.twig', array(
+			'commande'=> $commande,
+			'form' => $form->createView()
+		));}
+	}
+
+/* 	public function promoAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$promo = $em->getRepository('JeuUserBundle:Promo')->find();
+		return $this->redirectToRoute('jeu_article_validation',array(
+			'promo'=>$promo
+		));	
+	} */	
 
 }	
 

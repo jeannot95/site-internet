@@ -87,4 +87,32 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();	
 	}		
 	
+	public function commandeNonValid()
+	{
+		$qb = $this->createQueryBuilder('a');
+		$qb
+			->select('a.commande')
+			->where('a.valider = 0')
+			->andWhere('a.relance = 0')
+			->addSelect('a.date')			
+			//->addSelect($qb->expr()->max('a.date'));$qb
+			->leftJoin('a.user','u')
+			//->addSelect('a.user')
+			->addSelect('u.email')
+			->addSelect('u.id')
+			->addSelect('a.relance')
+			->addSelect('a.id as idcommande')
+			//->setMaxResults( 1 );
+			;
+		
+		
+		return $qb
+			->getQuery()
+            ->getResult();	
+	}
+	
 }
+
+
+
+

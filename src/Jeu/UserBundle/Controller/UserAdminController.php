@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Jeu\UserBundle\Entity\Promo;
 class UserAdminController extends Controller
 {
     public function indexAction($page)
@@ -128,6 +129,54 @@ class UserAdminController extends Controller
 			'form' => $form->createView(),
 			'user' => $user
 		]);
-	}	
+	}
+
+	public function panierAbandonneAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$commandes = $em->getRepository('JeuUserBundle:Commande')->commandeNonValid();
+		//$commandes = 10;
+		return $this->render('JeuUserBundle:Administration:Utilisateurs/panierabandonne.html.twig', array(
+			'commandes' => $commandes,
+		));
+	}
+	
+	public function relanceAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$commandes = $em->getRepository('JeuUserBundle:Commande')->commandeNonValid();
+		//	var_dump($commandes);
+		foreach($commandes as $key=>$user){
+				var_dump($user['commande']);
+				$promo = new Promo();
+				$int = random_int(10000000,99999999);
+				$promo->setPromo($int);
+				$em->persist($promo);
+				$em->flush();
+				$commande = $em->getRepository('JeuUserBundle:Commande')->find($user['idcommande']);
+				$commande->setRelance(1);
+				$em->persist($commande);
+				$em->flush();
+				$users = $em->getRepository('JeuUserBundle:User')->find($user['id']);
+				$message = \Swift_Message::newInstance()
+					->setSubject('Relance')
+					->setFrom(array('jeux@jeux.audoinjean95300.com' => 'JeuxDeSociété'))
+					->setTo($user['email'])
+					->setCharset('utf-8')
+					->setContentType('text/html')
+					->setBody($this->renderView('JeuArticleBundle:Swift:relanceCommande.html.twig',array(
+						'user' => $users,
+						'facture' => $user['commande'],
+						'promo' => $promo
+					)));
+				$this->get('mailer')->send($message);
+					
+		}	
+        
+		$request->getSession()->getFlashBag()->add('success', "Relances effectuées avec succès ! ");
+		return $this->redirectToRoute('panierAbandonne', array(
+			'commandes' => $commandes,
+		));
+	}
 	
 }

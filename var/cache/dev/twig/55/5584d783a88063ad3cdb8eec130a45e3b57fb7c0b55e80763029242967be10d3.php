@@ -1,6 +1,6 @@
 <?php
 
-/* JeuArticleBundle:Article:recherche.html.twig */
+/* @JeuArticle/Article/recherche.html.twig */
 class __TwigTemplate_7d715daac513199de58807e19c95dfe8e292ea3f0da1cac0d07f7552a16b4217 extends Twig_Template
 {
     private $source;
@@ -12,7 +12,7 @@ class __TwigTemplate_7d715daac513199de58807e19c95dfe8e292ea3f0da1cac0d07f7552a16
         $this->source = $this->getSourceContext();
 
         // line 2
-        $this->parent = $this->loadTemplate("JeuArticleBundle::layout.html.twig", "JeuArticleBundle:Article:recherche.html.twig", 2);
+        $this->parent = $this->loadTemplate("JeuArticleBundle::layout.html.twig", "@JeuArticle/Article/recherche.html.twig", 2);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
@@ -29,10 +29,10 @@ class __TwigTemplate_7d715daac513199de58807e19c95dfe8e292ea3f0da1cac0d07f7552a16
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuArticleBundle:Article:recherche.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuArticle/Article/recherche.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JeuArticleBundle:Article:recherche.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@JeuArticle/Article/recherche.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
@@ -246,7 +246,7 @@ class __TwigTemplate_7d715daac513199de58807e19c95dfe8e292ea3f0da1cac0d07f7552a16
 
     public function getTemplateName()
     {
-        return "JeuArticleBundle:Article:recherche.html.twig";
+        return "@JeuArticle/Article/recherche.html.twig";
     }
 
     public function isTraitable()
@@ -373,6 +373,6 @@ class __TwigTemplate_7d715daac513199de58807e19c95dfe8e292ea3f0da1cac0d07f7552a16
 
 \t\t});\t
 \t</script>\t\t
-  {% endblock %}", "JeuArticleBundle:Article:recherche.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\ArticleBundle\\Resources\\views\\Article\\recherche.html.twig");
+  {% endblock %}", "@JeuArticle/Article/recherche.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\ArticleBundle\\Resources\\views\\Article\\recherche.html.twig");
     }
 }

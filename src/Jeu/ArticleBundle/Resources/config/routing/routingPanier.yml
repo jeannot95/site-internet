@@ -24,4 +24,8 @@ jeu_article_validation:
 
 livraison_adresse_suppression:
     path: /suppression/adresse/{id}
-    defaults: { _controller: JeuArticleBundle:Panier:suppressionAdresse } 
+    defaults: { _controller: JeuArticleBundle:Panier:suppressionAdresse }
+
+promo:
+    path: /promo
+    defaults: { _controller: JeuArticleBundle:Panier:promo } 

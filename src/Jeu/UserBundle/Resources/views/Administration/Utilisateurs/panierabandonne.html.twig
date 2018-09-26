@@ -1,0 +1,17 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+		<h2 class="centre orange ind">Panier abandonnés</h2>
+		<span class="ind">Nombre total de panier abandonnés non relancés: </span><span class="ind tomate">{{ commandes|length }}</span>
+    </div>
+	{#{ dump(commandes) }#}
+	{% for flashMessage in app.session.flashbag.get('success') %}
+	<br>
+		<div class="success">
+			{{ flashMessage }}
+		</div>	
+	{% endfor %}
+	<br>
+	<a href="{{ path('relanceUser') }}" class="bouton1">Relancer les Clients</a>	
+{% endblock %}

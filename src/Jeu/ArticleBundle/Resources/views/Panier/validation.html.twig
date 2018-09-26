@@ -8,7 +8,12 @@
 
 <h2>Validation</h2>
 
-  {% block fos_user_content %} 
+  {% block fos_user_content %}
+	  {% for flashMessage in app.session.flashbag.get('loss') %}
+		<div class="loss">
+			{{ flashMessage }}
+		</div>	
+	  {% endfor %}  
 	<table class="centre">
 		<thead>
 			<tr>
@@ -25,10 +30,23 @@
 		{% endfor %}
 		</tbody>
 	</table><hr>
+		{#<form action="{{ path('jeu_article_validation') }}">
+			Code Promo : <input>
+			<button type="submit" class="bouton1">Valider</button>
+		</form>#}
+		{% if form is defined %}
+			{{ form(form) }}
+		{% endif %}	
+		{% if promo is defined %}
+			{#{ dump(promo) }#}
+			Code promo : {% for promotion in promo %}{{ promotion.promo }}{% endfor %}
+		{% endif %}
 		<dl class="right padr bold">
 					<dt>Total HT </dt><dd>{{ commande.commande.prixHT }} €</dd>
 					<dt>TVA 20% </dt><dd>{{ commande.commande.prixHT*0.2 }} €</dd>
-					<dt>Total TTC</dt><dd>{{ commande.commande.prixHT*1.2 }} €</dd>
+					<dt>Total TTC</dt><dd>{{ commande.commande.prixTTC }} €</dd>
+					{% if promo is defined %}<dt>Total TTC apres promo</dt><dd>{{ commande.commande.prixTTC2 }} €</dd>
+					{% endif %}
 		</dl>
 		<div class="flex4">
 			<div>
@@ -47,17 +65,30 @@
 					<dt>{{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}</dt>
 				</dl>
 			</div>
-		</div>	
+		</div>
 		<div class="clear"></div>
-		
-		<form action="{{ path('jeu_user_validation_commande', { 'id' : commande.id }) }}" method ="POST">
+
+			
+		<form id="valider" action="{{ path('jeu_user_validation_commande', { 'id' : commande.id }) }}" method ="POST" onsubmit="return valider()">
 			<input name="token" type="hidden" value="{{ commande.commande.token }}">
 			<input name="prix" type="hidden" value="{{ commande.commande.prixTTC }}">
 			<input name="date" type="hidden" value="{{ commande.date|date('dmy') }}">
+			<input type="checkbox" name="validation" id="validation"> J'ai lu et j'accepte les <a href="{{ path('jeu_pages_homepage',{'id':4}) }}">conditions générales de vente</a>
 			<div class="right floatright centre2"><button type="submit" class="bouton2 ">Payer</button></div>
 		</form>
 		
 	<a href="{{ path('jeu_article_livraison') }}" class="bouton1">Retour</a>
   {% endblock fos_user_content %}
-  
+  {% block javascripts %}
+  <script>
+	function valider(){
+	 if(document.getElementById("validation").checked==false){
+		alert("Pour commander, vous devez accepter les conditions générales de vente." );  
+		return false;
+	 }
+	 return true;
+	}
+	
+  </script>
+  {% endblock %}
 {% endblock %}

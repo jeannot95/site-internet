@@ -17,6 +17,7 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
             'title' => array($this, 'block_title'),
             'jeu_article_body' => array($this, 'block_jeu_article_body'),
             'fos_user_content' => array($this, 'block_fos_user_content'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -80,9 +81,9 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
   ";
         // line 11
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 62
-        echo "  
-";
+        // line 63
+        echo "  ";
+        $this->displayBlock('javascripts', $context, $blocks);
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -196,8 +197,8 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
 \t\t\t</div>
 \t\t</div>\t
 \t\t<div class=\"clear\"></div>
-\t\t
-\t\t<form action=\"";
+\t\t\t
+\t\t<form id=\"valider\" action=\"";
         // line 53
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_user_validation_commande", array("id" => twig_get_attribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new Twig_Error_Runtime('Variable "commande" does not exist.', 53, $this->source); })()), "id", array()))), "html", null, true);
         echo "\" method =\"POST\">
@@ -213,13 +214,46 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
         // line 56
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new Twig_Error_Runtime('Variable "commande" does not exist.', 56, $this->source); })()), "date", array()), "dmy"), "html", null, true);
         echo "\">
+\t\t\t<input type=\"checkbox\" name=\"validation\" id=\"validation\"> J'ai lu et j'accepte les <a href=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_pages_homepage", array("id" => 4));
+        echo "\">conditions générales de vente</a>
 \t\t\t<div class=\"right floatright centre2\"><button type=\"submit\" class=\"bouton2 \">Payer</button></div>
 \t\t</form>
 \t\t
 \t<a href=\"";
-        // line 60
+        // line 61
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("jeu_article_livraison");
         echo "\" class=\"bouton1\">Retour</a>
+  ";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 63
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 64
+        echo "  <script>
+\tfunction valider(){
+\t if(document.getElemntById(validation.checked==false){
+\t\talert(\"Pour commander, vous devez accepter les conditions générales de vente.\" ); 
+\t\t#valider.validation.focus(); 
+\t\treturn false;
+\t }
+\t return true;
+\t}
+  </script>
   ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -241,7 +275,7 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
 
     public function getDebugInfo()
     {
-        return array (  221 => 60,  214 => 56,  210 => 55,  206 => 54,  202 => 53,  189 => 47,  185 => 46,  179 => 45,  166 => 39,  162 => 38,  156 => 37,  147 => 31,  143 => 30,  139 => 29,  134 => 26,  125 => 23,  121 => 22,  118 => 21,  114 => 20,  95 => 11,  84 => 62,  82 => 11,  77 => 8,  68 => 7,  55 => 4,  46 => 3,  15 => 1,);
+        return array (  247 => 64,  238 => 63,  226 => 61,  219 => 57,  215 => 56,  211 => 55,  207 => 54,  203 => 53,  190 => 47,  186 => 46,  180 => 45,  167 => 39,  163 => 38,  157 => 37,  148 => 31,  144 => 30,  140 => 29,  135 => 26,  126 => 23,  122 => 22,  119 => 21,  115 => 20,  96 => 11,  85 => 63,  83 => 11,  78 => 8,  69 => 7,  56 => 4,  47 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -297,17 +331,29 @@ class __TwigTemplate_d3840fb3edc0e391812d7d9a9b2c3e5f71c69f6c798b9361eebb346b41a
 \t\t\t</div>
 \t\t</div>\t
 \t\t<div class=\"clear\"></div>
-\t\t
-\t\t<form action=\"{{ path('jeu_user_validation_commande', { 'id' : commande.id }) }}\" method =\"POST\">
+\t\t\t
+\t\t<form id=\"valider\" action=\"{{ path('jeu_user_validation_commande', { 'id' : commande.id }) }}\" method =\"POST\">
 \t\t\t<input name=\"token\" type=\"hidden\" value=\"{{ commande.commande.token }}\">
 \t\t\t<input name=\"prix\" type=\"hidden\" value=\"{{ commande.commande.prixTTC }}\">
 \t\t\t<input name=\"date\" type=\"hidden\" value=\"{{ commande.date|date('dmy') }}\">
+\t\t\t<input type=\"checkbox\" name=\"validation\" id=\"validation\"> J'ai lu et j'accepte les <a href=\"{{ path('jeu_pages_homepage',{'id':4}) }}\">conditions générales de vente</a>
 \t\t\t<div class=\"right floatright centre2\"><button type=\"submit\" class=\"bouton2 \">Payer</button></div>
 \t\t</form>
 \t\t
 \t<a href=\"{{ path('jeu_article_livraison') }}\" class=\"bouton1\">Retour</a>
   {% endblock fos_user_content %}
-  
+  {% block javascripts %}
+  <script>
+\tfunction valider(){
+\t if(document.getElemntById(validation.checked==false){
+\t\talert(\"Pour commander, vous devez accepter les conditions générales de vente.\" ); 
+\t\t#valider.validation.focus(); 
+\t\treturn false;
+\t }
+\t return true;
+\t}
+  </script>
+  {% endblock %}
 {% endblock %}", "JeuArticleBundle:Panier:validation.html.twig", "C:\\wamp\\www\\jeux\\src\\Jeu\\ArticleBundle/Resources/views/Panier/validation.html.twig");
     }
 }

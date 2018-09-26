@@ -55,7 +55,37 @@ class Commande
      */
     private $commande;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="relance", type="integer")
+     */
+    private $relance = 0;
 
+    /**
+     * Get relance
+     *
+     * @return int
+     */
+    public function getRelance()
+    {
+        return $this->relance;
+    }	
+
+    /**
+     * Set valider
+     *
+     * @param boolean $valider
+     *
+     * @return Commande
+     */
+    public function setRelance($relance)
+    {
+        $this->relance = $relance;
+
+        return $this;
+    }
+	
     /**
      * Get id
      *

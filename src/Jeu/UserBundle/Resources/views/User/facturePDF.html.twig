@@ -51,13 +51,19 @@
  
                 <tr>
                     <td width="110">TVA <span class="color min"></span> :</td>
-                    <td width="100" class="color"> {{ facture.commande.prixTTC - facture.commande.prixHT }}€</td>
+                    <td width="100" class="color"> {{ facture.commande.prixHT * 0.2 }}€</td>
                 </tr>
 
             <tr>
                 <td width="110">TOTAL TTC :</td>
                 <td width="100" class="color">{{ facture.commande.prixTTC }} €</td>
             </tr>
+			{% if facture.commande.prixTTC2 is defined %}
+			<tr>
+                <td width="110">TOTAL TTC après promo :</td>
+                <td width="100" class="color">{{ facture.commande.prixTTC2 }} €</td>
+            </tr>
+			{% endif %}
         </table>
         <div id="footer">
             <span class="color strong"></span>
