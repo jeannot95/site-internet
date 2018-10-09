@@ -34,12 +34,23 @@ class ArticleController extends Controller
 		if ($page > $nbPages && $page != 1) {
 		  throw $this->createNotFoundException("La page ".$page." n'existe pas.");
 		}
-		
+	
+		$em = $this->getDoctrine()->getManager();
+		$limit = 4;
+
+		$listArticles2 = $em->getRepository('JeuArticleBundle:Article')->findBy(
+		array(),                 // Pas de critère
+		array('dateDeSortie' => 'desc'), // On trie par date décroissante
+		$limit,                  // On sélectionne $limit annonces
+		0 
+			);
+	
         return $this->render('JeuArticleBundle:Article:index.html.twig',array(
 		'articles'=>$articles,
 		'nbPages'=>$nbPages,
 		'page'=>$page,
-		'note'=>$note
+		'note'=>$note,
+		'listAdverts2'=>$listArticles2
 		));
     }
 	
@@ -224,6 +235,23 @@ class ArticleController extends Controller
 	public function testAction()
 	{
 		return $this->render('JeuArticleBundle:Article:test.html.twig');
+	}
+	
+	public function menuAction($limit)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$limit = 4;
+
+		$listArticles = $em->getRepository('JeuArticleBundle:Article')->findBy(
+		array(),                 // Pas de critère
+		array('dateDeSortie' => 'desc'), // On trie par date décroissante
+		$limit,                  // On sélectionne $limit annonces
+		0                        // À partir du premier
+	);
+
+	return $this->render('JeuArticleBundle:Article:menu.html.twig', array(
+	'listAdverts' => $listArticles
+	));
 	}
   
 }

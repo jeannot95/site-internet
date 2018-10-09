@@ -1,0 +1,8 @@
+
+  {% for advert in listAdverts %}
+    
+      <a href="{{ path('jeu_article_view', {'id': advert.id}) }}">
+        {{ advert.titre }}
+      </a>
+		<br>
+  {% endfor %}

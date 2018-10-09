@@ -3,6 +3,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<meta name="description" content="Jeux de société">
+	<meta name="keywords" content="JeuxDeSociété, Jeux, Jeux de société, Jeux de cartes, jeux de plateau, cartes, plateau,société">
+	<meta name="author" content="Jean Audoin">	
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}Jeu de Société{% endblock %}</title>
@@ -11,7 +14,7 @@
       <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 	  <link rel="stylesheet" href="{{ asset('css/jeux.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/stars.css') }}">
-	  <link rel="stylesheet" href="{{ asset('css/boutons.css') }}">
+	  <link rel="stylesheet" href="{{ asset('css/boutons.css') }}">	  
     {% endblock %}
 	<link rel="icon" type="image/x-icon" href="{{ asset('img/logo2.jpg') }}"/>
   </head>
@@ -37,7 +40,7 @@
 				<div>
 						
 					<p class="it">
-						Ce projet est propulsé par Symfony, et construit dans le cadre de mes études à IFOCOP.
+						Ce projet est propulsé par Symfony, et construit dans le cadre de mes études à IFOCOP. Il est entièrement fictif.
 					</p>
 				</div>			
 			</div>
@@ -105,7 +108,13 @@
 			{{ render(controller('JeuArticleBundle:Panier:menu')) }}<br>
 			<a href="{{ path('jeu_user_factures') }}"> Mes factures</a><br><br>
 			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+		
+		</fieldset>
 		{% endif %}
+		<fieldset><legend><h3>Dernières sorties</h3></legend>	
+
+			{{ render(controller('JeuArticleBundle:Article:menu', {'limit': 3})) }}
+			<br>		
 		</fieldset>
       </div>
 	  <!-- <hr> -->
